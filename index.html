@@ -1,247 +1,591 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Amazon Services – EStoreAxis</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="platform-theme.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EStoreAxis – Multi-Platform eCommerce Management</title>
+<meta name="description" content="Expert Amazon, Walmart, eBay, Home Depot & Lowes account management. Data-driven eCommerce growth across every marketplace."/>
 <style>
-:root{--pc:#FF6B00;--pcl:#FFF3E0;--pcb:rgba(255,107,0,.2);}
-.plat-eyebrow{background:#FFF3E0;color:#C2410C;}
-.sc-badge{background:#FFF3E0;color:#C2410C;}
-.subcat-inner a.active,.subcat-inner a:hover{color:#C2410C;border-bottom-color:#C2410C;}
-.kpi-val{color:#C2410C;}
-.proc-n{border-color:#FF6B00;color:#C2410C;}
-.proc-tag{background:#FFF3E0;color:#9A3412;}
-.sf-btn{background:#C2410C;}.sf-btn:hover{background:#9A3412;}
-.sf input:focus,.sf select:focus,.sf textarea:focus{border-color:#C2410C;box-shadow:0 0 0 3px rgba(194,65,12,.07);}
+body{visibility:hidden;}
+
+/* ── HERO ── */
+.hero{background:var(--white);padding:80px 0 0;overflow:hidden;}
+.hero-grid{max-width:1280px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:center;}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid #BFDBFE;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.6px;margin-bottom:22px;}
+.hero-tag .dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hero h1{font-size:54px;font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--ink);margin-bottom:20px;}
+.hero h1 em{font-style:normal;color:var(--blue);}
+.hero-p{font-size:17px;color:var(--gray-500);line-height:1.75;margin-bottom:30px;max-width:480px;}
+.platform-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px;}
+.pbadge{display:flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--gray-200);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;color:var(--gray-700);box-shadow:var(--shadow-xs);}
+.pbadge.amz{border-color:#FDBA74;color:#C2410C;}
+.pbadge.wmt{border-color:#93C5FD;color:#1D4ED8;}
+.pbadge.eby{border-color:#FCA5A5;color:#DC2626;}
+.pbadge.hd{border-color:#FB923C;color:#C2410C;}
+.pbadge.lw{border-color:#93C5FD;color:#1E40AF;}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* HERO FORM CARD */
+.hero-form-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-xl);padding:32px;box-shadow:var(--shadow-xl);}
+.hfc-title{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.hfc-sub{font-size:13px;color:var(--gray-500);margin-bottom:22px;display:flex;align-items:center;gap:6px;}
+.hfc-sub::before{content:'';width:8px;height:8px;background:#22C55E;border-radius:50%;flex-shrink:0;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.hf input,.hf select,.hf textarea{width:100%;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:11px 14px;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;font-weight:500;outline:none;transition:.2s;margin-bottom:12px;}
+.hf input:focus,.hf select:focus,.hf textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.08);}
+.hf select option{background:#fff;color:var(--ink);}
+.hf textarea{min-height:88px;resize:vertical;margin-bottom:14px;}
+.hf-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:25px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;}
+.hf-btn:hover{background:var(--blue-dark);box-shadow:0 4px 16px rgba(0,102,255,.35);}
+.form-trust{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:12px;color:var(--gray-400);}
+
+/* HERO BOTTOM STRIP */
+.hero-strip{background:var(--gray-900);padding:0;}
+.strip-inner{max-width:1280px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
+.strip-item{display:flex;flex-direction:column;align-items:center;gap:2px;}
+.strip-val{font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;}
+.strip-label{font-size:12px;color:#9CA3AF;font-weight:500;}
+.strip-div{width:1px;height:40px;background:#374151;}
+
+/* TICKER */
+.ticker-wrap{background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:16px 0;overflow:hidden;}
+.ticker-label{text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin-bottom:14px;}
+.ticker-track{display:flex;gap:12px;animation:ticker 28s linear infinite;width:max-content;}
+.ticker-item{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;padding:8px 16px;font-size:12.5px;font-weight:600;color:var(--gray-600);white-space:nowrap;box-shadow:var(--shadow-xs);}
+@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
+.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
+.metric-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px;}
+.metric-val{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-1px;margin-bottom:2px;}
+.metric-label{font-size:12px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.metric-change{font-size:12px;color:#16A34A;font-weight:700;margin-top:4px;}
+.about-features{display:flex;flex-direction:column;gap:0;}
+.about-feat{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--gray-100);}
+.about-feat:last-child{border-bottom:none;}
+.af-icon{width:44px;height:44px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
+.af-text h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--ink);}
+.af-text p{font-size:13.5px;color:var(--gray-500);line-height:1.6;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.svc-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#60A5FA);opacity:0;transition:.25s;}
+.svc-card:hover{border-color:var(--gray-300);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
+.svc-card:hover::after{opacity:1;}
+.svc-badge{position:absolute;top:16px;right:16px;background:var(--blue);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;}
+.svc-icon{width:52px;height:52px;background:var(--blue-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.svc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.svc-card p{font-size:13px;color:var(--gray-500);line-height:1.7;margin-bottom:16px;}
+.svc-list{list-style:none;margin-bottom:18px;}
+.svc-list li{font-size:12.5px;color:var(--gray-600);padding:3px 0;display:flex;align-items:center;gap:7px;}
+.svc-list li::before{content:'';width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0;}
+.svc-link{font-size:13px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:4px;transition:.15s;}
+.svc-link:hover{gap:8px;}
+
+/* PLATFORMS */
+.platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.plat-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:26px;transition:all .2s;cursor:pointer;}
+.plat-card:hover{box-shadow:var(--shadow-md);border-color:var(--gray-300);transform:translateY(-2px);}
+.plat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.plat-name{display:flex;align-items:center;gap:10px;}
+.plat-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+.plat-name h4{font-size:15px;font-weight:700;color:var(--ink);}
+.status-dot{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16A34A;}
+.status-dot::before{content:'';width:7px;height:7px;background:#22C55E;border-radius:50%;}
+.plat-desc{font-size:13px;color:var(--gray-500);line-height:1.6;margin-bottom:14px;}
+.plat-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.plat-tag{font-size:11px;font-weight:600;background:var(--gray-100);color:var(--gray-600);border-radius:5px;padding:3px 9px;}
+
+/* PROCESS */
+.process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:56px;}
+.process-track::before{content:'';position:absolute;top:26px;left:12.5%;right:12.5%;height:1.5px;background:linear-gradient(90deg,var(--blue),#93C5FD);z-index:0;}
+.pstep{text-align:center;padding:0 20px;position:relative;z-index:1;}
+.pstep-num{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:16px;font-weight:800;color:var(--blue);position:relative;}
+.pstep-num::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:1.5px dashed #BFDBFE;}
+.pstep h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+.pstep p{font-size:13px;color:var(--gray-500);line-height:1.6;}
+
+/* UPWORK */
+.upwork-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+.uw-card{background:#fff;border:1px solid #D1FAE5;border-radius:var(--radius-xl);padding:36px;box-shadow:0 0 0 4px rgba(20,181,97,.06);}
+.uw-logo{display:inline-flex;align-items:center;gap:8px;background:#14B561;color:#fff;font-size:15px;font-weight:900;padding:8px 16px;border-radius:10px;margin-bottom:22px;letter-spacing:-.3px;}
+.uw-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
+.uw-stat{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px;}
+.uw-val{font-size:24px;font-weight:800;color:#14B561;letter-spacing:-1px;margin-bottom:2px;}
+.uw-lbl{font-size:11px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.uw-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+.uw-badge{display:flex;align-items:center;gap:5px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:7px;padding:6px 12px;font-size:12px;font-weight:700;color:#065F46;}
+.uw-reasons{display:flex;flex-direction:column;gap:18px;}
+.uw-reason{display:flex;gap:14px;align-items:flex-start;}
+.ur-ico{width:38px;height:38px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
+.ur-text h5{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--ink);}
+.ur-text p{font-size:13px;color:var(--gray-500);line-height:1.55;}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.team-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:all .25s;}
+.team-card:hover{box-shadow:var(--shadow-lg);border-color:var(--gray-300);transform:translateY(-3px);}
+.team-avatar{height:170px;display:flex;align-items:center;justify-content:center;position:relative;}
+.team-avatar img{width:100%;height:100%;object-fit:cover;}
+.av-initials{width:86px;height:86px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;}
+.team-role-pill{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px;}
+.team-body{padding:18px 20px;}
+.team-body h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.team-role-txt{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:8px;}
+.team-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
+.team-tag{font-size:10.5px;font-weight:600;background:var(--gray-100);color:var(--gray-600);border-radius:5px;padding:2px 8px;}
+.team-bio{font-size:12.5px;color:var(--gray-500);line-height:1.55;margin-bottom:14px;}
+.team-links{display:flex;gap:7px;}
+.team-link{width:30px;height:30px;border:1px solid var(--gray-200);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray-500);transition:.15s;}
+.team-link:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
+.team-link.upwork:hover{background:#14B561;border-color:#14B561;}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;transition:.2s;}
+.testi-card:hover{box-shadow:var(--shadow-md);}
+.testi-stars{color:var(--amber);font-size:13px;letter-spacing:1px;margin-bottom:14px;}
+.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:22px;font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.ta-av{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0;}
+.ta-name{font-size:14px;font-weight:700;color:var(--ink);}
+.ta-role{font-size:12px;color:var(--gray-500);}
+.ta-plat{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-top:3px;}
+
+/* CTA BANNER */
+.cta-banner{background:var(--gray-900);padding:80px 24px;}
+.cta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;}
+.cta-banner h2{font-size:38px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;}
+.cta-banner p{font-size:15px;color:#9CA3AF;line-height:1.7;margin-bottom:28px;}
+.audit-card{background:#fff;border-radius:var(--radius-xl);padding:28px;}
+.audit-card h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+.audit-card .ac-sub{font-size:13px;color:var(--gray-500);margin-bottom:18px;}
+.audit-items{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:9px;}
+.audit-items li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--gray-700);}
+.audit-items li::before{content:'✓';width:20px;height:20px;background:var(--blue-light);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
+
+/* CASES */
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+.case-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:.25s;}
+.case-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.case-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;}
+.case-plat-tag{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+.case-body{padding:24px;}
+.case-body h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
+.case-body p{font-size:13px;color:var(--gray-500);line-height:1.65;margin-bottom:16px;}
+.case-metrics{display:flex;gap:24px;}
+.cm-val{font-size:20px;font-weight:800;color:var(--blue);letter-spacing:-1px;}
+.cm-lbl{font-size:11px;color:var(--gray-500);font-weight:600;text-transform:uppercase;}
+
+/* FAQ */
+.faq-wrap{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--gray-200);}
+.faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;}
+.faq-q:hover{color:var(--blue);}
+.faq-ico{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gray-400);transition:.3s;flex-shrink:0;}
+.faq-item.open .faq-ico{transform:rotate(45deg);border-color:var(--blue);color:var(--blue);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a-inner{padding:0 0 18px;font-size:14px;color:var(--gray-500);line-height:1.75;}
+
+/* MODAL */
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.modal-bg.open{display:flex;}
+.modal-box{background:#fff;border-radius:var(--radius-xl);padding:36px;max-width:500px;width:100%;position:relative;max-height:90vh;overflow-y:auto;}
+.modal-close{position:absolute;top:14px;right:14px;background:var(--gray-100);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--gray-500);transition:.15s;}
+.modal-close:hover{background:var(--gray-200);}
+.modal-icon{font-size:36px;margin-bottom:12px;}
+.modal-box h3{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.modal-box .modal-sub{font-size:14px;color:var(--gray-500);margin-bottom:20px;}
+.modal-features{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:10px;}
+.modal-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-700);}
+.modal-features li::before{content:'✓';color:var(--blue);font-weight:800;font-size:12px;margin-top:2px;}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .hero-grid,.about-grid,.upwork-grid,.cta-inner{grid-template-columns:1fr;gap:40px;}
+  .hero h1{font-size:40px;}
+  .services-grid{grid-template-columns:1fr 1fr;}
+  .platforms-grid{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:1fr 1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .cases-grid{grid-template-columns:1fr;}
+  .process-track{grid-template-columns:1fr 1fr;gap:28px;}
+  .process-track::before{display:none;}
+}
+@media(max-width:640px){
+  .hero h1{font-size:32px;}
+  .services-grid,.platforms-grid,.team-grid,.about-metrics,.form-row,.uw-stats{grid-template-columns:1fr;}
+  .strip-inner{justify-content:center;gap:16px;}
+  .strip-div{display:none;}
+}
 </style>
 </head>
 <body>
 <div id="site-nav"></div>
 
-<section class="plat-hero-wrap">
-  <div class="plat-hero-grid">
-    <div>
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Amazon Services</span></div>
-      <div class="plat-eyebrow">🟠 Amazon Marketplace</div>
-      <h1 class="plat-h1">Full-Service Amazon<br/>Account Management</h1>
-      <p class="plat-desc">From Sponsored Ads to FBA logistics, Brand Registry to A+ Content — expert management of every aspect of your Amazon business for sustainable, profitable growth.</p>
-      <div class="hero-kpis">
-        <div class="kpi"><div class="kpi-val">$3M+</div><div class="kpi-lbl">Ad Spend Managed</div></div>
-        <div class="kpi"><div class="kpi-val">18%</div><div class="kpi-lbl">Avg ACOS</div></div>
-        <div class="kpi"><div class="kpi-val">100+</div><div class="kpi-lbl">Brands Scaled</div></div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="reveal">
+      <div class="hero-tag"><span class="dot"></span>Multi-Platform eCommerce Specialist</div>
+      <h1>Scale Your Brand Across <em>Every Marketplace</em> — Profitably</h1>
+      <p class="hero-p">From Amazon PPC to Walmart, eBay, Home Depot & Lowes — data-driven account management that turns your marketplace spend into predictable, scalable revenue.</p>
+      <div class="platform-badges">
+        <span class="pbadge amz">🟠 Amazon</span>
+        <span class="pbadge wmt">🔵 Walmart</span>
+        <span class="pbadge eby">🔴 eBay</span>
+        <span class="pbadge hd">🟧 Home Depot</span>
+        <span class="pbadge lw">🔷 Lowes</span>
+        <span class="pbadge">+ More</span>
       </div>
       <div class="hero-ctas">
-        <a href="#sf" class="btn-primary" style="background:#C2410C;box-shadow:0 6px 20px rgba(194,65,12,.3);">Get a Free Amazon Audit →</a>
+        <a href="#contact" class="btn-primary">Get a Free Audit →</a>
         <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 Hire on Upwork</a>
+        <a href="#cases" class="btn-outline">Case Studies</a>
       </div>
     </div>
-    <div class="sidebar-form" id="sf">
-      <div class="sf-title">Get Amazon Help</div>
-      <div class="sf-sub">Free consultation — 24hr response</div>
-      <form class="sf" onsubmit="sf(event,this)">
-        <input type="text" placeholder="Your Name" required/>
-        <input type="email" placeholder="Email Address" required/>
-        <input type="url" placeholder="Amazon Store / ASIN URL"/>
-        <select required><option value="" disabled selected>Select Amazon Service</option><option>Amazon PPC Management</option><option>Amazon Account Management</option><option>Listing Optimization & SEO</option><option>A+ Content & Brand Storefront</option><option>FBA Setup & Management</option><option>Brand Registry</option><option>Account Health & Reinstatement</option></select>
-        <textarea placeholder="Describe your current situation and goals..."></textarea>
-        <button type="submit" class="sf-btn">Send Message →</button>
+    <div class="hero-form-card reveal" id="contact">
+      <div class="hfc-title">Contact Us</div>
+      <div class="hfc-sub">Response within 24 hours</div>
+      <form class="hf" onsubmit="handleForm(event,this)">
+        <div class="form-row">
+          <input type="text" placeholder="Full Name" required/>
+          <input type="email" placeholder="Email Address" required/>
+        </div>
+        <div class="form-row">
+          <input type="tel" placeholder="Phone Number"/>
+          <select required>
+            <option value="" disabled selected>Select a Service</option>
+            <option>Amazon PPC Management</option>
+            <option>Amazon Account Management</option>
+            <option>Walmart Marketplace</option>
+            <option>eBay Store Management</option>
+            <option>Home Depot Management</option>
+            <option>Lowes Management</option>
+            <option>Listing Optimization</option>
+            <option>Graphic Design / A+ Content</option>
+            <option>Multi-Channel Strategy</option>
+          </select>
+        </div>
+        <input type="url" placeholder="Store / Product URL (optional)"/>
+        <textarea placeholder="Tell me about your store and goals..."></textarea>
+        <button type="submit" class="hf-btn">Send Message →</button>
+        <div class="form-trust">🔒 Your info is 100% confidential</div>
       </form>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="strip-inner">
+      <div class="strip-item"><div class="strip-val" data-count="150" data-suffix="+">0</div><div class="strip-label">Brands Managed</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-item"><div class="strip-val">6</div><div class="strip-label">Platforms Covered</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-item"><div class="strip-val" data-count="5" data-prefix="$" data-suffix="M+">$0</div><div class="strip-label">Revenue Generated</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-item"><div class="strip-val" data-count="98" data-suffix="%">0</div><div class="strip-label">Client Satisfaction</div></div>
+      <div class="strip-div"></div>
+      <div class="strip-item"><div class="strip-val">4.9★</div><div class="strip-label">Upwork Rating</div></div>
     </div>
   </div>
 </section>
 
-<div class="subcat-bar"><div class="subcat-inner">
-  <a href="#ppc" class="active">🎯 PPC Management</a>
-  <a href="#account">🏪 Account Management</a>
-  <a href="#listing">✏️ Listing Optimization</a>
-  <a href="#aplus">🎨 A+ Content</a>
-  <a href="#fba">📦 FBA Management</a>
-  <a href="#brand">🏷 Brand Registry</a>
-  <a href="#health">🛡 Account Health</a>
-  <a href="#pricing">💰 Pricing</a>
-</div></div>
-
-<section class="ps" id="ppc"><div class="ps-inner">
-  <div class="sc-badge">🎯 Subcategory 1</div>
-  <h2 class="ps-h2">Amazon PPC Management</h2>
-  <p class="ps-sub">Data-driven Sponsored Products, Brands & Display campaigns that maximize ROAS and minimize wasted spend — with weekly optimization and transparent reporting.</p>
-  <div class="fg">
-    <div class="fc"><div class="fc-icon">📊</div><h4>Sponsored Products</h4><p>Auto & manual campaigns with granular keyword targeting, bid optimization by placement, and search term harvesting to grow organic rank alongside paid.</p></div>
-    <div class="fc"><div class="fc-icon">🏷</div><h4>Sponsored Brands</h4><p>Brand awareness campaigns driving traffic to your Storefront or custom landing pages. Video ads, headline search, and product collection formats all managed.</p></div>
-    <div class="fc"><div class="fc-icon">🎯</div><h4>Sponsored Display</h4><p>Retargeting shoppers who viewed your products on and off Amazon. Audience and product targeting managed for maximum relevance and ROAS.</p></div>
-    <div class="fc"><div class="fc-icon">📈</div><h4>Amazon DSP</h4><p>Programmatic advertising reaching shoppers across Amazon, IMDb, and third-party sites. Full-funnel DSP strategy from awareness to conversion.</p></div>
-    <div class="fc"><div class="fc-icon">🔍</div><h4>Keyword Research</h4><p>Deep research using Helium 10 Cerebro & Magnet — revealing high-volume, low-competition terms your competitors are missing.</p></div>
-    <div class="fc"><div class="fc-icon">⚡</div><h4>Bid Optimization</h4><p>Daily bid adjustments using time-of-day, placement, and device data. Every bid is actively managed for efficiency — never set-and-forget.</p></div>
-  </div>
-  <div class="two-col">
-    <div>
-      <h3 style="font-size:20px;font-weight:800;color:#0A0A0B;margin-bottom:18px;">PPC Management Process</h3>
-      <div class="proc">
-        <div class="proc-row"><div class="proc-n">01</div><div class="proc-content"><h4>Account Audit & Competitor Analysis</h4><p>Full audit of existing campaigns, search term reports, wasted spend, and competitor keyword strategies before touching anything.</p><div class="proc-tags"><span class="proc-tag">Helium 10</span><span class="proc-tag">Brand Analytics</span></div></div></div>
-        <div class="proc-row"><div class="proc-n">02</div><div class="proc-content"><h4>Campaign Architecture</h4><p>Build SKAG structures giving precise control over every bid and keyword match type. Separated auto and manual campaigns per SKU group.</p></div></div>
-        <div class="proc-row"><div class="proc-n">03</div><div class="proc-content"><h4>Launch & Monitor</h4><p>Go live and monitor closely in the first 2 weeks for early signals. Adjust bids daily based on conversion data.</p></div></div>
-        <div class="proc-row"><div class="proc-n">04</div><div class="proc-content"><h4>Weekly Optimization</h4><p>Harvest converting search terms, add negatives, adjust bids by placement, and scale budgets on winners every week.</p></div></div>
-        <div class="proc-row"><div class="proc-n">05</div><div class="proc-content"><h4>Monthly Reporting</h4><p>Clear monthly reports: ACOS, ROAS, TACoS, CTR, conversion rate, and revenue attributed to ads — all in plain English.</p></div></div>
-      </div>
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <p class="ticker-label">Platforms & Tools I Work With</p>
+  <div style="overflow:hidden;display:flex;">
+    <div class="ticker-track">
+      <span class="ticker-item">🟠 Amazon Seller Central</span><span class="ticker-item">📦 Amazon FBA / FBM</span><span class="ticker-item">🔵 Walmart Seller Center</span><span class="ticker-item">🔴 eBay Seller Hub</span><span class="ticker-item">🟧 Home Depot Marketplace</span><span class="ticker-item">🔷 Lowes Supplier Portal</span><span class="ticker-item">📊 Helium 10</span><span class="ticker-item">🔍 Jungle Scout</span><span class="ticker-item">📈 DataDive</span><span class="ticker-item">🎯 Amazon DSP</span><span class="ticker-item">🏷 Walmart Connect Ads</span><span class="ticker-item">✏️ Canva Pro / Photoshop</span>
+      <span class="ticker-item">🟠 Amazon Seller Central</span><span class="ticker-item">📦 Amazon FBA / FBM</span><span class="ticker-item">🔵 Walmart Seller Center</span><span class="ticker-item">🔴 eBay Seller Hub</span><span class="ticker-item">🟧 Home Depot Marketplace</span><span class="ticker-item">🔷 Lowes Supplier Portal</span><span class="ticker-item">📊 Helium 10</span><span class="ticker-item">🔍 Jungle Scout</span><span class="ticker-item">📈 DataDive</span><span class="ticker-item">🎯 Amazon DSP</span><span class="ticker-item">🏷 Walmart Connect Ads</span><span class="ticker-item">✏️ Canva Pro / Photoshop</span>
     </div>
-    <div>
-      <h3 style="font-size:20px;font-weight:800;color:#0A0A0B;margin-bottom:18px;">Results Delivered</h3>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px;">
-        <div class="kpi"><div class="kpi-val">-52%</div><div class="kpi-lbl">Avg ACOS Reduction</div></div>
-        <div class="kpi"><div class="kpi-val">4.2x</div><div class="kpi-lbl">Average ROAS</div></div>
-        <div class="kpi"><div class="kpi-val">+120%</div><div class="kpi-lbl">Revenue Growth</div></div>
-        <div class="kpi"><div class="kpi-val">$3M+</div><div class="kpi-lbl">Ad Spend Managed</div></div>
-      </div>
-      <div style="background:#FFF3E0;border:1px solid #FED7AA;border-radius:12px;padding:20px;">
-        <p style="font-size:13px;font-weight:700;color:#9A3412;margin-bottom:10px;">Tools Used</p>
-        <div style="display:flex;flex-wrap:wrap;gap:7px;">
-          <span style="background:#fff;border:1px solid #FED7AA;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;color:#9A3412;">Helium 10</span>
-          <span style="background:#fff;border:1px solid #FED7AA;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;color:#9A3412;">Jungle Scout</span>
-          <span style="background:#fff;border:1px solid #FED7AA;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;color:#9A3412;">Brand Analytics</span>
-          <span style="background:#fff;border:1px solid #FED7AA;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;color:#9A3412;">DataDive</span>
-          <span style="background:#fff;border:1px solid #FED7AA;border-radius:6px;padding:4px 11px;font-size:12px;font-weight:600;color:#9A3412;">Scale Insights</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section-white" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="eyebrow">About EStoreAxis</p>
+        <h2 class="section-title">Built for Growth. Proven Across Every Marketplace.</h2>
+        <p class="section-sub">I'm a certified multi-platform eCommerce specialist with 5+ years managing Amazon, Walmart, eBay, Home Depot, and Lowes accounts. I handle the complexity — you focus on growing your business.</p>
+        <div style="display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;">
+          <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 View Upwork Profile</a>
+          <a href="#contact" class="btn-outline">Get in Touch</a>
+        </div>
+        <div class="about-metrics">
+          <div class="metric-card"><div class="metric-val">$9M+</div><div class="metric-label">Ad Spend Managed</div><div class="metric-change">↑ 24% YoY</div></div>
+          <div class="metric-card"><div class="metric-val">170+</div><div class="metric-label">Categories Covered</div></div>
+          <div class="metric-card"><div class="metric-val">88+</div><div class="metric-label">Active Brands</div><div class="metric-change">↑ Growing</div></div>
+          <div class="metric-card"><div class="metric-val">4.9★</div><div class="metric-label">Client Rating</div></div>
         </div>
       </div>
-    </div>
-  </div>
-</div></section>
-
-<section class="ps" id="account"><div class="ps-inner">
-  <div class="sc-badge">🏪 Subcategory 2</div>
-  <h2 class="ps-h2">Amazon Account Management</h2>
-  <p class="ps-sub">Full Seller Central management — I handle everything from daily operations to long-term strategy so you can focus on growing your business.</p>
-  <div class="fg">
-    <div class="fc"><div class="fc-icon">📋</div><h4>Seller Central Operations</h4><p>Day-to-day management: order monitoring, customer messages, return approvals, and performance metric tracking — all handled daily.</p></div>
-    <div class="fc"><div class="fc-icon">📦</div><h4>Inventory Management</h4><p>Proactive inventory planning to prevent stockouts and excess fees. FBA shipment creation, stranded inventory fixes, and reorder alerts.</p></div>
-    <div class="fc"><div class="fc-icon">⭐</div><h4>Review Management</h4><p>Vine enrollment, follow-up email sequences for review generation, and monitoring/responding to negative feedback to protect your seller rating.</p></div>
-    <div class="fc"><div class="fc-icon">🔔</div><h4>Account Health Monitoring</h4><p>Daily monitoring of your Account Health Dashboard — defect rate, late shipment rate, policy violations — with immediate action on any issues.</p></div>
-    <div class="fc"><div class="fc-icon">💰</div><h4>Pricing & Buy Box</h4><p>Competitive repricing strategy to win and maintain the Buy Box across your catalog — manual or automated, configured to your margin targets.</p></div>
-    <div class="fc"><div class="fc-icon">📊</div><h4>Sales Reporting</h4><p>Weekly dashboards: revenue, units, conversion rates, BSR trends, and A/B test results across your entire product catalog.</p></div>
-  </div>
-</div></section>
-
-<section class="ps" id="listing"><div class="ps-inner">
-  <div class="sc-badge">✏️ Subcategory 3</div>
-  <h2 class="ps-h2">Listing Optimization & SEO</h2>
-  <p class="ps-sub">Keyword-rich, conversion-focused listings that rank on page one and turn browsers into buyers — across every Amazon category.</p>
-  <div class="two-col">
-    <div>
-      <div class="fg" style="grid-template-columns:1fr 1fr;">
-        <div class="fc"><div class="fc-icon">🔑</div><h4>Title Optimization</h4><p>Keyword-rich titles following Amazon's style guide — primary keyword front-loaded with brand and key attributes in the right order.</p></div>
-        <div class="fc"><div class="fc-icon">📝</div><h4>Bullet Points</h4><p>Five compelling bullets that highlight benefits, address customer objections, and include secondary keywords naturally.</p></div>
-        <div class="fc"><div class="fc-icon">📄</div><h4>Product Description</h4><p>HTML-formatted descriptions that tell your brand story, address FAQs, and include long-tail keywords for maximum indexing.</p></div>
-        <div class="fc"><div class="fc-icon">🔍</div><h4>Backend Keywords</h4><p>Full 250-byte backend fields with synonyms, misspellings, Spanish terms, and competitor terms (where permitted).</p></div>
-      </div>
-    </div>
-    <div>
-      <h3 style="font-size:20px;font-weight:800;color:#0A0A0B;margin-bottom:18px;">Optimization Process</h3>
-      <div class="proc">
-        <div class="proc-row"><div class="proc-n">01</div><div class="proc-content"><h4>Keyword Discovery</h4><p>Using Helium 10 Cerebro on top competitor ASINs to find every keyword they rank for, filtered by volume and relevance.</p></div></div>
-        <div class="proc-row"><div class="proc-n">02</div><div class="proc-content"><h4>Competitor Analysis</h4><p>Read every top-10 listing in your category. What objections do reviews reveal? What do competitors miss? That's your edge.</p></div></div>
-        <div class="proc-row"><div class="proc-n">03</div><div class="proc-content"><h4>Write & Optimize</h4><p>Write all listing elements against the master keyword list — title, bullets, description, backend terms.</p></div></div>
-        <div class="proc-row"><div class="proc-n">04</div><div class="proc-content"><h4>Index Verification</h4><p>After publishing, verify all critical keywords are indexed. Fix any indexing issues immediately.</p></div></div>
+      <div class="about-features reveal">
+        <div class="about-feat"><div class="af-icon">🏆</div><div class="af-text"><h4>Top Rated Freelancer</h4><p>Consistently 5-star reviews with a verified track record of growing brand revenue across all major platforms.</p></div></div>
+        <div class="about-feat"><div class="af-icon">📊</div><div class="af-text"><h4>Data-Driven Strategy</h4><p>Every campaign optimized using Helium 10, Jungle Scout, and platform-native analytics — no guesswork.</p></div></div>
+        <div class="about-feat"><div class="af-icon">⚡</div><div class="af-text"><h4>Fast Onboarding</h4><p>Get set up and running within 48 hours. No long-term contracts — results from week one.</p></div></div>
+        <div class="about-feat"><div class="af-icon">🔒</div><div class="af-text"><h4>Full Confidentiality</h4><p>Your account credentials and business data handled with absolute care and professionalism.</p></div></div>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section class="ps" id="aplus"><div class="ps-inner">
-  <div class="sc-badge">🎨 Subcategory 4</div>
-  <h2 class="ps-h2">A+ Content & Brand Storefront</h2>
-  <p class="ps-sub">Professional visual content that builds brand trust, reduces returns, and increases conversion rates by up to 8%.</p>
-  <div class="fg">
-    <div class="fc"><div class="fc-icon">🖼</div><h4>A+ Content Modules</h4><p>Up to 7 custom modules using comparison charts, feature call-outs, lifestyle imagery, and brand story sections.</p></div>
-    <div class="fc"><div class="fc-icon">⭐</div><h4>Premium A+ Content</h4><p>For brand-registered sellers with 15+ A+ approvals — interactive hotspots, carousels, and Q&A modules for maximum engagement.</p></div>
-    <div class="fc"><div class="fc-icon">🏪</div><h4>Brand Storefront</h4><p>Multi-page brand storefront with hero banner, category pages, and custom navigation — the destination for Sponsored Brands traffic.</p></div>
-    <div class="fc"><div class="fc-icon">📸</div><h4>Infographic Design</h4><p>6–8 product images including main, lifestyle, infographic callouts, size charts, and comparison images — optimized for mobile.</p></div>
-    <div class="fc"><div class="fc-icon">📹</div><h4>Product Video</h4><p>Scripted and edited 30–60 sec product videos for main image carousel and Sponsored Brands Video ads.</p></div>
-    <div class="fc"><div class="fc-icon">🔄</div><h4>Content Updates</h4><p>Seasonal refreshes, Prime Day/Black Friday banners, and ongoing A/B testing of images to improve conversion continuously.</p></div>
-  </div>
-</div></section>
-
-<section class="ps" id="fba"><div class="ps-inner">
-  <div class="sc-badge">📦 Subcategory 5</div>
-  <h2 class="ps-h2">FBA Setup & Management</h2>
-  <p class="ps-sub">End-to-end Fulfillment by Amazon management — from shipment creation to fee auditing and multi-warehouse strategy.</p>
-  <div class="fg">
-    <div class="fc"><div class="fc-icon">📦</div><h4>FBA Shipment Creation</h4><p>Full shipment plan creation — unit counts, box configurations, carrier selection, and label printing guidance for your warehouse or prep center.</p></div>
-    <div class="fc"><div class="fc-icon">📊</div><h4>Inventory Planning</h4><p>Demand forecasting based on sales velocity and seasonality. I calculate reorder points to prevent stockouts without triggering long-term storage fees.</p></div>
-    <div class="fc"><div class="fc-icon">💸</div><h4>FBA Fee Auditing</h4><p>Monthly audit of FBA fees — overweight charges, mismeasured items, lost/damaged inventory claims. Recover money Amazon owes you.</p></div>
-    <div class="fc"><div class="fc-icon">🏭</div><h4>Multi-Warehouse Strategy</h4><p>Split inventory across fulfillment centers strategically to reduce placement fees and improve Prime delivery speed scores.</p></div>
-    <div class="fc"><div class="fc-icon">🗑</div><h4>Stranded Inventory</h4><p>Daily monitoring and fixing of stranded inventory — relisting, removal orders, or liquidating aged stock to avoid long-term storage fees.</p></div>
-    <div class="fc"><div class="fc-icon">🔄</div><h4>FBM Backup Strategy</h4><p>Setting up FBM listings as backup for FBA stockouts — ensuring you never lose sales when Amazon inventory runs low.</p></div>
-  </div>
-</div></section>
-
-<section class="ps" id="brand"><div class="ps-inner">
-  <div class="sc-badge">🏷 Subcategory 6</div>
-  <h2 class="ps-h2">Brand Registry & Protection</h2>
-  <p class="ps-sub">Get your brand registered, protect it from hijackers and counterfeiters, and unlock exclusive Amazon tools for registered brands.</p>
-  <div class="two-col">
-    <div class="fg" style="grid-template-columns:1fr;gap:14px;">
-      <div class="fc"><div class="fc-icon">✅</div><h4>Brand Registry Enrollment</h4><p>Complete Amazon Brand Registry process — trademark verification, application submission, and approval follow-up. Typical approval 2–4 weeks.</p></div>
-      <div class="fc"><div class="fc-icon">🛡</div><h4>Hijacker Removal</h4><p>Monitoring your listings for unauthorized third-party sellers. Immediate action — test buys, cease-and-desist, Amazon IP complaints to remove them fast.</p></div>
-      <div class="fc"><div class="fc-icon">🚨</div><h4>Counterfeit Reporting</h4><p>Filing IP infringement reports through Amazon's Brand Registry tools to remove counterfeit listings and protect your brand's reputation.</p></div>
+<!-- SERVICES -->
+<section class="section-gray" id="services">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">What I Offer</p>
+      <h2 class="section-title">End-to-End eCommerce Services</h2>
+      <p class="section-sub">Full-service marketplace management across every major platform — so your brand grows everywhere, simultaneously.</p>
     </div>
-    <div>
-      <h3 style="font-size:20px;font-weight:800;color:#0A0A0B;margin-bottom:18px;">What Brand Registry Unlocks</h3>
-      <div style="display:flex;flex-direction:column;gap:10px;">
-        <div style="background:#FFF3E0;border:1px solid #FED7AA;border-radius:12px;padding:16px;display:flex;gap:12px;"><span style="font-size:20px;">🎨</span><div><strong style="font-size:14px;">A+ Content (EBC)</strong><p style="font-size:13px;color:#6B7280;margin-top:3px;">Enhanced brand content on product pages — up to 8% conversion rate increase.</p></div></div>
-        <div style="background:#FFF3E0;border:1px solid #FED7AA;border-radius:12px;padding:16px;display:flex;gap:12px;"><span style="font-size:20px;">🏪</span><div><strong style="font-size:14px;">Brand Storefront</strong><p style="font-size:13px;color:#6B7280;margin-top:3px;">Your own multi-page Amazon store — the destination for all Sponsored Brands traffic.</p></div></div>
-        <div style="background:#FFF3E0;border:1px solid #FED7AA;border-radius:12px;padding:16px;display:flex;gap:12px;"><span style="font-size:20px;">📊</span><div><strong style="font-size:14px;">Brand Analytics</strong><p style="font-size:13px;color:#6B7280;margin-top:3px;">Search term reports, demographics, repeat purchase data, and market basket analysis.</p></div></div>
-        <div style="background:#FFF3E0;border:1px solid #FED7AA;border-radius:12px;padding:16px;display:flex;gap:12px;"><span style="font-size:20px;">🎯</span><div><strong style="font-size:14px;">Sponsored Brands & DSP</strong><p style="font-size:13px;color:#6B7280;margin-top:3px;">Headline search, video ads, and programmatic DSP — only for registered brands.</p></div></div>
+    <div class="services-grid">
+      <div class="svc-card reveal" onclick="openModal('amazon-ppc')"><div class="svc-badge">Most Popular</div><div class="svc-icon">🎯</div><h3>Amazon PPC Management</h3><p>Sponsored Products, Brands & Display campaigns built for maximum ROAS with weekly reporting and continuous optimization.</p><ul class="svc-list"><li>Sponsored Products, Brands & Display</li><li>Keyword research & negative targeting</li><li>Weekly ACOS/ROAS reports</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="openModal('amazon-acct')"><div class="svc-icon">🏪</div><h3>Amazon Account Management</h3><p>Full Seller Central management: listings, inventory, A+ content, brand registry, account health, and FBA logistics.</p><ul class="svc-list"><li>Listing creation & optimization</li><li>A+ Content & Brand Storefront</li><li>FBA & inventory management</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="location.href='walmart.html'"><div class="svc-icon">🛒</div><h3>Walmart Marketplace</h3><p>Complete Walmart Seller Center management — setup, listings, Connect Ads, and WFS fulfillment strategy.</p><ul class="svc-list"><li>Seller account setup & onboarding</li><li>Listing optimization & SEO</li><li>Walmart Connect advertising</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="location.href='ebay.html'"><div class="svc-icon">🔵</div><h3>eBay Store Management</h3><p>Professional eBay store setup, listing optimization, promoted listings, and full customer service management.</p><ul class="svc-list"><li>eBay store setup & design</li><li>Promoted Listings strategy</li><li>Customer service management</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="location.href='homedepot.html'"><div class="svc-icon">🏠</div><h3>Home Depot Management</h3><p>Vendor onboarding, product catalog setup, order management, and optimization for the HD marketplace.</p><ul class="svc-list"><li>Vendor portal onboarding</li><li>Product data & catalog setup</li><li>Order & compliance management</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="location.href='lowes.html'"><div class="svc-icon">🔨</div><h3>Lowes Management</h3><p>Supplier onboarding, inventory sync, product content optimization, and compliance management for Lowes.</p><ul class="svc-list"><li>Supplier onboarding & compliance</li><li>Product listing & content</li><li>Inventory & order management</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="openModal('listing')"><div class="svc-icon">✏️</div><h3>Listing Optimization & SEO</h3><p>SEO-rich titles, bullet points, and keyword strategies that rank higher and convert better across all platforms.</p><ul class="svc-list"><li>Keyword research (Helium 10)</li><li>Title, bullets & descriptions</li><li>Backend keyword optimization</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="openModal('design')"><div class="svc-icon">🎨</div><h3>Graphic Design & A+ Content</h3><p>Product images, infographics, A+ content modules, and brand storefronts that build trust and drive conversions.</p><ul class="svc-list"><li>Infographic design</li><li>A+ Content / EBC creation</li><li>Brand Storefront design</li></ul><span class="svc-link">Learn more →</span></div>
+      <div class="svc-card reveal" onclick="location.href='multichannel.html'" style="border:2px solid var(--blue-mid);background:var(--blue-light);"><div class="svc-icon">🌐</div><h3>Multi-Channel Strategy</h3><p>Unified growth strategy across all your marketplaces — synchronized inventory, pricing, and brand consistency at scale.</p><ul class="svc-list"><li>Cross-platform inventory sync</li><li>Unified pricing strategy</li><li>Monthly growth reporting</li></ul><span class="svc-link">Learn more →</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLATFORMS -->
+<section class="section-white" id="platforms">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">Platforms I Manage</p>
+      <h2 class="section-title">One Expert. Every Marketplace.</h2>
+      <p class="section-sub">Deep platform expertise across all major US eCommerce channels.</p>
+    </div>
+    <div class="platforms-grid">
+      <div class="plat-card reveal" onclick="location.href='amazon.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FFF3E0;color:#E65100;">Az</div><h4>Amazon</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Full Seller Central management — PPC, FBA, Brand Registry, A+ Content, and account health for Amazon sellers at every stage.</p><div class="plat-tags"><span class="plat-tag">PPC Ads</span><span class="plat-tag">FBA</span><span class="plat-tag">Brand Registry</span><span class="plat-tag">A+ Content</span></div></div>
+      <div class="plat-card reveal" onclick="location.href='walmart.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#E3F2FD;color:#0D47A1;">Wm</div><h4>Walmart</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Walmart Seller Center setup, listing SEO, Connect Ads, and WFS fulfillment strategy — the fastest-growing US marketplace.</p><div class="plat-tags"><span class="plat-tag">Connect Ads</span><span class="plat-tag">WFS</span><span class="plat-tag">2-Day Tag</span></div></div>
+      <div class="plat-card reveal" onclick="location.href='ebay.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FCE4EC;color:#880E4F;">eB</div><h4>eBay</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">eBay store setup, listing strategy, Promoted Listings, and feedback management for consistent top-rated seller performance.</p><div class="plat-tags"><span class="plat-tag">Store Setup</span><span class="plat-tag">Promoted Listings</span><span class="plat-tag">CS Management</span></div></div>
+      <div class="plat-card reveal" onclick="location.href='homedepot.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FBE9E7;color:#BF360C;">HD</div><h4>Home Depot</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Vendor onboarding, product data, catalog management, and order fulfillment on the #1 home improvement marketplace.</p><div class="plat-tags"><span class="plat-tag">Vendor Onboarding</span><span class="plat-tag">Catalog</span><span class="plat-tag">Orders</span></div></div>
+      <div class="plat-card reveal" onclick="location.href='lowes.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#E8EAF6;color:#1A237E;">Lw</div><h4>Lowes</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Supplier compliance, product content, inventory sync, and performance monitoring on Lowes' supplier platform.</p><div class="plat-tags"><span class="plat-tag">Supplier Setup</span><span class="plat-tag">Compliance</span><span class="plat-tag">Inventory</span></div></div>
+      <div class="plat-card reveal" onclick="location.href='multichannel.html'" style="border:1.5px solid var(--blue-mid);background:var(--blue-light);"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#DBEAFE;color:#1D4ED8;">MC</div><h4>Multi-Channel</h4></div></div><p class="plat-desc">Also managing Etsy, Target+, Chewy, Overstock — ask me about your specific platform. I likely have experience with it.</p><div class="plat-tags"><span class="plat-tag">Etsy</span><span class="plat-tag">Target+</span><span class="plat-tag">Chewy</span><span class="plat-tag">+More</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section-gray">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">How It Works</p>
+      <h2 class="section-title">From Audit to Growth in 4 Steps</h2>
+      <p class="section-sub">Simple onboarding. No long contracts. Real results from week one.</p>
+    </div>
+    <div class="process-track">
+      <div class="pstep reveal"><div class="pstep-num">01</div><h4>Free Store Audit</h4><p>Deep review of your accounts, listings, PPC, and immediate growth opportunities across all platforms.</p></div>
+      <div class="pstep reveal"><div class="pstep-num">02</div><h4>Strategy Call</h4><p>We align on goals, platforms, and budget — then build a 90-day roadmap tailored to your brand.</p></div>
+      <div class="pstep reveal"><div class="pstep-num">03</div><h4>Execution</h4><p>I take full ownership — account management, campaign launches, and listing optimization all handled.</p></div>
+      <div class="pstep reveal"><div class="pstep-num">04</div><h4>Scale & Report</h4><p>Weekly reports, data-driven decisions, and continuous scaling across every active channel.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- UPWORK -->
+<section class="section-white" id="upwork">
+  <div class="container">
+    <div class="upwork-grid">
+      <div class="uw-card reveal">
+        <div class="uw-logo">⬆ Upwork</div>
+        <div class="uw-stats">
+          <div class="uw-stat"><div class="uw-val">100%</div><div class="uw-lbl">Job Success</div></div>
+          <div class="uw-stat"><div class="uw-val">500+</div><div class="uw-lbl">Hours Worked</div></div>
+          <div class="uw-stat"><div class="uw-val">50+</div><div class="uw-lbl">Jobs Done</div></div>
+          <div class="uw-stat"><div class="uw-val">5.0★</div><div class="uw-lbl">Rating</div></div>
+        </div>
+        <div class="uw-badges">
+          <span class="uw-badge">🏆 Top Rated</span>
+          <span class="uw-badge">✅ ID Verified</span>
+          <span class="uw-badge">⚡ Expert Vetted</span>
+        </div>
+        <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork" style="width:100%;justify-content:center;">View Full Profile →</a>
+      </div>
+      <div class="reveal">
+        <p class="eyebrow">Available on Upwork</p>
+        <h2 class="section-title">Why Hire Me on <span style="color:#14B561;">Upwork?</span></h2>
+        <p class="section-sub">Upwork gives you secure payments, full transparency, and dispute protection. Hire with complete confidence.</p>
+        <div class="uw-reasons">
+          <div class="uw-reason"><div class="ur-ico">🛡</div><div class="ur-text"><h5>Secure Escrow Payments</h5><p>Funds held in escrow until you approve the work. Zero financial risk.</p></div></div>
+          <div class="uw-reason"><div class="ur-ico">📊</div><div class="ur-text"><h5>Full Time Tracking & Transparency</h5><p>Track every hour with screenshots and activity logs in real time.</p></div></div>
+          <div class="uw-reason"><div class="ur-ico">⭐</div><div class="ur-text"><h5>Verified Reviews & 100% JSS</h5><p>50+ completed jobs, verified 5-star reviews, and a perfect Job Success Score.</p></div></div>
+          <div class="uw-reason"><div class="ur-ico">🚀</div><div class="ur-text"><h5>Start Within 24 Hours</h5><p>Send a direct contract — I respond within hours and can start immediately.</p></div></div>
+        </div>
+        <div style="margin-top:28px;"><a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 Hire Me on Upwork →</a></div>
       </div>
     </div>
   </div>
-</div></section>
+</section>
 
-<section class="ps" id="health"><div class="ps-inner">
-  <div class="sc-badge">🛡 Subcategory 7</div>
-  <h2 class="ps-h2">Account Health & Reinstatement</h2>
-  <p class="ps-sub">Proactive health monitoring and expert appeal writing to protect and recover suspended Amazon accounts.</p>
-  <div class="fg">
-    <div class="fc"><div class="fc-icon">📉</div><h4>Performance Metric Monitoring</h4><p>Daily monitoring of Order Defect Rate, Late Shipment Rate, and Valid Tracking Rate — with immediate action if metrics trend toward Amazon's thresholds.</p></div>
-    <div class="fc"><div class="fc-icon">📝</div><h4>Plan of Action Writing</h4><p>Expert POA writing for suspended accounts — root cause, corrective actions, and preventive measures in Amazon's exact expected format.</p></div>
-    <div class="fc"><div class="fc-icon">🔄</div><h4>ASIN Reinstatement</h4><p>Reinstating suppressed or deactivated ASINs due to policy violations, safety complaints, or IP claims — with full documentation support.</p></div>
-    <div class="fc"><div class="fc-icon">⚠️</div><h4>Policy Violation Prevention</h4><p>Proactive compliance audits catching and fixing issues before Amazon flags them — saving you from suspension in the first place.</p></div>
-    <div class="fc"><div class="fc-icon">📊</div><h4>Voice of the Customer</h4><p>Monitoring VoC dashboard for product quality issues flagged by customers before they escalate to returns or account-level actions.</p></div>
-    <div class="fc"><div class="fc-icon">🚑</div><h4>Emergency Support</h4><p>If your account gets suspended, I respond same-day. Suspension is a crisis — you need someone who knows exactly what Amazon needs to see.</p></div>
+<!-- TESTIMONIALS -->
+<section class="section-gray" id="testimonials">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">Client Testimonials</p>
+      <h2 class="section-title">What Clients Say</h2>
+      <p class="section-sub">Real results from real brands across every marketplace.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"EStoreAxis transformed our Amazon PPC. ACOS dropped from 42% to 18% in 6 weeks and monthly revenue tripled. Exceptional work."</p><div class="testi-author"><div class="ta-av">JM</div><div><div class="ta-name">James Mitchell</div><div class="ta-role">Amazon Seller, USA</div><span class="ta-plat" style="background:#FFF3E0;color:#C2410C;">Amazon</span></div></div></div>
+      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"We launched on Walmart and Home Depot from scratch. EStoreAxis handled everything — setup, listings, ads. Orders grow every month."</p><div class="testi-author"><div class="ta-av" style="background:#1D4ED8;">SA</div><div><div class="ta-name">Sara Ahmed</div><div class="ta-role">Home Goods Brand, Canada</div><span class="ta-plat" style="background:#E3F2FD;color:#1D4ED8;">Walmart</span></div></div></div>
+      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Our eBay store went from 200 to 1,400 monthly orders in 3 months. The Promoted Listings strategy and listing optimization were game changers."</p><div class="testi-author"><div class="ta-av" style="background:#DC2626;">RP</div><div><div class="ta-name">Raj Patel</div><div class="ta-role">Electronics Reseller, UK</div><span class="ta-plat" style="background:#FCE4EC;color:#DC2626;">eBay</span></div></div></div>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="ps" id="pricing"><div class="ps-inner">
-  <div class="sc-badge">💰 Pricing</div>
-  <h2 class="ps-h2">Amazon Management Pricing</h2>
-  <p class="ps-sub">Transparent monthly retainers — no hidden fees. All plans include weekly reporting and direct communication.</p>
-  <div class="pg">
-    <div class="pc"><h4>Starter</h4><p class="pc-tagline">New sellers or small catalogs</p><div class="pc-price">$599<span>/mo</span></div><p class="pc-psub">Up to $10K/mo ad spend</p><ul class="pc-feats"><li>1 marketplace managed</li><li>Up to 20 ASINs</li><li>PPC campaign management</li><li>Listing optimization (5 ASINs/mo)</li><li>Weekly performance report</li><li>Direct WhatsApp & email support</li><li class="no">A+ Content creation</li><li class="no">Brand Storefront</li></ul><a href="#sf" class="pc-btn">Get Started</a></div>
-    <div class="pc featured"><div class="pc-pop">Most Popular</div><h4>Growth</h4><p class="pc-tagline">Established sellers scaling up</p><div class="pc-price">$1,199<span>/mo</span></div><p class="pc-psub">Up to $50K/mo ad spend</p><ul class="pc-feats"><li>1–2 marketplaces managed</li><li>Up to 100 ASINs</li><li>Full PPC (all types)</li><li>Listing optimization (20 ASINs/mo)</li><li>A+ Content (2 ASINs/mo)</li><li>Brand Registry assistance</li><li>Weekly + monthly reports</li><li>Priority support (4hr response)</li></ul><a href="#sf" class="pc-btn">Get Started</a></div>
-    <div class="pc"><h4>Enterprise</h4><p class="pc-tagline">7-figure brands & agencies</p><div class="pc-price">Custom<span></span></div><p class="pc-psub">Unlimited ad spend</p><ul class="pc-feats"><li>All platforms managed</li><li>Unlimited ASINs</li><li>Full PPC + DSP</li><li>Unlimited listing optimization</li><li>Full A+ Content production</li><li>Brand Storefront design</li><li>Dedicated account manager</li><li>Daily reporting & calls</li></ul><a href="#sf" class="pc-btn">Contact for Quote</a></div>
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-inner">
+    <div class="reveal">
+      <p class="eyebrow" style="color:#60A5FA;">Free Audit</p>
+      <h2 class="section-title" style="color:#fff;">Ready to Experience Exponential Growth?</h2>
+      <p class="section-sub" style="color:#9CA3AF;">Get a free store audit to identify exactly how to scale your eCommerce revenue — no strings attached.</p>
+      <a href="#contact" class="btn-primary">Claim Your Free Audit →</a>
+    </div>
+    <div class="audit-card reveal">
+      <h4>What's included in the free audit</h4>
+      <p class="ac-sub">A complete review across all your active channels</p>
+      <ul class="audit-items">
+        <li>PPC campaign performance analysis</li>
+        <li>Listing SEO & keyword gap audit</li>
+        <li>Competitor benchmarking report</li>
+        <li>Account health & compliance check</li>
+        <li>Custom 90-day growth roadmap</li>
+      </ul>
+      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;">Get My Free Audit →</a>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="ps" style="background:#F9FAFB!important;"><div class="ps-inner" style="max-width:760px;">
-  <h2 class="ps-h2">Amazon FAQs</h2>
-  <div class="faq-list">
-    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">How quickly can I expect to see results from Amazon PPC?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Most accounts see meaningful ACOS improvement within the first 3–4 weeks. Significant revenue growth typically follows in weeks 6–12 as campaigns accumulate data and optimization compounds. I share weekly reports so you see progress continuously.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Do you need access to my Seller Central account?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes — I'll need Seller Central access to manage your account. I recommend adding me as a secondary user with appropriate permissions rather than sharing your main login. Your account security is always protected.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Can you help if my account has been suspended?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes. Account suspension is something I handle regularly. I'll review the suspension notice, identify the root cause, write a professional Plan of Action, and submit the appeal. Most appeals resolve within 1–3 weeks depending on the violation type.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">What is TACoS and why does it matter?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">ACOS measures ad revenue only. TACoS (Total Advertising Cost of Sales) measures ad spend against total revenue — including organic. As PPC improves your organic rank, TACoS falls even if ACOS stays the same. It's the true measure of PPC efficiency for long-term growth.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="tfaq(this)">Do I need Brand Registry for A+ Content?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes — A+ Content and Brand Storefronts require active Amazon Brand Registry enrollment, which requires a registered trademark. I can help you with the Brand Registry application once your trademark is in place.</div></div></div>
+<!-- CASE STUDIES -->
+<section class="section-white" id="cases">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">Case Studies</p>
+      <h2 class="section-title">Real Results, Real Brands</h2>
+      <p class="section-sub">Measurable growth delivered across every platform we manage.</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card reveal"><div class="case-img" style="background:#FFF3E0;">📈<span class="case-plat-tag" style="background:#FEF3C7;color:#B45309;">Amazon</span></div><div class="case-body"><h4>Skyrocket 120% Sales for Home & Kitchen Brand</h4><p>Restructured Sponsored Products with SKAG campaigns and negative targeting. Combined with A+ Content redesign — 120% sales growth in 90 days.</p><div class="case-metrics"><div><div class="cm-val">+120%</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">-34%</div><div class="cm-lbl">ACOS</div></div><div><div class="cm-val">90 days</div><div class="cm-lbl">Timeline</div></div></div></div></div>
+      <div class="case-card reveal"><div class="case-img" style="background:#FCE4EC;">🏆<span class="case-plat-tag" style="background:#FCE4EC;color:#B91C1C;">eBay</span></div><div class="case-body"><h4>$1.8M Incremental Revenue in Sports & Outdoors</h4><p>Built a Promoted Listings strategy at 3% ad rate on high-velocity SKUs. Terapeak-backed pricing to dominate category search results.</p><div class="case-metrics"><div><div class="cm-val">$1.8M</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">7x</div><div class="cm-lbl">ROAS</div></div><div><div class="cm-val">6 months</div><div class="cm-lbl">Timeline</div></div></div></div></div>
+      <div class="case-card reveal"><div class="case-img" style="background:#E3F2FD;">🛒<span class="case-plat-tag" style="background:#DBEAFE;color:#1D4ED8;">Walmart</span></div><div class="case-body"><h4>Walmart Launch — 0 to $250K in 60 Days</h4><p>Onboarded a kitchenware brand from scratch — listings, SEO, and Connect Ads to drive early velocity. $250K revenue in first 60 days.</p><div class="case-metrics"><div><div class="cm-val">$250K</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">60 days</div><div class="cm-lbl">Timeline</div></div><div><div class="cm-val">4.8★</div><div class="cm-lbl">Seller Rating</div></div></div></div></div>
+      <div class="case-card reveal"><div class="case-img" style="background:#FBE9E7;">🏠<span class="case-plat-tag" style="background:#FBE9E7;color:#C2410C;">Home Depot</span></div><div class="case-body"><h4>HD Vendor Setup & $180K Q1 Revenue</h4><p>Managed full vendor onboarding, product content compliance, and catalog submission. Delivered $180K Q1 revenue for a tools brand's first HD launch.</p><div class="case-metrics"><div><div class="cm-val">$180K</div><div class="cm-lbl">Q1 Revenue</div></div><div><div class="cm-val">48 hrs</div><div class="cm-lbl">Onboarding</div></div><div><div class="cm-val">100%</div><div class="cm-lbl">Compliance</div></div></div></div></div>
+    </div>
   </div>
-</div></section>
+</section>
+
+<!-- TEAM -->
+<section class="section-gray" id="team">
+  <div class="container">
+    <div class="section-header center reveal">
+      <p class="eyebrow">The Team</p>
+      <h2 class="section-title">Meet EStoreAxis</h2>
+      <p class="section-sub">A dedicated team of eCommerce specialists with deep platform expertise.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:#EEF4FF;"><div class="av-initials" style="background:var(--blue);">YN</div><span class="team-role-pill" style="background:#DBEAFE;color:#1D4ED8;">Founder</span></div>
+        <div class="team-body"><h4>Your Name</h4><div class="team-role-txt">Founder & Lead Strategist</div><div class="team-tags"><span class="team-tag">Amazon PPC</span><span class="team-tag">Walmart</span><span class="team-tag">Multi-Channel</span></div><p class="team-bio">5+ years managing 150+ brands across all major US marketplaces. Specializing in PPC and multi-channel growth strategy.</p><div class="team-links"><a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a><a href="mailto:info@estoreaxis.com" class="team-link">✉</a></div></div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:#FFF3E0;"><div class="av-initials" style="background:#EA6C00;">AM</div><span class="team-role-pill" style="background:#FEF3C7;color:#B45309;">Amazon</span></div>
+        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Amazon PPC Specialist</div><div class="team-tags"><span class="team-tag">Sponsored Ads</span><span class="team-tag">DSP</span><span class="team-tag">ACOS</span></div><p class="team-bio">Certified Amazon Ads specialist. Managed $3M+ in annual ad spend with consistent ROAS improvement across all ad types.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a></div></div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:#EEF4FF;"><div class="av-initials" style="background:#1D4ED8;">LO</div><span class="team-role-pill" style="background:#DBEAFE;color:#1D4ED8;">SEO</span></div>
+        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Listing & SEO Specialist</div><div class="team-tags"><span class="team-tag">Helium 10</span><span class="team-tag">SEO</span><span class="team-tag">A+ Content</span></div><p class="team-bio">Expert in listing optimization across Amazon, Walmart, and eBay. Uses Helium 10 to build keyword strategies that rank and convert.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a></div></div>
+      </div>
+      <div class="team-card reveal">
+        <div class="team-avatar" style="background:#FCE4EC;"><div class="av-initials" style="background:#DC2626;">GD</div><span class="team-role-pill" style="background:#FCE4EC;color:#B91C1C;">Design</span></div>
+        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Graphic Designer & A+ Content</div><div class="team-tags"><span class="team-tag">Infographics</span><span class="team-tag">A+ Content</span><span class="team-tag">Storefront</span></div><p class="team-bio">Creative designer specializing in product infographics, A+ Content modules, and brand storefronts that convert browsers into buyers.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="Behance">Be</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-white" id="faq">
+  <div class="container">
+    <div class="section-header center reveal" style="margin-bottom:40px;">
+      <p class="eyebrow">FAQs</p>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-wrap reveal">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What makes EStoreAxis different from other eCommerce managers?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Unlike large agencies, every client gets direct, personal attention. With hands-on expertise across all 6 major US marketplaces — Amazon, Walmart, eBay, Home Depot, Lowes, and more — I bring a unified multi-channel strategy most agencies can't match. Every decision is data-driven and every report is transparent.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you only work with Amazon sellers, or other platforms too?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">I actively manage accounts on Amazon, Walmart, eBay, Home Depot, Lowes, and several niche marketplaces. I specialize in multi-channel management — helping brands grow across all their active channels simultaneously.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much do your services cost?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Pricing is customized based on platforms, ad spend level, and scope of services required. I offer flexible monthly retainers starting from $499/month for single-platform management. Contact me for a custom quote tailored to your brand's needs.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you help if I'm just starting out?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes — I work with brands at all stages, from first-time sellers launching their first Amazon listing to 7-figure brands scaling across multiple channels. My onboarding is fast and smooth regardless of your experience level.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly can I expect to see results?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Most clients see measurable improvements within the first 2–4 weeks — reduced ACOS, improved listing rankings, or increased order volume. Significant revenue growth typically follows within 60–90 days of full campaign optimization.</div></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will I deal with you directly or a team?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">You deal directly with me — not a rotating team of account managers. I personally oversee every client account, which means consistent communication, faster decisions, and someone who genuinely knows your business inside and out.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modal-body"></div>
+  </div>
+</div>
 
 <div id="site-footer"></div>
 <script src="shared.js"></script>
 <script>
-function sf(e,f){e.preventDefault();const b=f.querySelector('.sf-btn');b.textContent='✅ Sent! I\'ll reply within 24 hours.';b.style.background='#16A34A';setTimeout(()=>{b.textContent='Send Message →';b.style.background='';f.reset();},4000);}
-function tfaq(btn){const item=btn.parentElement,isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight='0';});if(!isOpen){item.classList.add('open');item.querySelector('.faq-a').style.maxHeight=item.querySelector('.faq-a-inner').scrollHeight+'px';}}
-// Sticky subcat highlight
-const secs=document.querySelectorAll('.ps[id]'),links=document.querySelectorAll('.subcat-inner a');
-window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(window.scrollY>=s.offsetTop-140)c=s.id;});links.forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+c);});});
-document.body.style.visibility='visible';
+// Counter animation
+const counters = document.querySelectorAll('[data-count]');
+const counterObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target, target = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
+    let cur = 0; const step = target / 60;
+    const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = pre + Math.floor(cur) + suf; if (cur >= target) clearInterval(t); }, 24);
+    counterObserver.unobserve(el);
+  });
+}, {threshold:.5});
+counters.forEach(el => counterObserver.observe(el));
+
+// FAQ
+function toggleFaq(btn) {
+  const item = btn.parentElement, isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = '0'; });
+  if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-a').style.maxHeight = item.querySelector('.faq-a-inner').scrollHeight + 'px'; }
+}
+
+// Modal
+const MODALS = {
+  'amazon-ppc':{icon:'🎯',title:'Amazon PPC Management',sub:'Maximize return on every ad dollar on Amazon.',features:['Sponsored Products, Brands & Display campaigns','Single keyword ad group structures','Bid optimization using dayparting','Negative keyword mining to cut wasted spend','Weekly ACOS/ROAS performance reports','Amazon DSP programmatic campaigns','Competitor conquesting strategies']},
+  'amazon-acct':{icon:'🏪',title:'Amazon Account Management',sub:'Full Seller Central management from listings to logistics.',features:['Listing creation & SEO optimization','A+ Content (EBC) and Brand Storefront design','Brand Registry setup & management','FBA inventory planning & shipment creation','Account health monitoring & appeals','Variation listing management','Review & feedback strategy']},
+  'listing':{icon:'✏️',title:'Listing Optimization & SEO',sub:'Rank higher. Convert better. Sell more.',features:['In-depth keyword research (Helium 10 / Jungle Scout)','SEO-optimized titles for all major platforms','High-converting bullet points & descriptions','Backend search term optimization','Competitor analysis & keyword gap research','Indexing verification & audit']},
+  'design':{icon:'🎨',title:'Graphic Design & A+ Content',sub:'Professional visuals that build trust and drive conversions.',features:['Product photography retouching & editing','Lifestyle image creation & composition','Infographic design (6–8 image sets)','A+ Content module design & copywriting','Enhanced Brand Content (EBC)','Brand Storefront design & layout','Social media ad creatives']},
+};
+function openModal(key) {
+  const d = MODALS[key]; if (!d) return;
+  document.getElementById('modal-body').innerHTML = `<div class="modal-icon">${d.icon}</div><h3>${d.title}</h3><p class="modal-sub">${d.sub}</p><ul class="modal-features">${d.features.map(f=>`<li>${f}</li>`).join('')}</ul><a href="#contact" onclick="closeModal()" class="btn-primary" style="width:100%;justify-content:center;">Get Started →</a>`;
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+
+// Form submit
+function handleForm(e, form) {
+  e.preventDefault();
+  const btn = form.querySelector('.hf-btn');
+  btn.textContent = '✅ Sent! I\'ll reply within 24 hours.';
+  btn.style.background = '#16A34A';
+  setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; form.reset(); }, 4000);
+}
+
+// Show body after styles load
+document.body.style.visibility = 'visible';
 </script>
 </body>
 </html>
