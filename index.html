@@ -1,591 +1,678 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>EStoreAxis – Multi-Platform eCommerce Management</title>
-<meta name="description" content="Expert Amazon, Walmart, eBay, Home Depot & Lowes account management. Data-driven eCommerce growth across every marketplace."/>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>EStoreAxis – Multi-Platform eCommerce Management – EStoreAxis</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
-body{visibility:hidden;}
 
-/* ── HERO ── */
-.hero{background:var(--white);padding:80px 0 0;overflow:hidden;}
-.hero-grid{max-width:1280px;margin:0 auto;padding:0 24px 80px;display:grid;grid-template-columns:1fr 480px;gap:60px;align-items:center;}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--blue-light);border:1px solid #BFDBFE;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.6px;margin-bottom:22px;}
-.hero-tag .dot{width:6px;height:6px;background:var(--blue);border-radius:50%;animation:blink 2s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
-.hero h1{font-size:54px;font-weight:800;line-height:1.08;letter-spacing:-2px;color:var(--ink);margin-bottom:20px;}
-.hero h1 em{font-style:normal;color:var(--blue);}
-.hero-p{font-size:17px;color:var(--gray-500);line-height:1.75;margin-bottom:30px;max-width:480px;}
-.platform-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px;}
-.pbadge{display:flex;align-items:center;gap:6px;background:var(--white);border:1.5px solid var(--gray-200);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:700;color:var(--gray-700);box-shadow:var(--shadow-xs);}
-.pbadge.amz{border-color:#FDBA74;color:#C2410C;}
-.pbadge.wmt{border-color:#93C5FD;color:#1D4ED8;}
-.pbadge.eby{border-color:#FCA5A5;color:#DC2626;}
-.pbadge.hd{border-color:#FB923C;color:#C2410C;}
-.pbadge.lw{border-color:#93C5FD;color:#1E40AF;}
-.hero-ctas{display:flex;gap:12px;flex-wrap:wrap;}
-
-/* HERO FORM CARD */
-.hero-form-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-xl);padding:32px;box-shadow:var(--shadow-xl);}
-.hfc-title{font-size:19px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.hfc-sub{font-size:13px;color:var(--gray-500);margin-bottom:22px;display:flex;align-items:center;gap:6px;}
-.hfc-sub::before{content:'';width:8px;height:8px;background:#22C55E;border-radius:50%;flex-shrink:0;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.hf input,.hf select,.hf textarea{width:100%;background:var(--gray-50);border:1.5px solid var(--gray-200);border-radius:var(--radius);padding:11px 14px;color:var(--ink);font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;font-weight:500;outline:none;transition:.2s;margin-bottom:12px;}
-.hf input:focus,.hf select:focus,.hf textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.08);}
-.hf select option{background:#fff;color:var(--ink);}
-.hf textarea{min-height:88px;resize:vertical;margin-bottom:14px;}
-.hf-btn{width:100%;background:var(--blue);color:#fff;border:none;padding:13px;border-radius:25px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:all .2s;}
-.hf-btn:hover{background:var(--blue-dark);box-shadow:0 4px 16px rgba(0,102,255,.35);}
-.form-trust{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:12px;font-size:12px;color:var(--gray-400);}
-
-/* HERO BOTTOM STRIP */
-.hero-strip{background:var(--gray-900);padding:0;}
-.strip-inner{max-width:1280px;margin:0 auto;padding:28px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
-.strip-item{display:flex;flex-direction:column;align-items:center;gap:2px;}
-.strip-val{font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;}
-.strip-label{font-size:12px;color:#9CA3AF;font-weight:500;}
-.strip-div{width:1px;height:40px;background:#374151;}
-
-/* TICKER */
-.ticker-wrap{background:var(--gray-50);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);padding:16px 0;overflow:hidden;}
-.ticker-label{text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray-400);margin-bottom:14px;}
-.ticker-track{display:flex;gap:12px;animation:ticker 28s linear infinite;width:max-content;}
-.ticker-item{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;padding:8px 16px;font-size:12.5px;font-weight:600;color:var(--gray-600);white-space:nowrap;box-shadow:var(--shadow-xs);}
-@keyframes ticker{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ABOUT */
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;}
-.about-metrics{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px;}
-.metric-card{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:20px;}
-.metric-val{font-size:28px;font-weight:800;color:var(--ink);letter-spacing:-1px;margin-bottom:2px;}
-.metric-label{font-size:12px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
-.metric-change{font-size:12px;color:#16A34A;font-weight:700;margin-top:4px;}
-.about-features{display:flex;flex-direction:column;gap:0;}
-.about-feat{display:flex;gap:16px;padding:22px 0;border-bottom:1px solid var(--gray-100);}
-.about-feat:last-child{border-bottom:none;}
-.af-icon{width:44px;height:44px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
-.af-text h4{font-size:15px;font-weight:700;margin-bottom:4px;color:var(--ink);}
-.af-text p{font-size:13.5px;color:var(--gray-500);line-height:1.6;}
-
-/* SERVICES */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.svc-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden;}
-.svc-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),#60A5FA);opacity:0;transition:.25s;}
-.svc-card:hover{border-color:var(--gray-300);box-shadow:var(--shadow-lg);transform:translateY(-3px);}
-.svc-card:hover::after{opacity:1;}
-.svc-badge{position:absolute;top:16px;right:16px;background:var(--blue);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;}
-.svc-icon{width:52px;height:52px;background:var(--blue-light);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
-.svc-card h3{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
-.svc-card p{font-size:13px;color:var(--gray-500);line-height:1.7;margin-bottom:16px;}
-.svc-list{list-style:none;margin-bottom:18px;}
-.svc-list li{font-size:12.5px;color:var(--gray-600);padding:3px 0;display:flex;align-items:center;gap:7px;}
-.svc-list li::before{content:'';width:5px;height:5px;background:var(--blue);border-radius:50%;flex-shrink:0;}
-.svc-link{font-size:13px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:4px;transition:.15s;}
-.svc-link:hover{gap:8px;}
-
-/* PLATFORMS */
-.platforms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.plat-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:26px;transition:all .2s;cursor:pointer;}
-.plat-card:hover{box-shadow:var(--shadow-md);border-color:var(--gray-300);transform:translateY(-2px);}
-.plat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
-.plat-name{display:flex;align-items:center;gap:10px;}
-.plat-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
-.plat-name h4{font-size:15px;font-weight:700;color:var(--ink);}
-.status-dot{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:#16A34A;}
-.status-dot::before{content:'';width:7px;height:7px;background:#22C55E;border-radius:50%;}
-.plat-desc{font-size:13px;color:var(--gray-500);line-height:1.6;margin-bottom:14px;}
-.plat-tags{display:flex;flex-wrap:wrap;gap:5px;}
-.plat-tag{font-size:11px;font-weight:600;background:var(--gray-100);color:var(--gray-600);border-radius:5px;padding:3px 9px;}
-
-/* PROCESS */
-.process-track{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:56px;}
-.process-track::before{content:'';position:absolute;top:26px;left:12.5%;right:12.5%;height:1.5px;background:linear-gradient(90deg,var(--blue),#93C5FD);z-index:0;}
-.pstep{text-align:center;padding:0 20px;position:relative;z-index:1;}
-.pstep-num{width:52px;height:52px;border-radius:50%;background:#fff;border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-size:16px;font-weight:800;color:var(--blue);position:relative;}
-.pstep-num::after{content:'';position:absolute;inset:-7px;border-radius:50%;border:1.5px dashed #BFDBFE;}
-.pstep h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:6px;}
-.pstep p{font-size:13px;color:var(--gray-500);line-height:1.6;}
-
-/* UPWORK */
-.upwork-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
-.uw-card{background:#fff;border:1px solid #D1FAE5;border-radius:var(--radius-xl);padding:36px;box-shadow:0 0 0 4px rgba(20,181,97,.06);}
-.uw-logo{display:inline-flex;align-items:center;gap:8px;background:#14B561;color:#fff;font-size:15px;font-weight:900;padding:8px 16px;border-radius:10px;margin-bottom:22px;letter-spacing:-.3px;}
-.uw-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:22px;}
-.uw-stat{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--radius);padding:14px;}
-.uw-val{font-size:24px;font-weight:800;color:#14B561;letter-spacing:-1px;margin-bottom:2px;}
-.uw-lbl{font-size:11px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
-.uw-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
-.uw-badge{display:flex;align-items:center;gap:5px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:7px;padding:6px 12px;font-size:12px;font-weight:700;color:#065F46;}
-.uw-reasons{display:flex;flex-direction:column;gap:18px;}
-.uw-reason{display:flex;gap:14px;align-items:flex-start;}
-.ur-ico{width:38px;height:38px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;}
-.ur-text h5{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--ink);}
-.ur-text p{font-size:13px;color:var(--gray-500);line-height:1.55;}
-
-/* TEAM */
-.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.team-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:all .25s;}
-.team-card:hover{box-shadow:var(--shadow-lg);border-color:var(--gray-300);transform:translateY(-3px);}
-.team-avatar{height:170px;display:flex;align-items:center;justify-content:center;position:relative;}
-.team-avatar img{width:100%;height:100%;object-fit:cover;}
-.av-initials{width:86px;height:86px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;}
-.team-role-pill{position:absolute;top:12px;right:12px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.3px;}
-.team-body{padding:18px 20px;}
-.team-body h4{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;}
-.team-role-txt{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:8px;}
-.team-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px;}
-.team-tag{font-size:10.5px;font-weight:600;background:var(--gray-100);color:var(--gray-600);border-radius:5px;padding:2px 8px;}
-.team-bio{font-size:12.5px;color:var(--gray-500);line-height:1.55;margin-bottom:14px;}
-.team-links{display:flex;gap:7px;}
-.team-link{width:30px;height:30px;border:1px solid var(--gray-200);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--gray-500);transition:.15s;}
-.team-link:hover{background:var(--blue);color:#fff;border-color:var(--blue);}
-.team-link.upwork:hover{background:#14B561;border-color:#14B561;}
-
-/* TESTIMONIALS */
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.testi-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px;transition:.2s;}
-.testi-card:hover{box-shadow:var(--shadow-md);}
-.testi-stars{color:var(--amber);font-size:13px;letter-spacing:1px;margin-bottom:14px;}
-.testi-text{font-size:14px;color:var(--gray-600);line-height:1.75;margin-bottom:22px;font-style:italic;}
-.testi-author{display:flex;align-items:center;gap:12px;}
-.ta-av{width:42px;height:42px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0;}
-.ta-name{font-size:14px;font-weight:700;color:var(--ink);}
-.ta-role{font-size:12px;color:var(--gray-500);}
-.ta-plat{display:inline-block;font-size:11px;font-weight:700;padding:2px 8px;border-radius:5px;margin-top:3px;}
-
-/* CTA BANNER */
-.cta-banner{background:var(--gray-900);padding:80px 24px;}
-.cta-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 440px;gap:60px;align-items:center;}
-.cta-banner h2{font-size:38px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.15;margin-bottom:14px;}
-.cta-banner p{font-size:15px;color:#9CA3AF;line-height:1.7;margin-bottom:28px;}
-.audit-card{background:#fff;border-radius:var(--radius-xl);padding:28px;}
-.audit-card h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:4px;}
-.audit-card .ac-sub{font-size:13px;color:var(--gray-500);margin-bottom:18px;}
-.audit-items{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:9px;}
-.audit-items li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--gray-700);}
-.audit-items li::before{content:'✓';width:20px;height:20px;background:var(--blue-light);color:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
-
-/* CASES */
-.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
-.case-card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:.25s;}
-.case-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
-.case-img{height:160px;display:flex;align-items:center;justify-content:center;font-size:48px;position:relative;}
-.case-plat-tag{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
-.case-body{padding:24px;}
-.case-body h4{font-size:16px;font-weight:700;color:var(--ink);margin-bottom:8px;}
-.case-body p{font-size:13px;color:var(--gray-500);line-height:1.65;margin-bottom:16px;}
-.case-metrics{display:flex;gap:24px;}
-.cm-val{font-size:20px;font-weight:800;color:var(--blue);letter-spacing:-1px;}
-.cm-lbl{font-size:11px;color:var(--gray-500);font-weight:600;text-transform:uppercase;}
-
-/* FAQ */
-.faq-wrap{max-width:760px;margin:0 auto;}
-.faq-item{border-bottom:1px solid var(--gray-200);}
-.faq-q{width:100%;text-align:left;background:none;border:none;padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;}
-.faq-q:hover{color:var(--blue);}
-.faq-ico{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--gray-400);transition:.3s;flex-shrink:0;}
-.faq-item.open .faq-ico{transform:rotate(45deg);border-color:var(--blue);color:var(--blue);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.faq-a-inner{padding:0 0 18px;font-size:14px;color:var(--gray-500);line-height:1.75;}
-
-/* MODAL */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
-.modal-bg.open{display:flex;}
-.modal-box{background:#fff;border-radius:var(--radius-xl);padding:36px;max-width:500px;width:100%;position:relative;max-height:90vh;overflow-y:auto;}
-.modal-close{position:absolute;top:14px;right:14px;background:var(--gray-100);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;color:var(--gray-500);transition:.15s;}
-.modal-close:hover{background:var(--gray-200);}
-.modal-icon{font-size:36px;margin-bottom:12px;}
-.modal-box h3{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:4px;}
-.modal-box .modal-sub{font-size:14px;color:var(--gray-500);margin-bottom:20px;}
-.modal-features{list-style:none;margin-bottom:22px;display:flex;flex-direction:column;gap:10px;}
-.modal-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--gray-700);}
-.modal-features li::before{content:'✓';color:var(--blue);font-weight:800;font-size:12px;margin-top:2px;}
-
-/* RESPONSIVE */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--white:#fff;--g50:#F9FAFB;--g100:#F3F4F6;--g200:#E5E7EB;--g300:#D1D5DB;--g400:#9CA3AF;--g500:#6B7280;--g600:#4B5563;--g700:#374151;--g800:#1F2937;--g900:#111827;--ink:#0A0A0B;--blue:#0066FF;--bd:#0052CC;--bl:#EEF4FF;--bm:#DBEAFE;--grn:#16A34A;--amb:#F59E0B;--r:10px;--rl:16px;--rxl:20px;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#0A0A0B;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:#f1f1f1;}::-webkit-scrollbar-thumb{background:#0066FF;border-radius:3px;}
+.topbar{background:#111827;padding:10px 0;}
+.tb{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.tbl{display:flex;gap:20px;}
+.tbl a,.topbar a{color:#9CA3AF;font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:5px;transition:.15s;}
+.tbl a:hover{color:#fff;}
+.tbup{background:#14B561;color:#fff!important;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;}
+.tbsoc{display:flex;gap:6px;}
+.tbsoc a{width:26px;height:26px;background:#1F2937;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9CA3AF;transition:.15s;}
+.tbsoc a:hover{background:#0066FF;color:#fff;}
+.hdr{background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid #E5E7EB;position:sticky;top:0;z-index:1000;transition:box-shadow .2s;}
+.hdr.sc{box-shadow:0 10px 15px -3px rgba(0,0,0,.07),0 4px 6px rgba(0,0,0,.04);}
+.hdrin{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.lmk{width:36px;height:36px;background:#0066FF;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lmk svg{width:18px;height:18px;}
+.ltx{font-size:17px;font-weight:700;color:#0A0A0B;letter-spacing:-.3px;}
+.ltx b{color:#0066FF;}
+.mainnav{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;}
+.mainnav ul{display:flex;align-items:center;gap:2px;list-style:none;}
+.mainnav ul li a{display:flex;align-items:center;gap:4px;padding:8px 13px;border-radius:8px;font-size:13.5px;font-weight:500;color:#4B5563;transition:.15s;white-space:nowrap;}
+.mainnav ul li a:hover,.mainnav ul li a.cur{color:#0A0A0B;background:#F3F4F6;}
+.navact{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.btnupsm{font-size:13px;font-weight:700;color:#14B561;border:1.5px solid #14B561;padding:8px 16px;border-radius:20px;transition:.15s;display:flex;align-items:center;gap:5px;}
+.btnupsm:hover{background:#14B561;color:#fff;}
+.btnpnav{background:#0066FF;color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;transition:.15s;white-space:nowrap;}
+.btnpnav:hover{background:#0052CC;box-shadow:0 4px 12px rgba(0,102,255,.3);}
+.hasmega{position:relative;}
+.hasmega>a svg{transition:.2s;}
+.hasmega:hover>a svg{transform:rotate(180deg);}
+.mega{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:22px;box-shadow:0 25px 50px -12px rgba(0,0,0,.14);z-index:200;width:600px;}
+.hasmega:hover .mega{display:grid;grid-template-columns:1fr 1fr auto;}
+.megalbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9CA3AF;margin-bottom:10px;}
+.megaa{display:flex;align-items:center;gap:11px;padding:9px;border-radius:10px;transition:.15s;margin-bottom:3px;}
+.megaa:hover{background:#F9FAFB;}
+.megaico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+.megaa strong{display:block;font-size:13px;font-weight:700;color:#0A0A0B;}
+.megaa span{font-size:12px;color:#6B7280;}
+.megacta{border-left:1px solid #E5E7EB;padding-left:18px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.megacta p{font-size:13px;color:#4B5563;line-height:1.5;}
+.btnsm{display:inline-block;background:#0066FF;color:#fff;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:700;transition:.15s;}
+.btnsm:hover{background:#0052CC;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:1.5px solid #E5E7EB;border-radius:8px;padding:7px 9px;cursor:pointer;}
+.hbg span{display:block;width:18px;height:2px;background:#0A0A0B;border-radius:2px;transition:.25s;}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.btnp{display:inline-flex;align-items:center;gap:6px;background:#0066FF;color:#fff;padding:13px 26px;border-radius:25px;font-size:14px;font-weight:700;transition:.2s;cursor:pointer;border:none;font-family:inherit;}
+.btnp:hover{background:#0052CC;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,102,255,.35);}
+.btno{display:inline-flex;align-items:center;gap:6px;background:transparent;color:#0A0A0B;padding:12px 24px;border-radius:25px;font-size:14px;font-weight:600;border:1.5px solid #D1D5DB;transition:.2s;}
+.btno:hover{border-color:#0A0A0B;background:#F9FAFB;}
+.btnup{display:inline-flex;align-items:center;gap:7px;background:#14B561;color:#fff;padding:12px 22px;border-radius:25px;font-size:14px;font-weight:700;transition:.2s;}
+.btnup:hover{background:#0fa050;transform:translateY(-1px);box-shadow:0 5px 18px rgba(20,181,97,.3);}
+.ew{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#0066FF;margin-bottom:14px;}
+.ew::before{content:'';width:18px;height:2px;background:#0066FF;border-radius:2px;}
+.sech{font-size:36px;font-weight:800;color:#0A0A0B;line-height:1.15;letter-spacing:-1px;margin-bottom:12px;}
+.secs{font-size:15.5px;color:#6B7280;line-height:1.75;}
+.ctr{text-align:center;}
+.ctr .secs{max-width:540px;margin:0 auto;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;}
+.secw{background:#fff;padding:88px 24px;}
+.secg{background:#F9FAFB;padding:88px 24px;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;}
+.secd{background:#111827;padding:88px 24px;}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+.ftr{background:#111827;padding:60px 24px 0;}
+.ftrt{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid #1F2937;}
+.ftrbrand p{font-size:13.5px;color:#9CA3AF;line-height:1.7;margin:14px 0 18px;}
+.ftrsoc{display:flex;gap:8px;}
+.ftrsoc a{width:34px;height:34px;background:#1F2937;border:1px solid #374151;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#9CA3AF;transition:.15s;}
+.ftrsoc a:hover{background:#0066FF;color:#fff;border-color:#0066FF;}
+.ftrcols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.ftrcol h4{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#6B7280;margin-bottom:14px;}
+.ftrcol ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.ftrcol ul a{font-size:13.5px;color:#D1D5DB;transition:.15s;}
+.ftrcol ul a:hover{color:#fff;}
+.ftrb{max-width:1280px;margin:0 auto;padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.ftrb p,.ftrb a{font-size:12.5px;color:#6B7280;}
+.ftrb a:hover{color:#9CA3AF;}
+.ftrb div{display:flex;gap:18px;}
+.wa{position:fixed;bottom:26px;right:26px;z-index:999;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:.2s;}
+.wa:hover{transform:scale(1.1);}
+.wa svg{width:26px;height:26px;}
+.fi{border-bottom:1px solid #F3F4F6;}
+.fq{width:100%;text-align:left;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:15px;font-weight:600;color:#0A0A0B;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;}
+.fq:hover{color:#0066FF;}
+.fico{width:26px;height:26px;border:1.5px solid #E5E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#9CA3AF;flex-shrink:0;transition:.3s;}
+.fi.open .fico{transform:rotate(45deg);border-color:#0066FF;color:#0066FF;}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fai{padding:0 0 16px;font-size:14px;color:#6B7280;line-height:1.75;}
 @media(max-width:1024px){
-  .hero-grid,.about-grid,.upwork-grid,.cta-inner{grid-template-columns:1fr;gap:40px;}
-  .hero h1{font-size:40px;}
-  .services-grid{grid-template-columns:1fr 1fr;}
-  .platforms-grid{grid-template-columns:1fr 1fr;}
-  .team-grid{grid-template-columns:1fr 1fr;}
-  .testi-grid{grid-template-columns:1fr;}
-  .cases-grid{grid-template-columns:1fr;}
-  .process-track{grid-template-columns:1fr 1fr;gap:28px;}
-  .process-track::before{display:none;}
+  .mainnav ul,.navact{display:none;}
+  .hbg{display:flex;}
+  .mainnav.open ul{display:flex;flex-direction:column;position:fixed;inset:0;top:68px;background:#fff;padding:20px 24px;gap:2px;z-index:999;overflow-y:auto;}
+  .mainnav.open .navact{display:flex;flex-direction:column;position:fixed;bottom:0;left:0;right:0;background:#fff;padding:14px 24px;border-top:1px solid #E5E7EB;z-index:999;}
+  .mainnav.open ul li a{padding:13px 14px;font-size:15px;}
+  .mega{display:none!important;}
+  .ftrt{grid-template-columns:1fr;}
+  .ftrcols{grid-template-columns:repeat(2,1fr);}
 }
-@media(max-width:640px){
-  .hero h1{font-size:32px;}
-  .services-grid,.platforms-grid,.team-grid,.about-metrics,.form-row,.uw-stats{grid-template-columns:1fr;}
-  .strip-inner{justify-content:center;gap:16px;}
-  .strip-div{display:none;}
-}
+@media(max-width:640px){.secw,.secg,.secd{padding:64px 20px;}.sech{font-size:28px;}.ftrcols{grid-template-columns:1fr 1fr;}}
+
+
+/* HERO */
+.hero{padding:80px 24px 0;background:#fff;}
+.hero-g{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 470px;gap:56px;align-items:center;padding-bottom:80px;}
+.htag{display:inline-flex;align-items:center;gap:8px;background:#EEF4FF;border:1px solid #BFDBFE;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:#0066FF;text-transform:uppercase;letter-spacing:.6px;margin-bottom:22px;}
+.hdot{width:6px;height:6px;background:#0066FF;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
+.hh1{font-size:52px;font-weight:800;line-height:1.08;letter-spacing:-2px;color:#0A0A0B;margin-bottom:20px;}
+.hh1 em{font-style:normal;color:#0066FF;}
+.hp{font-size:17px;color:#6B7280;line-height:1.75;margin-bottom:28px;max-width:460px;}
+.pbadges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;}
+.pb{display:flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #E5E7EB;border-radius:8px;padding:6px 13px;font-size:12px;font-weight:700;color:#374151;box-shadow:0 1px 2px rgba(0,0,0,.05);}
+.pb.amz{border-color:#FED7AA;color:#C2410C;}.pb.wmt{border-color:#BFDBFE;color:#1D4ED8;}.pb.eby{border-color:#FECACA;color:#DC2626;}.pb.hd{border-color:#FED7AA;color:#C2410C;}.pb.lw{border-color:#BFDBFE;color:#1E40AF;}
+.hctas{display:flex;gap:12px;flex-wrap:wrap;}
+/* CONTACT FORM CARD */
+.hcard{background:#fff;border:1px solid #E5E7EB;border-radius:20px;padding:30px;box-shadow:0 20px 40px rgba(0,0,0,.09);}
+.hct{font-size:19px;font-weight:700;color:#0A0A0B;margin-bottom:4px;}
+.hcs{font-size:13px;color:#6B7280;margin-bottom:20px;display:flex;align-items:center;gap:6px;}
+.hcs::before{content:'';width:8px;height:8px;background:#22C55E;border-radius:50%;flex-shrink:0;}
+.hf input,.hf select,.hf textarea{width:100%;background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:9px;padding:11px 14px;color:#0A0A0B;font-family:'Plus Jakarta Sans',sans-serif;font-size:13.5px;font-weight:500;outline:none;transition:.2s;margin-bottom:11px;}
+.hf input:focus,.hf select:focus,.hf textarea:focus{border-color:#0066FF;background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.07);}
+.hf select option{background:#fff;color:#0A0A0B;}
+.hf textarea{min-height:88px;resize:vertical;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+.hfbtn{width:100%;background:#0066FF;color:#fff;border:none;padding:13px;border-radius:25px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;margin-top:2px;}
+.hfbtn:hover{background:#0052CC;box-shadow:0 4px 14px rgba(0,102,255,.35);}
+.ftrust{text-align:center;font-size:12px;color:#9CA3AF;margin-top:10px;}
+/* STATS STRIP */
+.strip{background:#111827;padding:0;}
+.stripin{max-width:1280px;margin:0 auto;padding:26px 24px;display:flex;align-items:center;justify-content:space-around;flex-wrap:wrap;gap:20px;}
+.sitem{text-align:center;}
+.sval{font-size:28px;font-weight:800;color:#fff;letter-spacing:-1px;}
+.slbl{font-size:12px;color:#9CA3AF;font-weight:500;margin-top:2px;}
+/* TICKER */
+.ticker{background:#F9FAFB;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;padding:16px 0;overflow:hidden;}
+.tlbl{text-align:center;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#9CA3AF;margin-bottom:12px;}
+.ttrack{display:flex;gap:10px;animation:tkr 30s linear infinite;width:max-content;}
+.titem{display:flex;align-items:center;gap:6px;background:#fff;border:1px solid #E5E7EB;border-radius:8px;padding:7px 15px;font-size:12.5px;font-weight:600;color:#4B5563;white-space:nowrap;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+@keyframes tkr{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+/* ABOUT */
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.ametrics{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:26px;}
+.amc{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:14px;padding:18px;}
+.amv{font-size:26px;font-weight:800;color:#0A0A0B;letter-spacing:-1px;margin-bottom:2px;}
+.aml{font-size:11.5px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.amch{font-size:12px;color:#16A34A;font-weight:700;margin-top:3px;}
+.afeats{display:flex;flex-direction:column;}
+.afeat{display:flex;gap:14px;padding:20px 0;border-bottom:1px solid #F3F4F6;}
+.afeat:last-child{border-bottom:none;}
+.afico{width:42px;height:42px;background:#EEF4FF;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+.aftx h4{font-size:14.5px;font-weight:700;margin-bottom:3px;color:#0A0A0B;}
+.aftx p{font-size:13.5px;color:#6B7280;line-height:1.6;}
+/* SERVICES */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.scard{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:26px;transition:.25s;cursor:pointer;position:relative;overflow:hidden;}
+.scard::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#0066FF,#60A5FA);opacity:0;transition:.25s;}
+.scard:hover{border-color:#D1D5DB;box-shadow:0 20px 25px -5px rgba(0,0,0,.07),0 10px 10px rgba(0,0,0,.03);transform:translateY(-2px);}
+.scard:hover::after{opacity:1;}
+.sbadge{position:absolute;top:14px;right:14px;background:#0066FF;color:#fff;font-size:10px;font-weight:800;padding:3px 9px;border-radius:20px;text-transform:uppercase;letter-spacing:.4px;}
+.sico{width:48px;height:48px;background:#EEF4FF;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;}
+.scard h3{font-size:15.5px;font-weight:700;color:#0A0A0B;margin-bottom:7px;}
+.scard p{font-size:13px;color:#6B7280;line-height:1.7;margin-bottom:14px;}
+.slist{list-style:none;margin-bottom:16px;}
+.slist li{font-size:12.5px;color:#4B5563;padding:3px 0;display:flex;align-items:center;gap:6px;}
+.slist li::before{content:'';width:5px;height:5px;background:#0066FF;border-radius:50%;flex-shrink:0;}
+.slnk{font-size:13px;font-weight:700;color:#0066FF;}
+/* PLATFORMS */
+.pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.pcard{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:24px;transition:.2s;cursor:pointer;}
+.pcard:hover{box-shadow:0 10px 15px -3px rgba(0,0,0,.07);border-color:#D1D5DB;transform:translateY(-2px);}
+.phead{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;}
+.pname{display:flex;align-items:center;gap:10px;}
+.pico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;overflow:hidden;}.pico svg{width:44px;height:44px;}
+.pname h4{font-size:15px;font-weight:700;color:#0A0A0B;}
+.pdot{display:flex;align-items:center;gap:4px;font-size:11px;font-weight:700;color:#16A34A;}
+.pdot::before{content:'';width:6px;height:6px;background:#22C55E;border-radius:50%;}
+.pdesc{font-size:13px;color:#6B7280;line-height:1.6;margin-bottom:13px;}
+.ptags{display:flex;flex-wrap:wrap;gap:5px;}
+.ptag{font-size:11px;font-weight:600;background:#F3F4F6;color:#4B5563;border-radius:5px;padding:3px 8px;}
+/* PROCESS */
+.ptrack{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:52px;}
+.ptrack::before{content:'';position:absolute;top:24px;left:12.5%;right:12.5%;height:1.5px;background:linear-gradient(90deg,#0066FF,#93C5FD);}
+.pstep{text-align:center;padding:0 18px;position:relative;z-index:1;}
+.pnum{width:48px;height:48px;border-radius:50%;background:#fff;border:2px solid #0066FF;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:15px;font-weight:800;color:#0066FF;}
+.pstep h4{font-size:14px;font-weight:700;color:#0A0A0B;margin-bottom:6px;}
+.pstep p{font-size:13px;color:#6B7280;line-height:1.6;}
+/* UPWORK */
+.ugrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.ucard{background:#fff;border:1px solid #D1FAE5;border-radius:20px;padding:32px;box-shadow:0 0 0 4px rgba(20,181,97,.05);}
+.ulogo{display:inline-flex;align-items:center;gap:7px;background:#14B561;color:#fff;font-size:14px;font-weight:900;padding:8px 14px;border-radius:10px;margin-bottom:20px;}
+.ustats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;}
+.ustat{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:13px;}
+.uval{font-size:22px;font-weight:800;color:#14B561;letter-spacing:-1px;margin-bottom:2px;}
+.ulbl{font-size:11px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.ubadges{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:20px;}
+.ubadge{display:flex;align-items:center;gap:5px;background:#ECFDF5;border:1px solid #A7F3D0;border-radius:7px;padding:5px 11px;font-size:12px;font-weight:700;color:#065F46;}
+.ureasons{display:flex;flex-direction:column;gap:16px;}
+.ureason{display:flex;gap:12px;align-items:flex-start;}
+.urico{width:36px;height:36px;background:#EEF4FF;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.urtx h5{font-size:14px;font-weight:700;margin-bottom:2px;color:#0A0A0B;}
+.urtx p{font-size:13px;color:#6B7280;line-height:1.55;}
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tcard{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:26px;transition:.2s;}
+.tcard:hover{box-shadow:0 10px 15px -3px rgba(0,0,0,.06);}
+.tstars{color:#F59E0B;font-size:13px;letter-spacing:1px;margin-bottom:13px;}
+.ttxt{font-size:14px;color:#4B5563;line-height:1.75;margin-bottom:20px;font-style:italic;}
+.tauth{display:flex;align-items:center;gap:11px;}
+.tav{width:40px;height:40px;border-radius:50%;background:#0066FF;display:flex;align-items:center;justify-content:center;font-weight:800;color:#fff;font-size:13px;flex-shrink:0;}
+.tname{font-size:14px;font-weight:700;color:#0A0A0B;}
+.trole{font-size:12px;color:#6B7280;}
+.tplat{display:inline-block;font-size:11px;font-weight:700;padding:2px 7px;border-radius:5px;margin-top:2px;}
+/* CTA BANNER */
+.ctag{display:grid;grid-template-columns:1fr 420px;gap:56px;align-items:center;max-width:1280px;margin:0 auto;}
+.ctag h2{font-size:36px;font-weight:800;color:#fff;letter-spacing:-1px;line-height:1.15;margin-bottom:12px;}
+.ctag p{font-size:15px;color:#9CA3AF;line-height:1.7;margin-bottom:26px;}
+.aucard{background:#fff;border-radius:20px;padding:26px;}
+.aucard h4{font-size:15.5px;font-weight:700;color:#0A0A0B;margin-bottom:4px;}
+.aucsub{font-size:13px;color:#6B7280;margin-bottom:16px;}
+.auitems{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:8px;}
+.auitems li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:#374151;}
+.auitems li::before{content:'✓';width:20px;height:20px;background:#EEF4FF;color:#0066FF;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;}
+/* CASES */
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.ccard{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;transition:.2s;}
+.ccard:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.07);transform:translateY(-2px);}
+.cimg{height:150px;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative;}
+.cptag{position:absolute;top:12px;right:12px;font-size:11px;font-weight:700;padding:4px 11px;border-radius:20px;}
+.cbody{padding:22px;}
+.cbody h4{font-size:15.5px;font-weight:700;color:#0A0A0B;margin-bottom:7px;}
+.cbody p{font-size:13px;color:#6B7280;line-height:1.65;margin-bottom:14px;}
+.cmets{display:flex;gap:20px;}
+.cmv{font-size:20px;font-weight:800;color:#0066FF;letter-spacing:-1px;}
+.cml{font-size:11px;color:#6B7280;font-weight:600;text-transform:uppercase;}
+/* TEAM */
+.teamg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.teamc{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;transition:.25s;}
+.teamc:hover{box-shadow:0 20px 25px -5px rgba(0,0,0,.07);transform:translateY(-3px);}
+.teamav{height:160px;display:flex;align-items:center;justify-content:center;position:relative;}
+.av-i{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:#fff;}
+.trpill{position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;text-transform:uppercase;}
+.teambody{padding:16px 18px;}
+.teambody h4{font-size:15px;font-weight:700;color:#0A0A0B;margin-bottom:2px;}
+.teamrole{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#0066FF;margin-bottom:8px;}
+.teamtags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:9px;}
+.teamtag{font-size:10.5px;font-weight:600;background:#F3F4F6;color:#4B5563;border-radius:5px;padding:2px 7px;}
+.teambio{font-size:12.5px;color:#6B7280;line-height:1.55;margin-bottom:13px;}
+.teamlnks{display:flex;gap:6px;}
+.tlnk{width:28px;height:28px;border:1px solid #E5E7EB;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#6B7280;transition:.15s;}
+.tlnk:hover{background:#0066FF;color:#fff;border-color:#0066FF;}
+.tlnk.up:hover{background:#14B561;border-color:#14B561;}.megaico svg{width:34px;height:34px;border-radius:8px;}
+/* MODAL */
+.mbg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.mbg.open{display:flex;}
+.mbox{background:#fff;border-radius:20px;padding:32px;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto;box-shadow:0 25px 50px -12px rgba(0,0,0,.18);}
+.mclose{position:absolute;top:12px;right:12px;background:#F3F4F6;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;color:#6B7280;}
+.mclose:hover{background:#E5E7EB;}
+.mico{font-size:34px;margin-bottom:10px;}
+.mbox h3{font-size:19px;font-weight:800;color:#0A0A0B;margin-bottom:4px;}
+.msub{font-size:14px;color:#6B7280;margin-bottom:18px;}
+.mfeats{list-style:none;margin-bottom:20px;display:flex;flex-direction:column;gap:9px;}
+.mfeats li{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;color:#374151;}
+.mfeats li::before{content:'✓';color:#0066FF;font-weight:800;font-size:12px;margin-top:1px;flex-shrink:0;}
+@media(max-width:1024px){.hero-g,.agrid,.ugrid,.ctag{grid-template-columns:1fr;gap:36px;}.hh1{font-size:38px;}.sgrid{grid-template-columns:1fr 1fr;}.pgrid{grid-template-columns:1fr 1fr;}.teamg{grid-template-columns:1fr 1fr;}.tgrid{grid-template-columns:1fr;}.cgrid{grid-template-columns:1fr;}.ptrack{grid-template-columns:1fr 1fr;gap:26px;}.ptrack::before{display:none;}}
+@media(max-width:640px){.hh1{font-size:30px;}.sgrid,.pgrid,.teamg,.ametrics,.fr,.ustats{grid-template-columns:1fr;}.stripin{justify-content:center;gap:24px;}}
+
 </style>
 </head>
 <body>
-<div id="site-nav"></div>
 
-<!-- HERO -->
+<div class="topbar"><div class="tb">
+  <div class="tbl">
+    <a href="tel:+12345678900">📞 +1 (234) 567-8900</a>
+    <a href="mailto:info@estoreaxis.com">✉ info@estoreaxis.com</a>
+  </div>
+  <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="tbup">🟢 Available on Upwork</a>
+  <div class="tbsoc"><a href="#">in</a><a href="#">f</a><a href="#">ig</a></div>
+</div></div>
+<header class="hdr" id="hdr"><div class="hdrin">
+  <a href="index.html" class="logo"><div class="lmk"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 3L3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div><span class="ltx">EStore<b>Axis</b></span></a>
+  <button class="hbg" id="hbg" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  <nav class="mainnav" id="mainnav">
+    <ul>
+      <li><a href="index.html" class="cur">Home</a></li>
+      <li class="hasmega"><a href="#">Platforms <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="mega">
+          <div><p class="megalbl">Marketplaces</p>
+            <a href="amazon.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#FF9900"/>
+      <text x="30" y="22" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">amazon</text>
+      <path d="M12 34 Q30 44 48 34" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M44 30 L48 34 L44 38" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></span><div><strong>Amazon</strong><span>PPC, FBA, A+ Content</span></div></a>
+            <a href="walmart.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0071CE"/>
+      <g fill="#FFC220" transform="translate(30,30)">
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(300)"/>
+      </g>
+    </svg></span><div><strong>Walmart</strong><span>Seller Center, WFS, Ads</span></div></a>
+            <a href="ebay.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="white"/>
+      <text x="7" y="38" font-family="Arial Black,sans-serif" font-weight="900" font-size="18">
+        <tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan>
+      </text>
+    </svg></span><div><strong>eBay</strong><span>Store, Listings, Promoted</span></div></a>
+          </div>
+          <div><p class="megalbl">Retail Channels</p>
+            <a href="homedepot.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#F96302"/>
+      <polygon points="30,10 50,22 50,50 10,50 10,22" fill="white" opacity="0.15"/>
+      <text x="30" y="28" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="8">THE</text>
+      <text x="30" y="38" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">HOME</text>
+      <text x="30" y="47" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">DEPOT</text>
+    </svg></span><div><strong>Home Depot</strong><span>Vendor &amp; catalog mgmt</span></div></a>
+            <a href="lowes.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#004990"/>
+      <text x="30" y="36" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">LOWE'S</text>
+    </svg></span><div><strong>Lowes</strong><span>Supplier onboarding</span></div></a>
+            <a href="multichannel.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0066FF"/>
+      <circle cx="30" cy="30" r="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="30" y1="18" x2="30" y2="42" stroke="white" stroke-width="2"/>
+      <ellipse cx="30" cy="30" rx="6" ry="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="18" y1="30" x2="42" y2="30" stroke="white" stroke-width="2"/>
+    </svg></span><div><strong>Multi-Channel</strong><span>Unified strategy</span></div></a>
+          </div>
+          <div class="megacta"><p>Not sure where to start?</p><a href="index.html#contact" class="btnsm">Free Audit →</a></div>
+        </div>
+      </li>
+      <li><a href="index.html#cases">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#faq">FAQs</a></li>
+    </ul>
+    <div class="navact">
+      <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnupsm">🟢 Hire on Upwork</a>
+      <a href="index.html#contact" class="btnpnav">Schedule a Call</a>
+    </div>
+  </nav>
+</div></header>
+
 <section class="hero">
-  <div class="hero-grid">
-    <div class="reveal">
-      <div class="hero-tag"><span class="dot"></span>Multi-Platform eCommerce Specialist</div>
-      <h1>Scale Your Brand Across <em>Every Marketplace</em> — Profitably</h1>
-      <p class="hero-p">From Amazon PPC to Walmart, eBay, Home Depot & Lowes — data-driven account management that turns your marketplace spend into predictable, scalable revenue.</p>
-      <div class="platform-badges">
-        <span class="pbadge amz">🟠 Amazon</span>
-        <span class="pbadge wmt">🔵 Walmart</span>
-        <span class="pbadge eby">🔴 eBay</span>
-        <span class="pbadge hd">🟧 Home Depot</span>
-        <span class="pbadge lw">🔷 Lowes</span>
-        <span class="pbadge">+ More</span>
-      </div>
-      <div class="hero-ctas">
-        <a href="#contact" class="btn-primary">Get a Free Audit →</a>
-        <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 Hire on Upwork</a>
-        <a href="#cases" class="btn-outline">Case Studies</a>
-      </div>
-    </div>
-    <div class="hero-form-card reveal" id="contact">
-      <div class="hfc-title">Contact Us</div>
-      <div class="hfc-sub">Response within 24 hours</div>
-      <form class="hf" onsubmit="handleForm(event,this)">
-        <div class="form-row">
-          <input type="text" placeholder="Full Name" required/>
-          <input type="email" placeholder="Email Address" required/>
-        </div>
-        <div class="form-row">
-          <input type="tel" placeholder="Phone Number"/>
-          <select required>
-            <option value="" disabled selected>Select a Service</option>
-            <option>Amazon PPC Management</option>
-            <option>Amazon Account Management</option>
-            <option>Walmart Marketplace</option>
-            <option>eBay Store Management</option>
-            <option>Home Depot Management</option>
-            <option>Lowes Management</option>
-            <option>Listing Optimization</option>
-            <option>Graphic Design / A+ Content</option>
-            <option>Multi-Channel Strategy</option>
-          </select>
-        </div>
-        <input type="url" placeholder="Store / Product URL (optional)"/>
-        <textarea placeholder="Tell me about your store and goals..."></textarea>
-        <button type="submit" class="hf-btn">Send Message →</button>
-        <div class="form-trust">🔒 Your info is 100% confidential</div>
-      </form>
-    </div>
+ <div class="hero-g">
+  <div class="rv">
+   <div class="htag"><span class="hdot"></span>Multi-Platform eCommerce Specialist</div>
+   <h1 class="hh1">Scale Your Brand Across<br/><em>Every Marketplace</em> — Profitably</h1>
+   <p class="hp">From Amazon PPC to Walmart, eBay, Home Depot &amp; Lowes — data-driven account management that turns your marketplace spend into predictable, scalable revenue.</p>
+   <div class="pbadges">
+    <span class="pb amz">🟠 Amazon</span><span class="pb wmt">🔵 Walmart</span><span class="pb eby">🔴 eBay</span><span class="pb hd">🟧 Home Depot</span><span class="pb lw">🔷 Lowes</span><span class="pb">+ More</span>
+   </div>
+   <div class="hctas">
+    <a href="#contact" class="btnp">Get a Free Audit →</a>
+    <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup">🟢 Hire on Upwork</a>
+    <a href="#cases" class="btno">Case Studies</a>
+   </div>
   </div>
-  <div class="hero-strip">
-    <div class="strip-inner">
-      <div class="strip-item"><div class="strip-val" data-count="150" data-suffix="+">0</div><div class="strip-label">Brands Managed</div></div>
-      <div class="strip-div"></div>
-      <div class="strip-item"><div class="strip-val">6</div><div class="strip-label">Platforms Covered</div></div>
-      <div class="strip-div"></div>
-      <div class="strip-item"><div class="strip-val" data-count="5" data-prefix="$" data-suffix="M+">$0</div><div class="strip-label">Revenue Generated</div></div>
-      <div class="strip-div"></div>
-      <div class="strip-item"><div class="strip-val" data-count="98" data-suffix="%">0</div><div class="strip-label">Client Satisfaction</div></div>
-      <div class="strip-div"></div>
-      <div class="strip-item"><div class="strip-val">4.9★</div><div class="strip-label">Upwork Rating</div></div>
-    </div>
+  <div class="hcard rv" id="contact">
+   <div class="hct">Contact Us</div>
+   <div class="hcs">Response within 24 hours</div>
+   <form class="hf" onsubmit="fsub(event,this,'.hfbtn')">
+    <div class="fr"><input type="text" placeholder="Full Name" required/><input type="email" placeholder="Email Address" required/></div>
+    <div class="fr"><input type="tel" placeholder="Phone Number"/><select required><option value="" disabled selected>Select a Service</option><option>Amazon PPC Management</option><option>Amazon Account Management</option><option>Walmart Marketplace</option><option>eBay Store Management</option><option>Home Depot Management</option><option>Lowes Management</option><option>Listing Optimization</option><option>Graphic Design / A+ Content</option><option>Multi-Channel Strategy</option></select></div>
+    <input type="url" placeholder="Store / Product URL (optional)"/>
+    <textarea placeholder="Tell me about your store and goals..."></textarea>
+    <button type="submit" class="hfbtn">Send Message →</button>
+    <div class="ftrust">🔒 Your info is 100% confidential</div>
+   </form>
   </div>
+ </div>
+ <div class="strip"><div class="stripin">
+  <div class="sitem"><div class="sval" id="c1">150+</div><div class="slbl">Brands Managed</div></div>
+  <div class="sitem"><div class="sval">6</div><div class="slbl">Platforms Covered</div></div>
+  <div class="sitem"><div class="sval" id="c2">$5M+</div><div class="slbl">Revenue Generated</div></div>
+  <div class="sitem"><div class="sval" id="c3">98%</div><div class="slbl">Client Satisfaction</div></div>
+  <div class="sitem"><div class="sval">4.9★</div><div class="slbl">Upwork Rating</div></div>
+ </div></div>
 </section>
 
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <p class="ticker-label">Platforms & Tools I Work With</p>
-  <div style="overflow:hidden;display:flex;">
-    <div class="ticker-track">
-      <span class="ticker-item">🟠 Amazon Seller Central</span><span class="ticker-item">📦 Amazon FBA / FBM</span><span class="ticker-item">🔵 Walmart Seller Center</span><span class="ticker-item">🔴 eBay Seller Hub</span><span class="ticker-item">🟧 Home Depot Marketplace</span><span class="ticker-item">🔷 Lowes Supplier Portal</span><span class="ticker-item">📊 Helium 10</span><span class="ticker-item">🔍 Jungle Scout</span><span class="ticker-item">📈 DataDive</span><span class="ticker-item">🎯 Amazon DSP</span><span class="ticker-item">🏷 Walmart Connect Ads</span><span class="ticker-item">✏️ Canva Pro / Photoshop</span>
-      <span class="ticker-item">🟠 Amazon Seller Central</span><span class="ticker-item">📦 Amazon FBA / FBM</span><span class="ticker-item">🔵 Walmart Seller Center</span><span class="ticker-item">🔴 eBay Seller Hub</span><span class="ticker-item">🟧 Home Depot Marketplace</span><span class="ticker-item">🔷 Lowes Supplier Portal</span><span class="ticker-item">📊 Helium 10</span><span class="ticker-item">🔍 Jungle Scout</span><span class="ticker-item">📈 DataDive</span><span class="ticker-item">🎯 Amazon DSP</span><span class="ticker-item">🏷 Walmart Connect Ads</span><span class="ticker-item">✏️ Canva Pro / Photoshop</span>
+<div class="ticker"><p class="tlbl">Platforms &amp; Tools I Work With</p><div style="overflow:hidden;display:flex;"><div class="ttrack"><span class="titem">🟠 Amazon Seller Central</span><span class="titem">📦 Amazon FBA/FBM</span><span class="titem">🔵 Walmart Seller Center</span><span class="titem">🔴 eBay Seller Hub</span><span class="titem">🟧 Home Depot Marketplace</span><span class="titem">🔷 Lowes Supplier Portal</span><span class="titem">📊 Helium 10</span><span class="titem">🔍 Jungle Scout</span><span class="titem">📈 DataDive</span><span class="titem">🎯 Amazon DSP</span><span class="titem">🏷 Walmart Connect Ads</span><span class="titem">✏️ Canva Pro</span><span class="titem">🟠 Amazon Seller Central</span><span class="titem">📦 Amazon FBA/FBM</span><span class="titem">🔵 Walmart Seller Center</span><span class="titem">🔴 eBay Seller Hub</span><span class="titem">🟧 Home Depot Marketplace</span><span class="titem">🔷 Lowes Supplier Portal</span><span class="titem">📊 Helium 10</span><span class="titem">🔍 Jungle Scout</span><span class="titem">📈 DataDive</span><span class="titem">🎯 Amazon DSP</span><span class="titem">🏷 Walmart Connect Ads</span><span class="titem">✏️ Canva Pro</span></div></div></div>
+
+<section class="secw" id="about"><div class="wrap"><div class="agrid">
+ <div class="rv">
+  <p class="ew">About EStoreAxis</p>
+  <h2 class="sech">Built for Growth. Proven Across Every Marketplace.</h2>
+  <p class="secs" style="margin-bottom:10px;">Certified multi-platform eCommerce specialist with 5+ years managing Amazon, Walmart, eBay, Home Depot, and Lowes accounts. I handle the complexity — you focus on your business.</p>
+  <p class="secs" style="margin-bottom:24px;">With a data-first approach, I build performance strategies that deliver measurable, repeatable results across every channel.</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px;">
+   <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup">🟢 View Upwork Profile</a>
+   <a href="#contact" class="btno">Get in Touch</a>
+  </div>
+  <div class="ametrics">
+   <div class="amc"><div class="amv">$9M+</div><div class="aml">Ad Spend Managed</div><div class="amch">↑ 24% YoY</div></div>
+   <div class="amc"><div class="amv">170+</div><div class="aml">Categories Covered</div></div>
+   <div class="amc"><div class="amv">88+</div><div class="aml">Active Brands</div><div class="amch">↑ Growing</div></div>
+   <div class="amc"><div class="amv">4.9★</div><div class="aml">Client Rating</div></div>
+  </div>
+ </div>
+ <div class="afeats rv">
+  <div class="afeat"><div class="afico">🏆</div><div class="aftx"><h4>Top Rated Freelancer</h4><p>Consistently 5-star reviews with a verified track record of growing brand revenue across all major platforms.</p></div></div>
+  <div class="afeat"><div class="afico">📊</div><div class="aftx"><h4>Data-Driven Strategy</h4><p>Every campaign optimized using Helium 10, Jungle Scout, and platform-native analytics — no guesswork ever.</p></div></div>
+  <div class="afeat"><div class="afico">⚡</div><div class="aftx"><h4>Fast Onboarding</h4><p>Get set up and running within 48 hours. No long-term contracts — real results from week one.</p></div></div>
+  <div class="afeat"><div class="afico">🔒</div><div class="aftx"><h4>Full Confidentiality</h4><p>Your account credentials and business data handled with absolute care and professionalism at all times.</p></div></div>
+ </div>
+</div></div></section>
+
+<section class="secg" id="services"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:48px;"><p class="ew">What I Offer</p><h2 class="sech">End-to-End eCommerce Services</h2><p class="secs">Full-service marketplace management across every major platform — so your brand grows everywhere, simultaneously.</p></div>
+ <div class="sgrid">
+  <div class="scard rv" onclick="openM('appc')"><div class="sbadge">Popular</div><div class="sico">🎯</div><h3>Amazon PPC Management</h3><p>Sponsored Products, Brands &amp; Display campaigns built for maximum ROAS with weekly optimization and reporting.</p><ul class="slist"><li>Sponsored Products, Brands &amp; Display</li><li>Keyword research &amp; negative targeting</li><li>Weekly ACOS/ROAS reports</li></ul><span class="slnk">Learn more →</span></div>
+  <div class="scard rv" onclick="openM('aam')"><div class="sico">🏪</div><h3>Amazon Account Management</h3><p>Full Seller Central management: listings, inventory, A+ content, brand registry, account health, and FBA logistics.</p><ul class="slist"><li>Listing creation &amp; optimization</li><li>A+ Content &amp; Brand Storefront</li><li>FBA &amp; inventory management</li></ul><span class="slnk">Learn more →</span></div>
+  <div class="scard rv" onclick="location.href='walmart.html'"><div class="sico">🛒</div><h3>Walmart Marketplace</h3><p>Walmart Seller Center management — setup, listings, Connect Ads, and WFS fulfillment strategy.</p><ul class="slist"><li>Account setup &amp; onboarding</li><li>Listing optimization &amp; SEO</li><li>Walmart Connect advertising</li></ul><span class="slnk">View service →</span></div>
+  <div class="scard rv" onclick="location.href='ebay.html'"><div class="sico">🔵</div><h3>eBay Store Management</h3><p>eBay store setup, listing optimization, promoted listings, and full customer service management.</p><ul class="slist"><li>eBay store setup &amp; design</li><li>Promoted Listings strategy</li><li>Customer service management</li></ul><span class="slnk">View service →</span></div>
+  <div class="scard rv" onclick="location.href='homedepot.html'"><div class="sico">🏠</div><h3>Home Depot Management</h3><p>Vendor onboarding, product catalog setup, order management and optimization for the HD marketplace.</p><ul class="slist"><li>Vendor portal onboarding</li><li>Product data &amp; catalog setup</li><li>Order &amp; compliance management</li></ul><span class="slnk">View service →</span></div>
+  <div class="scard rv" onclick="location.href='lowes.html'"><div class="sico">🔨</div><h3>Lowes Management</h3><p>Supplier onboarding, inventory sync, product content optimization and compliance management.</p><ul class="slist"><li>Supplier onboarding &amp; compliance</li><li>Product listing &amp; content</li><li>Inventory &amp; order management</li></ul><span class="slnk">View service →</span></div>
+  <div class="scard rv" onclick="openM('lo')"><div class="sico">✏️</div><h3>Listing Optimization &amp; SEO</h3><p>SEO-rich titles, bullet points, and keyword strategies that rank higher and convert better on every platform.</p><ul class="slist"><li>Keyword research (Helium 10)</li><li>Title, bullets &amp; descriptions</li><li>Backend keyword optimization</li></ul><span class="slnk">Learn more →</span></div>
+  <div class="scard rv" onclick="openM('gd')"><div class="sico">🎨</div><h3>Graphic Design &amp; A+ Content</h3><p>Product images, infographics, A+ content modules and brand storefronts that build trust and drive conversions.</p><ul class="slist"><li>Infographic design</li><li>A+ Content / EBC creation</li><li>Brand Storefront design</li></ul><span class="slnk">Learn more →</span></div>
+  <div class="scard rv" onclick="location.href='multichannel.html'" style="border:2px solid #BFDBFE;background:#EEF4FF;"><div class="sico">🌐</div><h3>Multi-Channel Strategy</h3><p>Unified growth strategy across all your marketplaces — synchronized inventory, pricing, and brand consistency.</p><ul class="slist"><li>Cross-platform inventory sync</li><li>Unified pricing strategy</li><li>Monthly growth reporting</li></ul><span class="slnk">View service →</span></div>
+ </div>
+</div></section>
+
+<section class="secw" id="platforms"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:44px;"><p class="ew">Platforms I Manage</p><h2 class="sech">One Expert. Every Marketplace.</h2><p class="secs">Deep platform expertise across all major US eCommerce channels.</p></div>
+ <div class="pgrid">
+  <div class="pcard rv" onclick="location.href='amazon.html'"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#FF9900"/>
+      <text x="30" y="22" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">amazon</text>
+      <path d="M12 34 Q30 44 48 34" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M44 30 L48 34 L44 38" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></div><h4>Amazon</h4></div><span class="pdot">Active</span></div><p class="pdesc">Full Seller Central management — PPC, FBA, Brand Registry, A+ Content, and account health for sellers at every stage.</p><div class="ptags"><span class="ptag">PPC Ads</span><span class="ptag">FBA</span><span class="ptag">Brand Registry</span><span class="ptag">A+ Content</span></div></div>
+  <div class="pcard rv" onclick="location.href='walmart.html'"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0071CE"/>
+      <g fill="#FFC220" transform="translate(30,30)">
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(300)"/>
+      </g>
+    </svg></div><h4>Walmart</h4></div><span class="pdot">Active</span></div><p class="pdesc">Walmart Seller Center setup, listing SEO, Connect Ads, and WFS — the fastest-growing US marketplace.</p><div class="ptags"><span class="ptag">Connect Ads</span><span class="ptag">WFS</span><span class="ptag">2-Day Tag</span></div></div>
+  <div class="pcard rv" onclick="location.href='ebay.html'"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="white"/>
+      <text x="7" y="38" font-family="Arial Black,sans-serif" font-weight="900" font-size="18">
+        <tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan>
+      </text>
+    </svg></div><h4>eBay</h4></div><span class="pdot">Active</span></div><p class="pdesc">eBay store setup, listing strategy, Promoted Listings, and feedback management for consistent top-rated performance.</p><div class="ptags"><span class="ptag">Store Setup</span><span class="ptag">Promoted Listings</span><span class="ptag">CS Mgmt</span></div></div>
+  <div class="pcard rv" onclick="location.href='homedepot.html'"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#F96302"/>
+      <polygon points="30,10 50,22 50,50 10,50 10,22" fill="white" opacity="0.15"/>
+      <text x="30" y="28" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="8">THE</text>
+      <text x="30" y="38" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">HOME</text>
+      <text x="30" y="47" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">DEPOT</text>
+    </svg></div><h4>Home Depot</h4></div><span class="pdot">Active</span></div><p class="pdesc">Vendor onboarding, product data, catalog management, and order fulfillment on the #1 home improvement marketplace.</p><div class="ptags"><span class="ptag">Vendor Onboarding</span><span class="ptag">Catalog</span><span class="ptag">Orders</span></div></div>
+  <div class="pcard rv" onclick="location.href='lowes.html'"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#004990"/>
+      <text x="30" y="36" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">LOWE'S</text>
+    </svg></div><h4>Lowes</h4></div><span class="pdot">Active</span></div><p class="pdesc">Supplier compliance, product content, inventory sync, and performance monitoring on Lowes' supplier platform.</p><div class="ptags"><span class="ptag">Supplier Setup</span><span class="ptag">Compliance</span><span class="ptag">Inventory</span></div></div>
+  <div class="pcard rv" onclick="location.href='multichannel.html'" style="border:1.5px solid #BFDBFE;background:#EFF6FF;"><div class="phead"><div class="pname"><div class="pico" style="background:transparent;padding:0;overflow:hidden;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0066FF"/>
+      <circle cx="30" cy="30" r="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="30" y1="18" x2="30" y2="42" stroke="white" stroke-width="2"/>
+      <ellipse cx="30" cy="30" rx="6" ry="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="18" y1="30" x2="42" y2="30" stroke="white" stroke-width="2"/>
+    </svg></div><h4>Multi-Channel</h4></div></div><p class="pdesc">Also managing Etsy, Target+, Chewy, Overstock &amp; more. Ask me about your specific platform.</p><div class="ptags"><span class="ptag">Etsy</span><span class="ptag">Target+</span><span class="ptag">Chewy</span><span class="ptag">+More</span></div></div>
+ </div>
+</div></section>
+
+<section class="secg"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:0;"><p class="ew">How It Works</p><h2 class="sech">From Audit to Growth in 4 Steps</h2><p class="secs">Simple onboarding. No long contracts. Real results from week one.</p></div>
+ <div class="ptrack">
+  <div class="pstep rv"><div class="pnum">01</div><h4>Free Store Audit</h4><p>Deep review of your accounts, listings, PPC, and immediate growth opportunities across all platforms.</p></div>
+  <div class="pstep rv"><div class="pnum">02</div><h4>Strategy Call</h4><p>We align on goals, platforms, and budget — then build a 90-day roadmap tailored to your brand.</p></div>
+  <div class="pstep rv"><div class="pnum">03</div><h4>Execution</h4><p>I take full ownership — account management, campaign launches, and listing optimization all handled.</p></div>
+  <div class="pstep rv"><div class="pnum">04</div><h4>Scale &amp; Report</h4><p>Weekly reports, data-driven decisions, and continuous scaling across every active channel.</p></div>
+ </div>
+</div></section>
+
+<section class="secw" id="upwork"><div class="wrap"><div class="ugrid">
+ <div class="ucard rv">
+  <div class="ulogo">⬆ Upwork</div>
+  <div class="ustats">
+   <div class="ustat"><div class="uval">100%</div><div class="ulbl">Job Success</div></div>
+   <div class="ustat"><div class="uval">500+</div><div class="ulbl">Hours Worked</div></div>
+   <div class="ustat"><div class="uval">50+</div><div class="ulbl">Jobs Done</div></div>
+   <div class="ustat"><div class="uval">5.0★</div><div class="ulbl">Rating</div></div>
+  </div>
+  <div class="ubadges"><span class="ubadge">🏆 Top Rated</span><span class="ubadge">✅ ID Verified</span><span class="ubadge">⚡ Expert Vetted</span></div>
+  <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup" style="width:100%;justify-content:center;">View Full Upwork Profile →</a>
+ </div>
+ <div class="rv">
+  <p class="ew" style="color:#14B561;">Available on Upwork</p>
+  <h2 class="sech">Why Hire Me on <span style="color:#14B561;">Upwork?</span></h2>
+  <p class="secs" style="margin-bottom:22px;">Upwork gives you secure payments, full transparency, and dispute protection. Hire with complete confidence.</p>
+  <div class="ureasons">
+   <div class="ureason"><div class="urico">🛡</div><div class="urtx"><h5>Secure Escrow Payments</h5><p>Funds held in escrow until you approve the work. Zero financial risk on every engagement.</p></div></div>
+   <div class="ureason"><div class="urico">📊</div><div class="urtx"><h5>Full Time Tracking &amp; Transparency</h5><p>Track every hour worked with screenshots and activity logs in real time.</p></div></div>
+   <div class="ureason"><div class="urico">⭐</div><div class="urtx"><h5>Verified Reviews &amp; 100% JSS</h5><p>50+ completed jobs, verified 5-star reviews, and a perfect Job Success Score.</p></div></div>
+   <div class="ureason"><div class="urico">🚀</div><div class="urtx"><h5>Start Within 24 Hours</h5><p>Send a direct contract — I respond within hours and can start immediately.</p></div></div>
+  </div>
+  <div style="margin-top:24px;"><a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup">🟢 Hire Me on Upwork →</a></div>
+ </div>
+</div></div></section>
+
+<section class="secg" id="testimonials"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:44px;"><p class="ew">Client Testimonials</p><h2 class="sech">What Clients Say</h2><p class="secs">Real results from real brands across every marketplace.</p></div>
+ <div class="tgrid">
+  <div class="tcard rv"><div class="tstars">★★★★★</div><p class="ttxt">"EStoreAxis transformed our Amazon PPC. ACOS dropped from 42% to 18% in 6 weeks and monthly revenue tripled. Exceptional work."</p><div class="tauth"><div class="tav">JM</div><div><div class="tname">James Mitchell</div><div class="trole">Amazon Seller, USA</div><span class="tplat" style="background:#FFF3E0;color:#C2410C;">Amazon</span></div></div></div>
+  <div class="tcard rv"><div class="tstars">★★★★★</div><p class="ttxt">"We launched on Walmart and Home Depot from scratch. EStoreAxis handled everything — setup, listings, ads. Orders grow every single month."</p><div class="tauth"><div class="tav" style="background:#1D4ED8;">SA</div><div><div class="tname">Sara Ahmed</div><div class="trole">Home Goods Brand, Canada</div><span class="tplat" style="background:#EFF6FF;color:#1D4ED8;">Walmart</span></div></div></div>
+  <div class="tcard rv"><div class="tstars">★★★★★</div><p class="ttxt">"Our eBay store went from 200 to 1,400 monthly orders in 3 months. The Promoted Listings strategy and listing optimization were game changers."</p><div class="tauth"><div class="tav" style="background:#DC2626;">RP</div><div><div class="tname">Raj Patel</div><div class="trole">Electronics Reseller, UK</div><span class="tplat" style="background:#FFF1F2;color:#DC2626;">eBay</span></div></div></div>
+ </div>
+</div></section>
+
+<section class="secd"><div class="ctag">
+ <div class="rv"><p class="ew" style="color:#60A5FA;">Free Audit</p><h2>Ready for Exponential Growth?</h2><p>Get a free store audit to identify exactly how to scale your eCommerce revenue — no strings attached.</p><a href="#contact" class="btnp">Claim Your Free Audit →</a></div>
+ <div class="aucard rv"><h4>What's included in the free audit</h4><p class="aucsub">Complete review across all your active channels</p><ul class="auitems"><li>PPC campaign performance analysis</li><li>Listing SEO &amp; keyword gap audit</li><li>Competitor benchmarking report</li><li>Account health &amp; compliance check</li><li>Custom 90-day growth roadmap</li></ul><a href="#contact" class="btnp" style="width:100%;justify-content:center;">Get My Free Audit →</a></div>
+</div></section>
+
+<section class="secw" id="cases"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:44px;"><p class="ew">Case Studies</p><h2 class="sech">Real Results, Real Brands</h2><p class="secs">Measurable growth delivered across every platform we manage.</p></div>
+ <div class="cgrid">
+  <div class="ccard rv"><div class="cimg" style="background:#FFF3E0;">📈<span class="cptag" style="background:#FEF3C7;color:#B45309;">Amazon</span></div><div class="cbody"><h4>120% Sales Growth for Home &amp; Kitchen Brand</h4><p>Restructured Sponsored Products with SKAG campaigns and negative targeting, combined with A+ Content redesign — 120% sales growth in 90 days.</p><div class="cmets"><div><div class="cmv">+120%</div><div class="cml">Revenue</div></div><div><div class="cmv">-34%</div><div class="cml">ACOS</div></div><div><div class="cmv">90 days</div><div class="cml">Timeline</div></div></div></div></div>
+  <div class="ccard rv"><div class="cimg" style="background:#FFF1F2;">🏆<span class="cptag" style="background:#FCE7F3;color:#BE123C;">eBay</span></div><div class="cbody"><h4>$1.8M Incremental Revenue in Sports &amp; Outdoors</h4><p>Promoted Listings strategy at 3% ad rate on high-velocity SKUs. Terapeak-backed pricing to dominate category search results.</p><div class="cmets"><div><div class="cmv">$1.8M</div><div class="cml">Revenue</div></div><div><div class="cmv">7x</div><div class="cml">ROAS</div></div><div><div class="cmv">6 months</div><div class="cml">Timeline</div></div></div></div></div>
+  <div class="ccard rv"><div class="cimg" style="background:#EFF6FF;">🛒<span class="cptag" style="background:#DBEAFE;color:#1D4ED8;">Walmart</span></div><div class="cbody"><h4>Walmart Launch — 0 to $250K in 60 Days</h4><p>Onboarded a kitchenware brand from scratch — listings, SEO, and Connect Ads to drive early velocity. $250K in the first 60 days.</p><div class="cmets"><div><div class="cmv">$250K</div><div class="cml">Revenue</div></div><div><div class="cmv">60 days</div><div class="cml">Timeline</div></div><div><div class="cmv">4.8★</div><div class="cml">Seller Rating</div></div></div></div></div>
+  <div class="ccard rv"><div class="cimg" style="background:#FFF7ED;">🏠<span class="cptag" style="background:#FEF3C7;color:#B45309;">Home Depot</span></div><div class="cbody"><h4>HD Vendor Setup &amp; $180K Q1 Revenue</h4><p>Managed full vendor onboarding, content compliance, and catalog submission. $180K Q1 revenue for a tools brand's first Home Depot launch.</p><div class="cmets"><div><div class="cmv">$180K</div><div class="cml">Q1 Revenue</div></div><div><div class="cmv">48 hrs</div><div class="cml">Onboarding</div></div><div><div class="cmv">100%</div><div class="cml">Compliance</div></div></div></div></div>
+ </div>
+</div></section>
+
+<section class="secg" id="team"><div class="wrap">
+ <div class="ctr rv" style="margin-bottom:44px;"><p class="ew">The Team</p><h2 class="sech">Meet EStoreAxis</h2><p class="secs">A dedicated team of eCommerce specialists with deep platform expertise across every major US marketplace.</p></div>
+ <div class="teamg">
+  <div class="teamc rv">
+    <div class="teamav" style="background:linear-gradient(135deg,#EEF4FF,#DBEAFE);">
+      <div class="av-i" style="background:#0066FF;">MS</div>
+      <span class="trpill" style="background:#DBEAFE;color:#1D4ED8;">Founder</span>
+    </div>
+    <div class="teambody">
+      <h4>Muhammad Shakeel</h4>
+      <div class="teamrole">Founder &amp; Lead Strategist</div>
+      <div class="teamtags"><span class="teamtag">Amazon PPC</span><span class="teamtag">Walmart</span><span class="teamtag">eBay</span><span class="teamtag">Multi-Channel</span></div>
+      <p class="teambio">5+ years managing 150+ brands across all major US marketplaces. Expert in multi-channel PPC strategy and full-service eCommerce account management.</p>
+      <div class="teamlnks">
+        <a href="https://www.upwork.com/freelancers/~01701bc49bdd66ec65/" target="_blank" class="tlnk up" title="Upwork Profile">⬆</a>
+        <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="tlnk" title="Agency Profile" style="font-size:10px;font-weight:800;">Ag</a>
+        <a href="mailto:info@estoreaxis.com" class="tlnk" title="Email">✉</a>
+      </div>
     </div>
   </div>
+  <div class="teamc rv">
+    <div class="teamav" style="background:linear-gradient(135deg,#FFF3E0,#FEF3C7);">
+      <div class="av-i" style="background:#EA580C;">MA</div>
+      <span class="trpill" style="background:#FEF3C7;color:#92400E;">Amazon</span>
+    </div>
+    <div class="teambody">
+      <h4>Muhammad AmanUllah</h4>
+      <div class="teamrole">Amazon PPC Specialist</div>
+      <div class="teamtags"><span class="teamtag">Sponsored Ads</span><span class="teamtag">DSP</span><span class="teamtag">ACOS Optimization</span></div>
+      <p class="teambio">Certified Amazon Ads specialist managing $3M+ in annual ad spend. Expert in Sponsored Products, Brands & Display with consistent ROAS improvement.</p>
+      <div class="teamlnks">
+        <a href="https://www.upwork.com/freelancers/~016105bda99498a0c4/" target="_blank" class="tlnk up" title="Upwork Profile">⬆</a>
+        <a href="mailto:info@estoreaxis.com" class="tlnk" title="Email">✉</a>
+      </div>
+    </div>
+  </div>
+  <div class="teamc rv">
+    <div class="teamav" style="background:linear-gradient(135deg,#EFF6FF,#DBEAFE);">
+      <div class="av-i" style="background:#1D4ED8;">SU</div>
+      <span class="trpill" style="background:#DBEAFE;color:#1E40AF;">SEO</span>
+    </div>
+    <div class="teambody">
+      <h4>SanaUllah</h4>
+      <div class="teamrole">Listing &amp; SEO Specialist</div>
+      <div class="teamtags"><span class="teamtag">Helium 10</span><span class="teamtag">Listing SEO</span><span class="teamtag">A+ Content</span><span class="teamtag">Keyword Research</span></div>
+      <p class="teambio">Expert in listing optimization and SEO across Amazon, Walmart, and eBay. Builds keyword strategies using Helium 10 that rank higher and convert better.</p>
+      <div class="teamlnks">
+        <a href="https://www.upwork.com/freelancers/~01dd4855c7d48d2691/" target="_blank" class="tlnk up" title="Upwork Profile">⬆</a>
+        <a href="mailto:info@estoreaxis.com" class="tlnk" title="Email">✉</a>
+      </div>
+    </div>
+  </div>
+  <div class="teamc rv">
+    <div class="teamav" style="background:linear-gradient(135deg,#F0FDF4,#DCFCE7);">
+      <div class="av-i" style="background:#16A34A;">EA</div>
+      <span class="trpill" style="background:#DCFCE7;color:#15803D;">Agency</span>
+    </div>
+    <div class="teambody">
+      <h4>EStoreAxis Agency</h4>
+      <div class="teamrole">Full-Service eCommerce Agency</div>
+      <div class="teamtags"><span class="teamtag">Amazon</span><span class="teamtag">Walmart</span><span class="teamtag">eBay</span><span class="teamtag">HD</span><span class="teamtag">Lowes</span></div>
+      <p class="teambio">Our agency on Upwork brings together all our specialists — verified, top-rated, with 100% Job Success Score across all engagements.</p>
+      <div class="teamlnks">
+        <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="tlnk up" title="Upwork Agency">⬆</a>
+        <a href="mailto:info@estoreaxis.com" class="tlnk" title="Email">✉</a>
+      </div>
+    </div>
+  </div>
+ </div>
+ <div style="text-align:center;margin-top:36px;">
+   <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup" style="display:inline-flex;">🟢 View Our Full Upwork Agency Profile →</a>
+ </div>
+</div></section>
+
+<section class="secw" id="faq"><div class="wrap" style="max-width:760px;">
+ <div class="ctr rv" style="margin-bottom:36px;"><p class="ew">FAQs</p><h2 class="sech">Frequently Asked Questions</h2></div>
+ <div class="rv">
+  <div class="fi"><button class="fq" onclick="faq(this)">What makes EStoreAxis different from other eCommerce managers?<span class="fico">+</span></button><div class="fa"><div class="fai">Unlike large agencies, every client gets direct personal attention. With hands-on expertise across all 6 major US marketplaces — Amazon, Walmart, eBay, Home Depot, Lowes, and more — I bring a unified multi-channel strategy most agencies can't match.</div></div></div>
+  <div class="fi"><button class="fq" onclick="faq(this)">Do you only work with Amazon sellers, or other platforms too?<span class="fico">+</span></button><div class="fa"><div class="fai">I actively manage accounts on Amazon, Walmart, eBay, Home Depot, Lowes, and several niche marketplaces. I specialize in multi-channel management — helping brands grow across all their active channels simultaneously.</div></div></div>
+  <div class="fi"><button class="fq" onclick="faq(this)">How much do your services cost?<span class="fico">+</span></button><div class="fa"><div class="fai">Pricing is customized based on platforms, ad spend level, and scope of services. I offer flexible monthly retainers starting from $499/month for single-platform management. Contact me for a custom quote.</div></div></div>
+  <div class="fi"><button class="fq" onclick="faq(this)">Can you help if I'm just starting out?<span class="fico">+</span></button><div class="fa"><div class="fai">Yes — I work with brands at all stages, from first-time sellers launching on Amazon to 7-figure brands scaling across multiple channels. My onboarding is fast and smooth regardless of experience level.</div></div></div>
+  <div class="fi"><button class="fq" onclick="faq(this)">How quickly can I expect to see results?<span class="fico">+</span></button><div class="fa"><div class="fai">Most clients see measurable improvements within 2–4 weeks — reduced ACOS, improved rankings, or increased order volume. Significant revenue growth typically follows within 60–90 days of full optimization.</div></div></div>
+  <div class="fi"><button class="fq" onclick="faq(this)">Will I deal with you directly?<span class="fico">+</span></button><div class="fa"><div class="fai">Yes — you deal directly with me, not a rotating team. I personally oversee every client account, which means consistent communication, faster decisions, and someone who genuinely knows your business inside and out.</div></div></div>
+ </div>
+</div></section>
+
+<div class="mbg" id="modal" onclick="if(event.target===this)closeM()">
+ <div class="mbox">
+  <button class="mclose" onclick="closeM()">✕</button>
+  <div id="mbody"></div>
+ </div>
 </div>
-
-<!-- ABOUT -->
-<section class="section-white" id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="reveal">
-        <p class="eyebrow">About EStoreAxis</p>
-        <h2 class="section-title">Built for Growth. Proven Across Every Marketplace.</h2>
-        <p class="section-sub">I'm a certified multi-platform eCommerce specialist with 5+ years managing Amazon, Walmart, eBay, Home Depot, and Lowes accounts. I handle the complexity — you focus on growing your business.</p>
-        <div style="display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;">
-          <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 View Upwork Profile</a>
-          <a href="#contact" class="btn-outline">Get in Touch</a>
-        </div>
-        <div class="about-metrics">
-          <div class="metric-card"><div class="metric-val">$9M+</div><div class="metric-label">Ad Spend Managed</div><div class="metric-change">↑ 24% YoY</div></div>
-          <div class="metric-card"><div class="metric-val">170+</div><div class="metric-label">Categories Covered</div></div>
-          <div class="metric-card"><div class="metric-val">88+</div><div class="metric-label">Active Brands</div><div class="metric-change">↑ Growing</div></div>
-          <div class="metric-card"><div class="metric-val">4.9★</div><div class="metric-label">Client Rating</div></div>
-        </div>
-      </div>
-      <div class="about-features reveal">
-        <div class="about-feat"><div class="af-icon">🏆</div><div class="af-text"><h4>Top Rated Freelancer</h4><p>Consistently 5-star reviews with a verified track record of growing brand revenue across all major platforms.</p></div></div>
-        <div class="about-feat"><div class="af-icon">📊</div><div class="af-text"><h4>Data-Driven Strategy</h4><p>Every campaign optimized using Helium 10, Jungle Scout, and platform-native analytics — no guesswork.</p></div></div>
-        <div class="about-feat"><div class="af-icon">⚡</div><div class="af-text"><h4>Fast Onboarding</h4><p>Get set up and running within 48 hours. No long-term contracts — results from week one.</p></div></div>
-        <div class="about-feat"><div class="af-icon">🔒</div><div class="af-text"><h4>Full Confidentiality</h4><p>Your account credentials and business data handled with absolute care and professionalism.</p></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="section-gray" id="services">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">What I Offer</p>
-      <h2 class="section-title">End-to-End eCommerce Services</h2>
-      <p class="section-sub">Full-service marketplace management across every major platform — so your brand grows everywhere, simultaneously.</p>
-    </div>
-    <div class="services-grid">
-      <div class="svc-card reveal" onclick="openModal('amazon-ppc')"><div class="svc-badge">Most Popular</div><div class="svc-icon">🎯</div><h3>Amazon PPC Management</h3><p>Sponsored Products, Brands & Display campaigns built for maximum ROAS with weekly reporting and continuous optimization.</p><ul class="svc-list"><li>Sponsored Products, Brands & Display</li><li>Keyword research & negative targeting</li><li>Weekly ACOS/ROAS reports</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="openModal('amazon-acct')"><div class="svc-icon">🏪</div><h3>Amazon Account Management</h3><p>Full Seller Central management: listings, inventory, A+ content, brand registry, account health, and FBA logistics.</p><ul class="svc-list"><li>Listing creation & optimization</li><li>A+ Content & Brand Storefront</li><li>FBA & inventory management</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="location.href='walmart.html'"><div class="svc-icon">🛒</div><h3>Walmart Marketplace</h3><p>Complete Walmart Seller Center management — setup, listings, Connect Ads, and WFS fulfillment strategy.</p><ul class="svc-list"><li>Seller account setup & onboarding</li><li>Listing optimization & SEO</li><li>Walmart Connect advertising</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="location.href='ebay.html'"><div class="svc-icon">🔵</div><h3>eBay Store Management</h3><p>Professional eBay store setup, listing optimization, promoted listings, and full customer service management.</p><ul class="svc-list"><li>eBay store setup & design</li><li>Promoted Listings strategy</li><li>Customer service management</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="location.href='homedepot.html'"><div class="svc-icon">🏠</div><h3>Home Depot Management</h3><p>Vendor onboarding, product catalog setup, order management, and optimization for the HD marketplace.</p><ul class="svc-list"><li>Vendor portal onboarding</li><li>Product data & catalog setup</li><li>Order & compliance management</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="location.href='lowes.html'"><div class="svc-icon">🔨</div><h3>Lowes Management</h3><p>Supplier onboarding, inventory sync, product content optimization, and compliance management for Lowes.</p><ul class="svc-list"><li>Supplier onboarding & compliance</li><li>Product listing & content</li><li>Inventory & order management</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="openModal('listing')"><div class="svc-icon">✏️</div><h3>Listing Optimization & SEO</h3><p>SEO-rich titles, bullet points, and keyword strategies that rank higher and convert better across all platforms.</p><ul class="svc-list"><li>Keyword research (Helium 10)</li><li>Title, bullets & descriptions</li><li>Backend keyword optimization</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="openModal('design')"><div class="svc-icon">🎨</div><h3>Graphic Design & A+ Content</h3><p>Product images, infographics, A+ content modules, and brand storefronts that build trust and drive conversions.</p><ul class="svc-list"><li>Infographic design</li><li>A+ Content / EBC creation</li><li>Brand Storefront design</li></ul><span class="svc-link">Learn more →</span></div>
-      <div class="svc-card reveal" onclick="location.href='multichannel.html'" style="border:2px solid var(--blue-mid);background:var(--blue-light);"><div class="svc-icon">🌐</div><h3>Multi-Channel Strategy</h3><p>Unified growth strategy across all your marketplaces — synchronized inventory, pricing, and brand consistency at scale.</p><ul class="svc-list"><li>Cross-platform inventory sync</li><li>Unified pricing strategy</li><li>Monthly growth reporting</li></ul><span class="svc-link">Learn more →</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PLATFORMS -->
-<section class="section-white" id="platforms">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">Platforms I Manage</p>
-      <h2 class="section-title">One Expert. Every Marketplace.</h2>
-      <p class="section-sub">Deep platform expertise across all major US eCommerce channels.</p>
-    </div>
-    <div class="platforms-grid">
-      <div class="plat-card reveal" onclick="location.href='amazon.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FFF3E0;color:#E65100;">Az</div><h4>Amazon</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Full Seller Central management — PPC, FBA, Brand Registry, A+ Content, and account health for Amazon sellers at every stage.</p><div class="plat-tags"><span class="plat-tag">PPC Ads</span><span class="plat-tag">FBA</span><span class="plat-tag">Brand Registry</span><span class="plat-tag">A+ Content</span></div></div>
-      <div class="plat-card reveal" onclick="location.href='walmart.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#E3F2FD;color:#0D47A1;">Wm</div><h4>Walmart</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Walmart Seller Center setup, listing SEO, Connect Ads, and WFS fulfillment strategy — the fastest-growing US marketplace.</p><div class="plat-tags"><span class="plat-tag">Connect Ads</span><span class="plat-tag">WFS</span><span class="plat-tag">2-Day Tag</span></div></div>
-      <div class="plat-card reveal" onclick="location.href='ebay.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FCE4EC;color:#880E4F;">eB</div><h4>eBay</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">eBay store setup, listing strategy, Promoted Listings, and feedback management for consistent top-rated seller performance.</p><div class="plat-tags"><span class="plat-tag">Store Setup</span><span class="plat-tag">Promoted Listings</span><span class="plat-tag">CS Management</span></div></div>
-      <div class="plat-card reveal" onclick="location.href='homedepot.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#FBE9E7;color:#BF360C;">HD</div><h4>Home Depot</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Vendor onboarding, product data, catalog management, and order fulfillment on the #1 home improvement marketplace.</p><div class="plat-tags"><span class="plat-tag">Vendor Onboarding</span><span class="plat-tag">Catalog</span><span class="plat-tag">Orders</span></div></div>
-      <div class="plat-card reveal" onclick="location.href='lowes.html'"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#E8EAF6;color:#1A237E;">Lw</div><h4>Lowes</h4></div><span class="status-dot">Active</span></div><p class="plat-desc">Supplier compliance, product content, inventory sync, and performance monitoring on Lowes' supplier platform.</p><div class="plat-tags"><span class="plat-tag">Supplier Setup</span><span class="plat-tag">Compliance</span><span class="plat-tag">Inventory</span></div></div>
-      <div class="plat-card reveal" onclick="location.href='multichannel.html'" style="border:1.5px solid var(--blue-mid);background:var(--blue-light);"><div class="plat-header"><div class="plat-name"><div class="plat-ico" style="background:#DBEAFE;color:#1D4ED8;">MC</div><h4>Multi-Channel</h4></div></div><p class="plat-desc">Also managing Etsy, Target+, Chewy, Overstock — ask me about your specific platform. I likely have experience with it.</p><div class="plat-tags"><span class="plat-tag">Etsy</span><span class="plat-tag">Target+</span><span class="plat-tag">Chewy</span><span class="plat-tag">+More</span></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section class="section-gray">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">How It Works</p>
-      <h2 class="section-title">From Audit to Growth in 4 Steps</h2>
-      <p class="section-sub">Simple onboarding. No long contracts. Real results from week one.</p>
-    </div>
-    <div class="process-track">
-      <div class="pstep reveal"><div class="pstep-num">01</div><h4>Free Store Audit</h4><p>Deep review of your accounts, listings, PPC, and immediate growth opportunities across all platforms.</p></div>
-      <div class="pstep reveal"><div class="pstep-num">02</div><h4>Strategy Call</h4><p>We align on goals, platforms, and budget — then build a 90-day roadmap tailored to your brand.</p></div>
-      <div class="pstep reveal"><div class="pstep-num">03</div><h4>Execution</h4><p>I take full ownership — account management, campaign launches, and listing optimization all handled.</p></div>
-      <div class="pstep reveal"><div class="pstep-num">04</div><h4>Scale & Report</h4><p>Weekly reports, data-driven decisions, and continuous scaling across every active channel.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- UPWORK -->
-<section class="section-white" id="upwork">
-  <div class="container">
-    <div class="upwork-grid">
-      <div class="uw-card reveal">
-        <div class="uw-logo">⬆ Upwork</div>
-        <div class="uw-stats">
-          <div class="uw-stat"><div class="uw-val">100%</div><div class="uw-lbl">Job Success</div></div>
-          <div class="uw-stat"><div class="uw-val">500+</div><div class="uw-lbl">Hours Worked</div></div>
-          <div class="uw-stat"><div class="uw-val">50+</div><div class="uw-lbl">Jobs Done</div></div>
-          <div class="uw-stat"><div class="uw-val">5.0★</div><div class="uw-lbl">Rating</div></div>
-        </div>
-        <div class="uw-badges">
-          <span class="uw-badge">🏆 Top Rated</span>
-          <span class="uw-badge">✅ ID Verified</span>
-          <span class="uw-badge">⚡ Expert Vetted</span>
-        </div>
-        <a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork" style="width:100%;justify-content:center;">View Full Profile →</a>
-      </div>
-      <div class="reveal">
-        <p class="eyebrow">Available on Upwork</p>
-        <h2 class="section-title">Why Hire Me on <span style="color:#14B561;">Upwork?</span></h2>
-        <p class="section-sub">Upwork gives you secure payments, full transparency, and dispute protection. Hire with complete confidence.</p>
-        <div class="uw-reasons">
-          <div class="uw-reason"><div class="ur-ico">🛡</div><div class="ur-text"><h5>Secure Escrow Payments</h5><p>Funds held in escrow until you approve the work. Zero financial risk.</p></div></div>
-          <div class="uw-reason"><div class="ur-ico">📊</div><div class="ur-text"><h5>Full Time Tracking & Transparency</h5><p>Track every hour with screenshots and activity logs in real time.</p></div></div>
-          <div class="uw-reason"><div class="ur-ico">⭐</div><div class="ur-text"><h5>Verified Reviews & 100% JSS</h5><p>50+ completed jobs, verified 5-star reviews, and a perfect Job Success Score.</p></div></div>
-          <div class="uw-reason"><div class="ur-ico">🚀</div><div class="ur-text"><h5>Start Within 24 Hours</h5><p>Send a direct contract — I respond within hours and can start immediately.</p></div></div>
-        </div>
-        <div style="margin-top:28px;"><a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="btn-upwork">🟢 Hire Me on Upwork →</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="section-gray" id="testimonials">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">Client Testimonials</p>
-      <h2 class="section-title">What Clients Say</h2>
-      <p class="section-sub">Real results from real brands across every marketplace.</p>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"EStoreAxis transformed our Amazon PPC. ACOS dropped from 42% to 18% in 6 weeks and monthly revenue tripled. Exceptional work."</p><div class="testi-author"><div class="ta-av">JM</div><div><div class="ta-name">James Mitchell</div><div class="ta-role">Amazon Seller, USA</div><span class="ta-plat" style="background:#FFF3E0;color:#C2410C;">Amazon</span></div></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"We launched on Walmart and Home Depot from scratch. EStoreAxis handled everything — setup, listings, ads. Orders grow every month."</p><div class="testi-author"><div class="ta-av" style="background:#1D4ED8;">SA</div><div><div class="ta-name">Sara Ahmed</div><div class="ta-role">Home Goods Brand, Canada</div><span class="ta-plat" style="background:#E3F2FD;color:#1D4ED8;">Walmart</span></div></div></div>
-      <div class="testi-card reveal"><div class="testi-stars">★★★★★</div><p class="testi-text">"Our eBay store went from 200 to 1,400 monthly orders in 3 months. The Promoted Listings strategy and listing optimization were game changers."</p><div class="testi-author"><div class="ta-av" style="background:#DC2626;">RP</div><div><div class="ta-name">Raj Patel</div><div class="ta-role">Electronics Reseller, UK</div><span class="ta-plat" style="background:#FCE4EC;color:#DC2626;">eBay</span></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA BANNER -->
-<section class="cta-banner">
-  <div class="cta-inner">
-    <div class="reveal">
-      <p class="eyebrow" style="color:#60A5FA;">Free Audit</p>
-      <h2 class="section-title" style="color:#fff;">Ready to Experience Exponential Growth?</h2>
-      <p class="section-sub" style="color:#9CA3AF;">Get a free store audit to identify exactly how to scale your eCommerce revenue — no strings attached.</p>
-      <a href="#contact" class="btn-primary">Claim Your Free Audit →</a>
-    </div>
-    <div class="audit-card reveal">
-      <h4>What's included in the free audit</h4>
-      <p class="ac-sub">A complete review across all your active channels</p>
-      <ul class="audit-items">
-        <li>PPC campaign performance analysis</li>
-        <li>Listing SEO & keyword gap audit</li>
-        <li>Competitor benchmarking report</li>
-        <li>Account health & compliance check</li>
-        <li>Custom 90-day growth roadmap</li>
-      </ul>
-      <a href="#contact" class="btn-primary" style="width:100%;justify-content:center;">Get My Free Audit →</a>
-    </div>
-  </div>
-</section>
-
-<!-- CASE STUDIES -->
-<section class="section-white" id="cases">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">Case Studies</p>
-      <h2 class="section-title">Real Results, Real Brands</h2>
-      <p class="section-sub">Measurable growth delivered across every platform we manage.</p>
-    </div>
-    <div class="cases-grid">
-      <div class="case-card reveal"><div class="case-img" style="background:#FFF3E0;">📈<span class="case-plat-tag" style="background:#FEF3C7;color:#B45309;">Amazon</span></div><div class="case-body"><h4>Skyrocket 120% Sales for Home & Kitchen Brand</h4><p>Restructured Sponsored Products with SKAG campaigns and negative targeting. Combined with A+ Content redesign — 120% sales growth in 90 days.</p><div class="case-metrics"><div><div class="cm-val">+120%</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">-34%</div><div class="cm-lbl">ACOS</div></div><div><div class="cm-val">90 days</div><div class="cm-lbl">Timeline</div></div></div></div></div>
-      <div class="case-card reveal"><div class="case-img" style="background:#FCE4EC;">🏆<span class="case-plat-tag" style="background:#FCE4EC;color:#B91C1C;">eBay</span></div><div class="case-body"><h4>$1.8M Incremental Revenue in Sports & Outdoors</h4><p>Built a Promoted Listings strategy at 3% ad rate on high-velocity SKUs. Terapeak-backed pricing to dominate category search results.</p><div class="case-metrics"><div><div class="cm-val">$1.8M</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">7x</div><div class="cm-lbl">ROAS</div></div><div><div class="cm-val">6 months</div><div class="cm-lbl">Timeline</div></div></div></div></div>
-      <div class="case-card reveal"><div class="case-img" style="background:#E3F2FD;">🛒<span class="case-plat-tag" style="background:#DBEAFE;color:#1D4ED8;">Walmart</span></div><div class="case-body"><h4>Walmart Launch — 0 to $250K in 60 Days</h4><p>Onboarded a kitchenware brand from scratch — listings, SEO, and Connect Ads to drive early velocity. $250K revenue in first 60 days.</p><div class="case-metrics"><div><div class="cm-val">$250K</div><div class="cm-lbl">Revenue</div></div><div><div class="cm-val">60 days</div><div class="cm-lbl">Timeline</div></div><div><div class="cm-val">4.8★</div><div class="cm-lbl">Seller Rating</div></div></div></div></div>
-      <div class="case-card reveal"><div class="case-img" style="background:#FBE9E7;">🏠<span class="case-plat-tag" style="background:#FBE9E7;color:#C2410C;">Home Depot</span></div><div class="case-body"><h4>HD Vendor Setup & $180K Q1 Revenue</h4><p>Managed full vendor onboarding, product content compliance, and catalog submission. Delivered $180K Q1 revenue for a tools brand's first HD launch.</p><div class="case-metrics"><div><div class="cm-val">$180K</div><div class="cm-lbl">Q1 Revenue</div></div><div><div class="cm-val">48 hrs</div><div class="cm-lbl">Onboarding</div></div><div><div class="cm-val">100%</div><div class="cm-lbl">Compliance</div></div></div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="section-gray" id="team">
-  <div class="container">
-    <div class="section-header center reveal">
-      <p class="eyebrow">The Team</p>
-      <h2 class="section-title">Meet EStoreAxis</h2>
-      <p class="section-sub">A dedicated team of eCommerce specialists with deep platform expertise.</p>
-    </div>
-    <div class="team-grid">
-      <div class="team-card reveal">
-        <div class="team-avatar" style="background:#EEF4FF;"><div class="av-initials" style="background:var(--blue);">YN</div><span class="team-role-pill" style="background:#DBEAFE;color:#1D4ED8;">Founder</span></div>
-        <div class="team-body"><h4>Your Name</h4><div class="team-role-txt">Founder & Lead Strategist</div><div class="team-tags"><span class="team-tag">Amazon PPC</span><span class="team-tag">Walmart</span><span class="team-tag">Multi-Channel</span></div><p class="team-bio">5+ years managing 150+ brands across all major US marketplaces. Specializing in PPC and multi-channel growth strategy.</p><div class="team-links"><a href="https://www.upwork.com/freelancers/YOUR-ID" target="_blank" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a><a href="mailto:info@estoreaxis.com" class="team-link">✉</a></div></div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-avatar" style="background:#FFF3E0;"><div class="av-initials" style="background:#EA6C00;">AM</div><span class="team-role-pill" style="background:#FEF3C7;color:#B45309;">Amazon</span></div>
-        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Amazon PPC Specialist</div><div class="team-tags"><span class="team-tag">Sponsored Ads</span><span class="team-tag">DSP</span><span class="team-tag">ACOS</span></div><p class="team-bio">Certified Amazon Ads specialist. Managed $3M+ in annual ad spend with consistent ROAS improvement across all ad types.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a></div></div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-avatar" style="background:#EEF4FF;"><div class="av-initials" style="background:#1D4ED8;">LO</div><span class="team-role-pill" style="background:#DBEAFE;color:#1D4ED8;">SEO</span></div>
-        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Listing & SEO Specialist</div><div class="team-tags"><span class="team-tag">Helium 10</span><span class="team-tag">SEO</span><span class="team-tag">A+ Content</span></div><p class="team-bio">Expert in listing optimization across Amazon, Walmart, and eBay. Uses Helium 10 to build keyword strategies that rank and convert.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="LinkedIn">in</a></div></div>
-      </div>
-      <div class="team-card reveal">
-        <div class="team-avatar" style="background:#FCE4EC;"><div class="av-initials" style="background:#DC2626;">GD</div><span class="team-role-pill" style="background:#FCE4EC;color:#B91C1C;">Design</span></div>
-        <div class="team-body"><h4>Team Member</h4><div class="team-role-txt">Graphic Designer & A+ Content</div><div class="team-tags"><span class="team-tag">Infographics</span><span class="team-tag">A+ Content</span><span class="team-tag">Storefront</span></div><p class="team-bio">Creative designer specializing in product infographics, A+ Content modules, and brand storefronts that convert browsers into buyers.</p><div class="team-links"><a href="#" class="team-link upwork" title="Upwork">⬆</a><a href="#" class="team-link" title="Behance">Be</a></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="section-white" id="faq">
-  <div class="container">
-    <div class="section-header center reveal" style="margin-bottom:40px;">
-      <p class="eyebrow">FAQs</p>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-    </div>
-    <div class="faq-wrap reveal">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">What makes EStoreAxis different from other eCommerce managers?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Unlike large agencies, every client gets direct, personal attention. With hands-on expertise across all 6 major US marketplaces — Amazon, Walmart, eBay, Home Depot, Lowes, and more — I bring a unified multi-channel strategy most agencies can't match. Every decision is data-driven and every report is transparent.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Do you only work with Amazon sellers, or other platforms too?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">I actively manage accounts on Amazon, Walmart, eBay, Home Depot, Lowes, and several niche marketplaces. I specialize in multi-channel management — helping brands grow across all their active channels simultaneously.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How much do your services cost?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Pricing is customized based on platforms, ad spend level, and scope of services required. I offer flexible monthly retainers starting from $499/month for single-platform management. Contact me for a custom quote tailored to your brand's needs.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Can you help if I'm just starting out?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Yes — I work with brands at all stages, from first-time sellers launching their first Amazon listing to 7-figure brands scaling across multiple channels. My onboarding is fast and smooth regardless of your experience level.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">How quickly can I expect to see results?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">Most clients see measurable improvements within the first 2–4 weeks — reduced ACOS, improved listing rankings, or increased order volume. Significant revenue growth typically follows within 60–90 days of full campaign optimization.</div></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Will I deal with you directly or a team?<span class="faq-ico">+</span></button><div class="faq-a"><div class="faq-a-inner">You deal directly with me — not a rotating team of account managers. I personally oversee every client account, which means consistent communication, faster decisions, and someone who genuinely knows your business inside and out.</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- MODAL -->
-<div class="modal-bg" id="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
-<div id="site-footer"></div>
-<script src="shared.js"></script>
 <script>
-// Counter animation
-const counters = document.querySelectorAll('[data-count]');
-const counterObserver = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const el = e.target, target = +el.dataset.count, pre = el.dataset.prefix||'', suf = el.dataset.suffix||'';
-    let cur = 0; const step = target / 60;
-    const t = setInterval(() => { cur = Math.min(cur + step, target); el.textContent = pre + Math.floor(cur) + suf; if (cur >= target) clearInterval(t); }, 24);
-    counterObserver.unobserve(el);
-  });
-}, {threshold:.5});
-counters.forEach(el => counterObserver.observe(el));
-
-// FAQ
-function toggleFaq(btn) {
-  const item = btn.parentElement, isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-a').style.maxHeight = '0'; });
-  if (!isOpen) { item.classList.add('open'); item.querySelector('.faq-a').style.maxHeight = item.querySelector('.faq-a-inner').scrollHeight + 'px'; }
-}
-
-// Modal
-const MODALS = {
-  'amazon-ppc':{icon:'🎯',title:'Amazon PPC Management',sub:'Maximize return on every ad dollar on Amazon.',features:['Sponsored Products, Brands & Display campaigns','Single keyword ad group structures','Bid optimization using dayparting','Negative keyword mining to cut wasted spend','Weekly ACOS/ROAS performance reports','Amazon DSP programmatic campaigns','Competitor conquesting strategies']},
-  'amazon-acct':{icon:'🏪',title:'Amazon Account Management',sub:'Full Seller Central management from listings to logistics.',features:['Listing creation & SEO optimization','A+ Content (EBC) and Brand Storefront design','Brand Registry setup & management','FBA inventory planning & shipment creation','Account health monitoring & appeals','Variation listing management','Review & feedback strategy']},
-  'listing':{icon:'✏️',title:'Listing Optimization & SEO',sub:'Rank higher. Convert better. Sell more.',features:['In-depth keyword research (Helium 10 / Jungle Scout)','SEO-optimized titles for all major platforms','High-converting bullet points & descriptions','Backend search term optimization','Competitor analysis & keyword gap research','Indexing verification & audit']},
-  'design':{icon:'🎨',title:'Graphic Design & A+ Content',sub:'Professional visuals that build trust and drive conversions.',features:['Product photography retouching & editing','Lifestyle image creation & composition','Infographic design (6–8 image sets)','A+ Content module design & copywriting','Enhanced Brand Content (EBC)','Brand Storefront design & layout','Social media ad creatives']},
+const MD={
+ appc:{i:'🎯',t:'Amazon PPC Management',s:'Maximize return on every Amazon ad dollar.',f:['Sponsored Products, Brands & Display campaigns','SKAG campaign architecture','Bid optimization with dayparting','Negative keyword mining','Weekly ACOS/ROAS reports','Amazon DSP campaigns','Competitor conquesting']},
+ aam:{i:'🏪',t:'Amazon Account Management',s:'Full Seller Central management from listings to logistics.',f:['Listing creation & SEO optimization','A+ Content & Brand Storefront','Brand Registry management','FBA inventory planning','Account health monitoring','Review & feedback strategy']},
+ lo:{i:'✏️',t:'Listing Optimization & SEO',s:'Rank higher. Convert better. Sell more.',f:['Keyword research (Helium 10)','SEO-optimized titles for all platforms','High-converting bullet points','Backend keyword optimization','Competitor analysis','Index verification & audit']},
+ gd:{i:'🎨',t:'Graphic Design & A+ Content',s:'Professional visuals that build trust and drive conversions.',f:['Product photography retouching','Lifestyle image composition','Infographic design (6–8 images)','A+ Content module design','Brand Storefront design','Social media ad creatives']},
 };
-function openModal(key) {
-  const d = MODALS[key]; if (!d) return;
-  document.getElementById('modal-body').innerHTML = `<div class="modal-icon">${d.icon}</div><h3>${d.title}</h3><p class="modal-sub">${d.sub}</p><ul class="modal-features">${d.features.map(f=>`<li>${f}</li>`).join('')}</ul><a href="#contact" onclick="closeModal()" class="btn-primary" style="width:100%;justify-content:center;">Get Started →</a>`;
-  document.getElementById('modal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+function openM(k){const d=MD[k];if(!d)return;document.getElementById('mbody').innerHTML=`<div class="mico">${d.i}</div><h3>${d.t}</h3><p class="msub">${d.s}</p><ul class="mfeats">${d.f.map(x=>`<li>${x}</li>`).join('')}</ul><a href="#contact" onclick="closeM()" class="btnp" style="width:100%;justify-content:center;display:flex;">Get Started →</a>`;document.getElementById('modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeM(){document.getElementById('modal').classList.remove('open');document.body.style.overflow='';}
+</script>
 
-// Form submit
-function handleForm(e, form) {
-  e.preventDefault();
-  const btn = form.querySelector('.hf-btn');
-  btn.textContent = '✅ Sent! I\'ll reply within 24 hours.';
-  btn.style.background = '#16A34A';
-  setTimeout(() => { btn.textContent = 'Send Message →'; btn.style.background = ''; form.reset(); }, 4000);
-}
+<footer class="ftr">
+  <div class="ftrt">
+    <div class="ftrbrand">
+      <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:14px;"><div class="lmk"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 3L3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div><span class="ltx" style="color:#fff;">EStore<b style="color:#60A5FA;">Axis</b></span></a>
+      <p>Multi-platform eCommerce management specialist helping brands grow on Amazon, Walmart, eBay, Home Depot, Lowes &amp; beyond.</p>
+      <div class="ftrsoc"><a href="#">in</a><a href="#">f</a><a href="#">ig</a><a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" style="background:#14B561;border-color:#14B561;color:#fff;">⬆</a></div>
+    </div>
+    <div class="ftrcols">
+      <div class="ftrcol"><h4>Platforms</h4><ul><li><a href="amazon.html">Amazon</a></li><li><a href="walmart.html">Walmart</a></li><li><a href="ebay.html">eBay</a></li><li><a href="homedepot.html">Home Depot</a></li><li><a href="lowes.html">Lowes</a></li><li><a href="multichannel.html">Multi-Channel</a></li></ul></div>
+      <div class="ftrcol"><h4>Company</h4><ul><li><a href="index.html#about">About Us</a></li><li><a href="index.html#cases">Case Studies</a></li><li><a href="index.html#testimonials">Testimonials</a></li><li><a href="index.html#team">Our Team</a></li><li><a href="index.html#faq">FAQs</a></li></ul></div>
+      <div class="ftrcol"><h4>Contact</h4><ul><li><a href="tel:+12345678900">+1 (234) 567-8900</a></li><li><a href="mailto:info@estoreaxis.com">info@estoreaxis.com</a></li><li><a href="https://wa.me/YOURPHONE" target="_blank">WhatsApp</a></li><li><a href="index.html#contact">Schedule a Call</a></li></ul></div>
+    </div>
+  </div>
+  <div class="ftrb"><p>© 2025 EStoreAxis. All rights reserved.</p><div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+<a href="https://wa.me/YOURPHONE?text=Hi!%20Interested%20in%20EStoreAxis%20services." target="_blank" class="wa" title="WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script>
 
-// Show body after styles load
-document.body.style.visibility = 'visible';
+window.addEventListener('scroll',()=>{document.getElementById('hdr')?.classList.toggle('sc',window.scrollY>20);});
+function toggleNav(){document.getElementById('hbg').classList.toggle('open');document.getElementById('mainnav').classList.toggle('open');}
+const _ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');_ro.unobserve(e.target);}}),{threshold:.1});
+document.querySelectorAll('.rv').forEach(el=>_ro.observe(el));
+function faq(btn){const it=btn.parentElement,op=it.classList.contains('open');document.querySelectorAll('.fi.open').forEach(i=>{i.classList.remove('open');i.querySelector('.fa').style.maxHeight='0';});if(!op){it.classList.add('open');it.querySelector('.fa').style.maxHeight=it.querySelector('.fai').scrollHeight+'px';}}
+function fsub(e,f,sel){e.preventDefault();const b=f.querySelector(sel),orig=b.textContent;b.textContent="✅ Sent! I'll reply within 24 hours.";b.style.background='#16A34A';b.style.boxShadow='none';setTimeout(()=>{b.textContent=orig;b.style.background='';b.style.boxShadow='';f.reset();},4000);}
+
 </script>
 </body>
 </html>
