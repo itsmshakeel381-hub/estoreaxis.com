@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Multi-Channel Pricing Strategy – EStoreAxis</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--white:#fff;--g50:#F9FAFB;--g100:#F3F4F6;--g200:#E5E7EB;--g300:#D1D5DB;--g400:#9CA3AF;--g500:#6B7280;--g600:#4B5563;--g700:#374151;--g800:#1F2937;--g900:#111827;--ink:#0A0A0B;--blue:#0066FF;--bd:#0052CC;--bl:#EEF4FF;--bm:#DBEAFE;--grn:#16A34A;--amb:#F59E0B;--r:10px;--rl:16px;--rxl:20px;}
+html{scroll-behavior:smooth;}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:#fff;color:#0A0A0B;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:#f1f1f1;}::-webkit-scrollbar-thumb{background:#0066FF;border-radius:3px;}
+.topbar{background:#111827;padding:10px 0;}
+.tb{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.tbl{display:flex;gap:20px;}
+.tbl a,.topbar a{color:#9CA3AF;font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:5px;transition:.15s;}
+.tbl a:hover{color:#fff;}
+.tbup{background:#14B561;color:#fff!important;font-size:12px;font-weight:700;padding:4px 14px;border-radius:20px;}
+.tbsoc{display:flex;gap:6px;}
+.tbsoc a{width:26px;height:26px;background:#1F2937;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#9CA3AF;transition:.15s;}
+.tbsoc a:hover{background:#0066FF;color:#fff;}
+.hdr{background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid #E5E7EB;position:sticky;top:0;z-index:1000;transition:box-shadow .2s;}
+.hdr.sc{box-shadow:0 10px 15px -3px rgba(0,0,0,.07),0 4px 6px rgba(0,0,0,.04);}
+.hdrin{max-width:1280px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px;}
+.logo{display:flex;align-items:center;gap:10px;}
+.lmk{width:36px;height:36px;background:#0066FF;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lmk svg{width:18px;height:18px;}
+.ltx{font-size:17px;font-weight:700;color:#0A0A0B;letter-spacing:-.3px;}
+.ltx b{color:#0066FF;}
+.mainnav{display:flex;align-items:center;gap:4px;flex:1;justify-content:center;}
+.mainnav ul{display:flex;align-items:center;gap:2px;list-style:none;}
+.mainnav ul li a{display:flex;align-items:center;gap:4px;padding:8px 13px;border-radius:8px;font-size:13.5px;font-weight:500;color:#4B5563;transition:.15s;white-space:nowrap;}
+.mainnav ul li a:hover,.mainnav ul li a.cur{color:#0A0A0B;background:#F3F4F6;}
+.navact{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.btnupsm{font-size:13px;font-weight:700;color:#14B561;border:1.5px solid #14B561;padding:8px 16px;border-radius:20px;transition:.15s;display:flex;align-items:center;gap:5px;}
+.btnupsm:hover{background:#14B561;color:#fff;}
+.btnpnav{background:#0066FF;color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;transition:.15s;white-space:nowrap;}
+.btnpnav:hover{background:#0052CC;box-shadow:0 4px 12px rgba(0,102,255,.3);}
+.hasmega{position:relative;}
+.hasmega>a svg{transition:.2s;}
+.hasmega:hover>a svg{transform:rotate(180deg);}
+.mega{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:22px;box-shadow:0 25px 50px -12px rgba(0,0,0,.14);z-index:200;width:600px;}
+.hasmega:hover .mega{display:grid;grid-template-columns:1fr 1fr auto;}
+.megalbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#9CA3AF;margin-bottom:10px;}
+.megaa{display:flex;align-items:center;gap:11px;padding:9px;border-radius:10px;transition:.15s;margin-bottom:3px;}
+.megaa:hover{background:#F9FAFB;}
+.megaico{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;flex-shrink:0;}
+.megaa strong{display:block;font-size:13px;font-weight:700;color:#0A0A0B;}
+.megaa span{font-size:12px;color:#6B7280;}
+.megacta{border-left:1px solid #E5E7EB;padding-left:18px;display:flex;flex-direction:column;justify-content:center;gap:12px;}
+.megacta p{font-size:13px;color:#4B5563;line-height:1.5;}
+.btnsm{display:inline-block;background:#0066FF;color:#fff;padding:9px 16px;border-radius:20px;font-size:13px;font-weight:700;transition:.15s;}
+.btnsm:hover{background:#0052CC;}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:1.5px solid #E5E7EB;border-radius:8px;padding:7px 9px;cursor:pointer;}
+.hbg span{display:block;width:18px;height:2px;background:#0A0A0B;border-radius:2px;transition:.25s;}
+.hbg.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.hbg.open span:nth-child(2){opacity:0;}
+.hbg.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.btnp{display:inline-flex;align-items:center;gap:6px;background:#0066FF;color:#fff;padding:13px 26px;border-radius:25px;font-size:14px;font-weight:700;transition:.2s;cursor:pointer;border:none;font-family:inherit;}
+.btnp:hover{background:#0052CC;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,102,255,.35);}
+.btno{display:inline-flex;align-items:center;gap:6px;background:transparent;color:#0A0A0B;padding:12px 24px;border-radius:25px;font-size:14px;font-weight:600;border:1.5px solid #D1D5DB;transition:.2s;}
+.btno:hover{border-color:#0A0A0B;background:#F9FAFB;}
+.btnup{display:inline-flex;align-items:center;gap:7px;background:#14B561;color:#fff;padding:12px 22px;border-radius:25px;font-size:14px;font-weight:700;transition:.2s;}
+.btnup:hover{background:#0fa050;transform:translateY(-1px);box-shadow:0 5px 18px rgba(20,181,97,.3);}
+.ew{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#0066FF;margin-bottom:14px;}
+.ew::before{content:'';width:18px;height:2px;background:#0066FF;border-radius:2px;}
+.sech{font-size:36px;font-weight:800;color:#0A0A0B;line-height:1.15;letter-spacing:-1px;margin-bottom:12px;}
+.secs{font-size:15.5px;color:#6B7280;line-height:1.75;}
+.ctr{text-align:center;}
+.ctr .secs{max-width:540px;margin:0 auto;}
+.wrap{max-width:1280px;margin:0 auto;padding:0 24px;}
+.secw{background:#fff;padding:88px 24px;}
+.secg{background:#F9FAFB;padding:88px 24px;border-top:1px solid #E5E7EB;border-bottom:1px solid #E5E7EB;}
+.secd{background:#111827;padding:88px 24px;}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease;}
+.rv.in{opacity:1;transform:none;}
+.ftr{background:#111827;padding:60px 24px 0;}
+.ftrt{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:280px 1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid #1F2937;}
+.ftrbrand p{font-size:13.5px;color:#9CA3AF;line-height:1.7;margin:14px 0 18px;}
+.ftrsoc{display:flex;gap:8px;}
+.ftrsoc a{width:34px;height:34px;background:#1F2937;border:1px solid #374151;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;color:#9CA3AF;transition:.15s;}
+.ftrsoc a:hover{background:#0066FF;color:#fff;border-color:#0066FF;}
+.ftrcols{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+.ftrcol h4{font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#6B7280;margin-bottom:14px;}
+.ftrcol ul{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.ftrcol ul a{font-size:13.5px;color:#D1D5DB;transition:.15s;}
+.ftrcol ul a:hover{color:#fff;}
+.ftrb{max-width:1280px;margin:0 auto;padding:18px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.ftrb p,.ftrb a{font-size:12.5px;color:#6B7280;}
+.ftrb a:hover{color:#9CA3AF;}
+.ftrb div{display:flex;gap:18px;}
+.wa{position:fixed;bottom:26px;right:26px;z-index:999;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:.2s;}
+.wa:hover{transform:scale(1.1);}
+.wa svg{width:26px;height:26px;}
+.fi{border-bottom:1px solid #F3F4F6;}
+.fq{width:100%;text-align:left;background:none;border:none;padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:15px;font-weight:600;color:#0A0A0B;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;}
+.fq:hover{color:#0066FF;}
+.fico{width:26px;height:26px;border:1.5px solid #E5E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;color:#9CA3AF;flex-shrink:0;transition:.3s;}
+.fi.open .fico{transform:rotate(45deg);border-color:#0066FF;color:#0066FF;}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fai{padding:0 0 16px;font-size:14px;color:#6B7280;line-height:1.75;}
+@media(max-width:1024px){
+  .mainnav ul,.navact{display:none;}
+  .hbg{display:flex;}
+  .mainnav.open ul{display:flex;flex-direction:column;position:fixed;inset:0;top:68px;background:#fff;padding:20px 24px;gap:2px;z-index:999;overflow-y:auto;}
+  .mainnav.open .navact{display:flex;flex-direction:column;position:fixed;bottom:0;left:0;right:0;background:#fff;padding:14px 24px;border-top:1px solid #E5E7EB;z-index:999;}
+  .mainnav.open ul li a{padding:13px 14px;font-size:15px;}
+  .mega{display:none!important;}
+  .ftrt{grid-template-columns:1fr;}
+  .ftrcols{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:640px){.secw,.secg,.secd{padding:64px 20px;}.sech{font-size:28px;}.ftrcols{grid-template-columns:1fr 1fr;}}
+
+
+/* HERO */
+
+.svc-hero{background:#fff;padding:60px 24px 0;}
+.svc-hero-in{max-width:1280px;margin:0 auto;padding-bottom:60px;}
+.bcrumb{font-size:13px;color:#6B7280;margin-bottom:20px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.bcrumb a{color:#0066FF;}.bcrumb .sep{color:#D1D5DB;}
+.svc-grid{display:grid;grid-template-columns:1fr 400px;gap:52px;align-items:start;}
+.svc-badge{display:inline-flex;align-items:center;gap:8px;background:#EEF4FF;border:1px solid rgba(0,102,255,.15);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:#1D4ED8;text-transform:uppercase;letter-spacing:.6px;margin-bottom:16px;}
+.svc-h1{font-size:42px;font-weight:800;line-height:1.1;letter-spacing:-1.5px;color:#0A0A0B;margin-bottom:16px;}
+.svc-h1 em{font-style:normal;color:#0066FF;}
+.svc-desc{font-size:15.5px;color:#6B7280;line-height:1.75;margin-bottom:22px;}
+.krow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:24px;}
+.kpill{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:10px;padding:12px 16px;text-align:center;min-width:90px;}
+.kpill-v{font-size:22px;font-weight:800;color:#0066FF;letter-spacing:-1px;}
+.kpill-l{font-size:11px;color:#6B7280;font-weight:600;text-transform:uppercase;}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+.plat-back{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:#0066FF;border:1.5px solid rgba(0,102,255,.15);background:#EEF4FF;padding:9px 16px;border-radius:20px;transition:.15s;}
+.plat-back:hover{background:#0066FF;color:#fff;}
+.sfcard{background:#fff;border:1px solid #E5E7EB;border-radius:18px;padding:26px;box-shadow:0 10px 30px rgba(0,0,0,.08);position:sticky;top:88px;}
+.sft{font-size:17px;font-weight:700;color:#0A0A0B;margin-bottom:4px;}
+.sfs{font-size:13px;color:#6B7280;margin-bottom:16px;display:flex;align-items:center;gap:5px;}
+.sfs::before{content:'';width:7px;height:7px;background:#22C55E;border-radius:50%;}
+.sf input,.sf select,.sf textarea{width:100%;background:#F9FAFB;border:1.5px solid #E5E7EB;border-radius:9px;padding:10px 13px;color:#0A0A0B;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:500;outline:none;transition:.2s;margin-bottom:10px;}
+.sf input:focus,.sf select:focus,.sf textarea:focus{border-color:#0066FF;background:#fff;box-shadow:0 0 0 3px rgba(0,102,255,.15);}
+.sf select option{background:#fff;}.sf textarea{min-height:80px;resize:vertical;}
+.sfbtn{width:100%;background:#0066FF;color:#fff;border:none;padding:12px;border-radius:25px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:13.5px;cursor:pointer;transition:.2s;}
+.sfbtn:hover{background:#0052CC;}
+.sep-line{height:1px;background:#F3F4F6;margin:0 24px;}
+.content-wrap{max-width:1280px;margin:0 auto;padding:0 24px;}
+.sec{padding:60px 0;border-bottom:1px solid #F3F4F6;}
+.sec:last-child{border-bottom:none;}
+.sec-ew{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#0066FF;margin-bottom:10px;display:flex;align-items:center;gap:5px;}
+.sec-ew::before{content:'';width:14px;height:2px;background:#0066FF;border-radius:2px;}
+.sec-h2{font-size:28px;font-weight:800;color:#0A0A0B;letter-spacing:-.8px;margin-bottom:8px;}
+.sec-sub{font-size:14.5px;color:#6B7280;line-height:1.7;margin-bottom:28px;max-width:680px;}
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.feat-c{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:20px;transition:.2s;}
+.feat-c:hover{border-color:#D1D5DB;box-shadow:0 8px 20px rgba(0,0,0,.06);transform:translateY(-1px);}
+.feat-ci{font-size:22px;margin-bottom:12px;}
+.feat-c h4{font-size:14px;font-weight:700;color:#0A0A0B;margin-bottom:6px;}
+.feat-c p{font-size:12.5px;color:#6B7280;line-height:1.6;}
+.two-c{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.proc-list{display:flex;flex-direction:column;}
+.proc-row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid #F3F4F6;}
+.proc-row:last-child{border-bottom:none;}
+.proc-n{width:38px;height:38px;border-radius:50%;background:#EEF4FF;border:2px solid rgba(0,102,255,.15);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#0066FF;flex-shrink:0;}
+.proc-tx h4{font-size:13.5px;font-weight:700;color:#0A0A0B;margin-bottom:3px;}
+.proc-tx p{font-size:12.5px;color:#6B7280;line-height:1.6;}
+.result-g{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.res-c{background:#EEF4FF;border:1px solid rgba(0,102,255,.15);border-radius:12px;padding:16px;text-align:center;}
+.res-v{font-size:26px;font-weight:800;color:#0066FF;letter-spacing:-1px;}
+.res-l{font-size:11px;color:#6B7280;font-weight:600;text-transform:uppercase;letter-spacing:.4px;}
+.info-box{background:#EEF4FF;border:1px solid rgba(0,102,255,.15);border-radius:12px;padding:20px;margin-bottom:14px;}
+.info-box h4{font-size:14px;font-weight:700;color:#1D4ED8;margin-bottom:6px;}
+.info-box p{font-size:13px;color:#6B7280;line-height:1.6;}
+.pricing-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.price-c{background:#fff;border:1px solid #E5E7EB;border-radius:14px;padding:22px;position:relative;}
+.price-c.feat{border:2px solid #0066FF;}
+.price-pop{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:#0066FF;color:#fff;font-size:10px;font-weight:800;padding:3px 12px;border-radius:20px;white-space:nowrap;}
+.price-c h4{font-size:14.5px;font-weight:700;color:#0A0A0B;margin-bottom:3px;}
+.price-tag{font-size:12px;color:#6B7280;margin-bottom:11px;}
+.price-price{font-size:30px;font-weight:800;color:#0A0A0B;letter-spacing:-1px;margin-bottom:2px;}
+.price-price span{font-size:13px;font-weight:500;color:#6B7280;}
+.price-sub{font-size:11.5px;color:#9CA3AF;margin-bottom:14px;}
+.price-feats{list-style:none;margin-bottom:18px;display:flex;flex-direction:column;gap:7px;}
+.price-feats li{font-size:12.5px;color:#374151;display:flex;align-items:flex-start;gap:7px;}
+.price-feats li::before{content:'✓';color:#0066FF;font-weight:800;font-size:11px;margin-top:1px;flex-shrink:0;}
+.price-feats li.no{color:#D1D5DB;}.price-feats li.no::before{content:'✕';color:#E5E7EB;}
+.price-btn{display:block;text-align:center;padding:10px;border-radius:25px;font-weight:700;font-size:13px;border:1.5px solid #0066FF;color:#0066FF;transition:.15s;}
+.price-btn:hover,.price-c.feat .price-btn{background:#0066FF;color:#fff;}
+.fi{border-bottom:1px solid #F3F4F6;}
+.fq{width:100%;text-align:left;background:none;border:none;padding:16px 0;display:flex;justify-content:space-between;align-items:center;gap:14px;font-size:14.5px;font-weight:600;color:#0A0A0B;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;transition:.15s;}
+.fq:hover{color:#0066FF;}.fico{width:24px;height:24px;border:1.5px solid #E5E7EB;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;color:#9CA3AF;flex-shrink:0;transition:.3s;}
+.fi.open .fico{transform:rotate(45deg);border-color:#0066FF;color:#0066FF;}.fa{max-height:0;overflow:hidden;transition:max-height .35s ease;}.fai{padding:0 0 14px;font-size:13.5px;color:#6B7280;line-height:1.75;}
+.team-mini{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:14px;padding:20px;}
+.team-mini h4{font-size:14px;font-weight:700;color:#0A0A0B;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #E5E7EB;}
+.tm-member{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid #F3F4F6;}
+.tm-member:last-child{border-bottom:none;}
+.tm-av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;flex-shrink:0;}
+.tm-info h5{font-size:13px;font-weight:700;color:#0A0A0B;}
+.tm-info p{font-size:11.5px;color:#6B7280;}
+.tm-links{margin-left:auto;display:flex;gap:5px;}
+.tm-lnk{width:26px;height:26px;border:1px solid #E5E7EB;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;color:#6B7280;text-decoration:none;transition:.15s;}
+.tm-lnk:hover{background:#0066FF;color:#fff;border-color:#0066FF;}
+.tm-lnk.up:hover{background:#14B561;border-color:#14B561;}
+.related-svcs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.rel-svc{background:#fff;border:1px solid #E5E7EB;border-radius:12px;padding:16px;transition:.2s;display:block;}
+.rel-svc:hover{border-color:#0066FF;box-shadow:0 4px 12px rgba(0,0,0,.06);}
+.rel-svc-ico{font-size:20px;margin-bottom:8px;}
+.rel-svc h5{font-size:13px;font-weight:700;color:#0A0A0B;margin-bottom:3px;}
+.rel-svc p{font-size:12px;color:#6B7280;}
+@media(max-width:1024px){.svc-grid,.two-c{grid-template-columns:1fr;gap:28px;}.sfcard{position:static;}.svc-h1{font-size:32px;}.feat-g,.pricing-g{grid-template-columns:1fr 1fr;}.related-svcs{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.feat-g,.pricing-g,.result-g,.related-svcs{grid-template-columns:1fr;}.svc-h1{font-size:26px;}.krow{gap:8px;}}
+
+</style>
+</head>
+<body>
+<div class="topbar"><div class="tb">
+  <div class="tbl">
+    <a href="tel:+12345678900">📞 +1 (234) 567-8900</a>
+    <a href="mailto:info@estoreaxis.com">✉ info@estoreaxis.com</a>
+  </div>
+  <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="tbup">🟢 Available on Upwork</a>
+  <div class="tbsoc"><a href="#">in</a><a href="#">f</a><a href="#">ig</a></div>
+</div></div>
+<header class="hdr" id="hdr"><div class="hdrin">
+  <a href="index.html" class="logo"><div class="lmk"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 3L3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div><span class="ltx">EStore<b>Axis</b></span></a>
+  <button class="hbg" id="hbg" onclick="toggleNav()"><span></span><span></span><span></span></button>
+  <nav class="mainnav" id="mainnav">
+    <ul>
+      <li><a href="index.html" class="cur">Home</a></li>
+      <li class="hasmega"><a href="#">Platforms <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></a>
+        <div class="mega">
+          <div><p class="megalbl">Marketplaces</p>
+            <a href="amazon.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#FF9900"/>
+      <text x="30" y="22" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">amazon</text>
+      <path d="M12 34 Q30 44 48 34" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M44 30 L48 34 L44 38" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg></span><div><strong>Amazon</strong><span>PPC, FBA, A+ Content</span></div></a>
+            <a href="walmart.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0071CE"/>
+      <g fill="#FFC220" transform="translate(30,30)">
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(0)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(60)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(120)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(180)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(240)"/>
+        <ellipse cx="0" cy="-13" rx="3" ry="6" transform="rotate(300)"/>
+      </g>
+    </svg></span><div><strong>Walmart</strong><span>Seller Center, WFS, Ads</span></div></a>
+            <a href="ebay.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="white"/>
+      <text x="7" y="38" font-family="Arial Black,sans-serif" font-weight="900" font-size="18">
+        <tspan fill="#E53238">e</tspan><tspan fill="#0064D2">b</tspan><tspan fill="#F5AF02">a</tspan><tspan fill="#86B817">y</tspan>
+      </text>
+    </svg></span><div><strong>eBay</strong><span>Store, Listings, Promoted</span></div></a>
+          </div>
+          <div><p class="megalbl">Retail Channels</p>
+            <a href="homedepot.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#F96302"/>
+      <polygon points="30,10 50,22 50,50 10,50 10,22" fill="white" opacity="0.15"/>
+      <text x="30" y="28" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="8">THE</text>
+      <text x="30" y="38" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">HOME</text>
+      <text x="30" y="47" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="7">DEPOT</text>
+    </svg></span><div><strong>Home Depot</strong><span>Vendor &amp; catalog mgmt</span></div></a>
+            <a href="lowes.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#004990"/>
+      <text x="30" y="36" text-anchor="middle" fill="white" font-family="Arial Black,sans-serif" font-weight="900" font-size="14">LOWE'S</text>
+    </svg></span><div><strong>Lowes</strong><span>Supplier onboarding</span></div></a>
+            <a href="multichannel.html" class="megaa"><span class="megaico" style="background:transparent;padding:0;overflow:hidden;width:34px;height:34px;"><svg viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <rect width="60" height="60" rx="12" fill="#0066FF"/>
+      <circle cx="30" cy="30" r="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="30" y1="18" x2="30" y2="42" stroke="white" stroke-width="2"/>
+      <ellipse cx="30" cy="30" rx="6" ry="12" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="18" y1="30" x2="42" y2="30" stroke="white" stroke-width="2"/>
+    </svg></span><div><strong>Multi-Channel</strong><span>Unified strategy</span></div></a>
+          </div>
+          <div class="megacta"><p>Not sure where to start?</p><a href="index.html#contact" class="btnsm">Free Audit →</a></div>
+        </div>
+      </li>
+      <li><a href="index.html#cases">Case Studies</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="index.html#faq">FAQs</a></li>
+    </ul>
+    <div class="navact">
+      <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnupsm">🟢 Hire on Upwork</a>
+      <a href="index.html#contact" class="btnpnav">Schedule a Call</a>
+    </div>
+  </nav>
+</div></header>
+
+<section class="svc-hero">
+ <div class="svc-hero-in">
+  <div class="bcrumb"><a href="index.html">Home</a><span class="sep">›</span><a href="multichannel.html">Multi-Channel</a><span class="sep">›</span><span>Multi-Channel Pricing Strategy</span></div>
+  <div class="svc-grid">
+   <div>
+    <div class="svc-badge"><span style="width:22px;height:22px;overflow:hidden;border-radius:5px;flex-shrink:0;"><svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg"><rect width="44" height="44" rx="10" fill="#0066FF"/><circle cx="22" cy="22" r="10" fill="none" stroke="white" stroke-width="1.5"/><line x1="22" y1="12" x2="22" y2="32" stroke="white" stroke-width="1.2"/><ellipse cx="22" cy="22" rx="5" ry="10" fill="none" stroke="white" stroke-width="1.2"/><line x1="12" y1="22" x2="32" y2="22" stroke="white" stroke-width="1.2"/></svg></span>💰 Multi-Channel Pricing Strategy</div>
+    <h1 class="svc-h1 rv"><em>💰</em> Multi-Channel Pricing Strategy</h1>
+    <p class="svc-desc rv">Cross-platform pricing strategy that keeps you Buy Box competitive on every marketplace while maintaining price parity compliance — protecting your accounts and maximizing margin simultaneously.</p>
+    <div class="krow rv"><div class="kpill"><div class="kpill-v">Parity</div><div class="kpill-l">Compliance</div></div><div class="kpill"><div class="kpill-v">Buy Box</div><div class="kpill-l">Optimized</div></div><div class="kpill"><div class="kpill-v">Daily</div><div class="kpill-l">Price Monitoring</div></div><div class="kpill"><div class="kpill-v">All Channels</div><div class="kpill-l">Managed</div></div></div>
+    <div class="hero-ctas rv">
+      <a href="#sf" class="btnp" style="background:#0066FF;">Get Started →</a>
+      <a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" class="btnup">🟢 Hire on Upwork</a>
+      <a href="multichannel.html" class="plat-back">← All Multi-Channel Services</a>
+    </div>
+    <div class="team-mini rv"><h4>Your Multi-Channel Pricing Strategy Specialists</h4><div class="tm-member"><div class="tm-av" style="background:#0066FF;">MS</div><div class="tm-info"><h5>Muhammad Shakeel</h5><p>Founder & Lead Strategist</p></div><div class="tm-links"><a href="founder.html" class="tm-lnk" title="Profile">👤</a><a href="https://www.upwork.com/freelancers/~01701bc49bdd66ec65/" target="_blank" class="tm-lnk up" title="Upwork">⬆</a></div></div><div class="tm-member"><div class="tm-av" style="background:#EA580C;">MA</div><div class="tm-info"><h5>Muhammad AmanUllah</h5><p>PPC Specialist</p></div><div class="tm-links"><a href="https://www.upwork.com/freelancers/~016105bda99498a0c4/" target="_blank" class="tm-lnk up" title="Upwork">⬆</a></div></div><div class="tm-member"><div class="tm-av" style="background:#1D4ED8;">SU</div><div class="tm-info"><h5>SanaUllah</h5><p>Listing & SEO Specialist</p></div><div class="tm-links"><a href="https://www.upwork.com/freelancers/~01dd4855c7d48d2691/" target="_blank" class="tm-lnk up" title="Upwork">⬆</a></div></div><div style="margin-top:12px;"><a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#14B561;color:#fff;padding:9px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;">🟢 Hire via Upwork Agency</a></div></div>
+   </div>
+   <div class="sfcard rv" id="sf">
+      <div class="sft">Get Started with Multi-Channel Pricing Strategy</div>
+      <div class="sfs">Free consultation — 24hr response</div>
+      <form class="sf" onsubmit="sfSub(event,this)">
+        <input type="text" placeholder="Your Name" required/>
+        <input type="email" placeholder="Email Address" required/>
+        <input type="tel" placeholder="Phone Number"/>
+        <input type="url" placeholder="Store / Product URL (optional)"/>
+        <textarea placeholder="Tell me about your goals for Multi-Channel Pricing Strategy..."></textarea>
+        <button type="submit" class="sfbtn">Send Message →</button>
+      </form>
+    </div>
+  </div>
+ </div>
+</section>
+<div class="sep-line"></div>
+<div class="content-wrap">
+
+ <div class="sec">
+  <p class="sec-ew">What's Included</p>
+  <h2 class="sec-h2 rv">Everything You Get with Multi-Channel Pricing Strategy</h2>
+  <p class="sec-sub rv">Cross-platform pricing strategy that keeps you Buy Box competitive on every marketplace while maintaining price parity compliance — protecting your accounts and maximizing margin simultaneously.</p>
+  <div class="feat-g"><div class="feat-c rv"><div class="feat-ci">⚖️</div><h4>Price Parity Compliance</h4><p>Walmart and Home Depot actively monitor your prices on other platforms. Getting this wrong risks delisting. I monitor cross-channel pricing continuously to keep you compliant.</p></div><div class="feat-c rv"><div class="feat-ci">💡</div><h4>Platform Pricing Strategy</h4><p>While maintaining parity, optimizing price points for each platform's fee structure, buyer expectations, and competition level to maximize margin everywhere.</p></div><div class="feat-c rv"><div class="feat-ci">🤖</div><h4>Automated Repricing</h4><p>Setting up automated repricing rules on Amazon (Buy Box optimization) and other channels — staying competitive without daily manual price changes.</p></div><div class="feat-c rv"><div class="feat-ci">📊</div><h4>Margin Analysis</h4><p>Per-SKU, per-channel margin analysis accounting for all fees — so you know exactly which products make money on which platforms and at what price point.</p></div><div class="feat-c rv"><div class="feat-ci">🏷</div><h4>Promotional Pricing</h4><p>Coordinating promotions across platforms — Amazon Lightning Deals, Walmart Rollbacks, eBay Promotions — maximizing promotional lift without price parity violations.</p></div><div class="feat-c rv"><div class="feat-ci">📈</div><h4>MAP Enforcement</h4><p>Monitoring third-party sellers on all platforms for MAP (Minimum Advertised Price) violations and taking enforcement action to protect your brand pricing integrity.</p></div></div>
+ </div>
+
+ <div class="sec">
+  <div class="two-c">
+   <div>
+    <p class="sec-ew">How It Works</p>
+    <h2 class="sec-h2 rv">My Multi-Channel Pricing Strategy Process</h2>
+    <p class="sec-sub rv">A proven, step-by-step approach that delivers measurable results from week one.</p>
+    <div class="proc-list"><div class="proc-row rv"><div class="proc-n">01</div><div class="proc-tx"><h4>Audit</h4><p>Full audit of all active platforms — performance, gaps, and opportunities.</p></div></div><div class="proc-row rv"><div class="proc-n">02</div><div class="proc-tx"><h4>Strategy</h4><p>Build unified multi-channel strategy and 90-day roadmap.</p></div></div><div class="proc-row rv"><div class="proc-n">03</div><div class="proc-tx"><h4>Implementation</h4><p>Set up tools, sync inventory, align pricing and branding.</p></div></div><div class="proc-row rv"><div class="proc-n">04</div><div class="proc-tx"><h4>Monitor</h4><p>Weekly cross-platform monitoring and performance tracking.</p></div></div><div class="proc-row rv"><div class="proc-n">05</div><div class="proc-tx"><h4>Report</h4><p>Weekly unified report with all-channel KPIs and action plan.</p></div></div></div>
+   </div>
+   <div>
+    <p class="sec-ew">Results</p>
+    <h2 class="sec-h2 rv">What Clients Achieve</h2>
+    <div class="result-g" style="margin-bottom:20px;"><div class="res-c rv"><div class="res-v">6+</div><div class="res-l">Platforms Managed</div></div><div class="res-c rv"><div class="res-v">3x</div><div class="res-l">Avg Revenue Lift</div></div><div class="res-c rv"><div class="res-v">Zero</div><div class="res-l">Oversells</div></div><div class="res-c rv"><div class="res-v">Weekly</div><div class="res-l">Unified Reports</div></div></div>
+    <div class="info-box rv"><h4>Why Multi-Channel?</h4><p>Selling on one platform is a business risk. Brands that diversify across Amazon, Walmart, eBay, and retail channels are more resilient, reach more buyers, and typically generate 2–3x more revenue than single-channel sellers.</p></div><div class="info-box rv"><h4>Multi-Channel Pricing Strategy at Scale</h4><p>As you add more platforms, multi-channel pricing strategy becomes increasingly complex. I handle the complexity — using the right tools and processes to keep everything synchronized and consistent as your brand scales.</p></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sec">
+  <p class="sec-ew">Pricing</p>
+  <h2 class="sec-h2 rv">Transparent Pricing Plans</h2>
+  <p class="sec-sub rv">No hidden fees. No long-term contracts. All plans include weekly reporting and direct communication.</p>
+  <div class="pricing-g"><div class="price-c rv"><h4>Dual Channel</h4><p class="price-tag">2 platforms managed</p><div class="price-price">$999<span>/mo</span></div><p class="price-sub">Monthly retainer</p><ul class="price-feats"><li>2 platform management</li><li>Multi-Channel Pricing Strategy on both</li><li>Inventory sync</li><li>Weekly unified report</li><li>Priority support</li><li class="no">Custom analytics</li></ul><a href="#sf" class="price-btn">Get Started</a></div><div class="price-cfeat rv"><div class="price-pop">Most Popular</div><h4>Full Multi</h4><p class="price-tag">3–5 platforms</p><div class="price-price">$1,799<span>/mo</span></div><p class="price-sub">Monthly retainer</p><ul class="price-feats"><li>Up to 5 platforms</li><li>Full Multi-Channel Pricing Strategy</li><li>Real-time inventory sync</li><li>Unified reporting dashboard</li><li>Weekly strategy calls</li><li>Priority support</li><li class="no">Custom integrations</li></ul><a href="#sf" class="price-btn">Get Started</a></div><div class="price-c rv"><h4>Enterprise</h4><p class="price-tag">6+ platforms</p><div class="price-price">Custom<span></span></div><p class="price-sub">Tailored retainer</p><ul class="price-feats"><li>All platforms</li><li>Dedicated team</li><li>Custom analytics & BI</li><li>Quarterly business reviews</li><li>Advanced tool integrations</li><li>Daily reporting</li><li>SLA-backed support</li></ul><a href="#sf" class="price-btn">Contact for Quote</a></div></div>
+ </div>
+
+ <div class="sec">
+  <p class="sec-ew">FAQs</p>
+  <h2 class="sec-h2 rv">Frequently Asked Questions</h2>
+  <div style="max-width:720px;"><div class="fi"><button class="fq" onclick="faq(this)">Which platforms should I expand to first?<span class="fico">+</span></button><div class="fa"><div class="fai">For most product categories, after Amazon the best expansion order is: (1) Walmart for volume, (2) eBay for incremental revenue, (3) Home Depot/Lowes for home improvement brands. I analyze your specific category and make data-backed expansion recommendations.</div></div></div><div class="fi"><button class="fq" onclick="faq(this)">How do you prevent overselling across platforms?<span class="fico">+</span></button><div class="fa"><div class="fai">I use inventory management tools (Linnworks, Zentail) that sync stock levels across all channels in near real-time, plus channel-specific safety stock buffers to prevent overselling even during high-velocity periods.</div></div></div><div class="fi"><button class="fq" onclick="faq(this)">How much extra revenue can multi-channel add?<span class="fico">+</span></button><div class="fa"><div class="fai">Most brands adding Walmart to Amazon see 20–40% incremental revenue. Adding eBay typically adds another 15–25%. The exact lift depends on your category and products, but multi-channel almost always outperforms the cost of managing additional channels.</div></div></div></div>
+ </div>
+
+ <div class="sec">
+  <p class="sec-ew">Related Services</p>
+  <h2 class="sec-h2 rv">Other Multi-Channel Services</h2>
+  <div class="related-svcs"><a href="mc-strategy.html" class="rel-svc rv"><div class="rel-svc-ico">🗺</div><h5>Channel Strategy</h5><p>Which platforms are right for your brand</p></a><a href="mc-inventory.html" class="rel-svc rv"><div class="rel-svc-ico">📦</div><h5>Inventory Sync</h5><p>Real-time stock across all channels</p></a><a href="mc-brand.html" class="rel-svc rv"><div class="rel-svc-ico">🏷</div><h5>Brand Consistency</h5><p>Unified brand across every marketplace</p></a><a href="mc-reporting.html" class="rel-svc rv"><div class="rel-svc-ico">📊</div><h5>Unified Reporting</h5><p>One dashboard for all your channels</p></a></div>
+ </div>
+
+</div>
+
+<footer class="ftr">
+  <div class="ftrt">
+    <div class="ftrbrand">
+      <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:14px;"><div class="lmk"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M12 3L3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5"/><path d="M12 13v8"/></svg></div><span class="ltx" style="color:#fff;">EStore<b style="color:#60A5FA;">Axis</b></span></a>
+      <p>Multi-platform eCommerce management specialist helping brands grow on Amazon, Walmart, eBay, Home Depot, Lowes &amp; beyond.</p>
+      <div class="ftrsoc"><a href="#">in</a><a href="#">f</a><a href="#">ig</a><a href="https://www.upwork.com/agencies/estoreaxis/" target="_blank" style="background:#14B561;border-color:#14B561;color:#fff;">⬆</a></div>
+    </div>
+    <div class="ftrcols">
+      <div class="ftrcol"><h4>Platforms</h4><ul><li><a href="amazon.html">Amazon</a></li><li><a href="walmart.html">Walmart</a></li><li><a href="ebay.html">eBay</a></li><li><a href="homedepot.html">Home Depot</a></li><li><a href="lowes.html">Lowes</a></li><li><a href="multichannel.html">Multi-Channel</a></li></ul></div>
+      <div class="ftrcol"><h4>Company</h4><ul><li><a href="index.html#about">About Us</a></li><li><a href="index.html#cases">Case Studies</a></li><li><a href="index.html#testimonials">Testimonials</a></li><li><a href="index.html#team">Our Team</a></li><li><a href="index.html#faq">FAQs</a></li></ul></div>
+      <div class="ftrcol"><h4>Contact</h4><ul><li><a href="tel:+12345678900">+1 (234) 567-8900</a></li><li><a href="mailto:info@estoreaxis.com">info@estoreaxis.com</a></li><li><a href="https://wa.me/YOURPHONE" target="_blank">WhatsApp</a></li><li><a href="index.html#contact">Schedule a Call</a></li></ul></div>
+    </div>
+  </div>
+  <div class="ftrb"><p>© 2025 EStoreAxis. All rights reserved.</p><div><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+</footer>
+<a href="https://wa.me/YOURPHONE?text=Hi!%20Interested%20in%20EStoreAxis%20services." target="_blank" class="wa" title="WhatsApp"><svg viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('hdr')?.classList.toggle('sc',window.scrollY>20);});
+function toggleNav(){document.getElementById('hbg').classList.toggle('open');document.getElementById('mainnav').classList.toggle('open');}
+const _ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');_ro.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>_ro.observe(el));
+function faq(btn){const it=btn.parentElement,op=it.classList.contains('open');document.querySelectorAll('.fi.open').forEach(i=>{i.classList.remove('open');i.querySelector('.fa').style.maxHeight='0';});if(!op){it.classList.add('open');it.querySelector('.fa').style.maxHeight=it.querySelector('.fai').scrollHeight+'px';}}
+function sfSub(e,f){e.preventDefault();const b=f.querySelector('.sfbtn'),o=b.textContent;b.textContent="✅ Sent! I'll reply within 24 hours.";b.style.background='#16A34A';b.style.boxShadow='none';setTimeout(()=>{b.textContent=o;b.style.background='';b.style.boxShadow='';f.reset();},4000);}
+</script>
+</body>
+</html>
